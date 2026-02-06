@@ -568,17 +568,28 @@
     <x-admin.sidebar :brand-name="$brandName" :brand-icon="$brandIcon">
         <x-admin.sidebar-section title="Main">
             <x-admin.sidebar-link href="{{ route('dashboard') }}" icon="fas fa-home" :active="request()->routeIs('dashboard')">Dashboard</x-admin.sidebar-link>
-            <x-admin.sidebar-link href="{{ route('admin.users') }}" icon="fas fa-users" :active="request()->routeIs('admin.users')">Users</x-admin.sidebar-link>
+        </x-admin.sidebar-section>
+
+        <x-admin.sidebar-section title="Data Master">
+            <x-admin.sidebar-link href="{{ route('admin.users') }}" icon="fas fa-users-cog" :active="request()->routeIs('admin.users')">Users</x-admin.sidebar-link>
+            <x-admin.sidebar-link href="{{ route('admin.masyarakat') }}" icon="fas fa-users" :active="request()->routeIs('admin.masyarakat')">Masyarakat</x-admin.sidebar-link>
+            <x-admin.sidebar-link href="{{ route('admin.jenis-surat') }}" icon="fas fa-file-alt" :active="request()->routeIs('admin.jenis-surat')">Jenis Surat</x-admin.sidebar-link>
+        </x-admin.sidebar-section>
+
+        <x-admin.sidebar-section title="Informasi">
+            <x-admin.sidebar-link href="{{ route('admin.pengumuman') }}" icon="fas fa-bullhorn" :active="request()->routeIs('admin.pengumuman')">Pengumuman</x-admin.sidebar-link>
+            <x-admin.sidebar-link href="{{ route('admin.kegiatan') }}" icon="fas fa-calendar-alt" :active="request()->routeIs('admin.kegiatan')">Kegiatan</x-admin.sidebar-link>
+        </x-admin.sidebar-section>
+
+        <x-admin.sidebar-section title="Layanan">
+            <x-admin.sidebar-link href="{{ route('admin.pengaduan') }}" icon="fas fa-comments" :active="request()->routeIs('admin.pengaduan')">Pengaduan</x-admin.sidebar-link>
+            <x-admin.sidebar-link href="{{ route('admin.pengajuan-surat') }}" icon="fas fa-envelope" :active="request()->routeIs('admin.pengajuan-surat')">Pengajuan Surat</x-admin.sidebar-link>
         </x-admin.sidebar-section>
 
         <x-admin.sidebar-section title="Account">
             <x-admin.sidebar-link href="{{ route('admin.profile') }}" icon="fas fa-user-circle" :active="request()->routeIs('admin.profile')">Profile</x-admin.sidebar-link>
-            <x-admin.sidebar-link href="#settings" icon="fas fa-cog">Settings</x-admin.sidebar-link>
         </x-admin.sidebar-section>
 
-        <x-admin.sidebar-section title="Developer">
-            <x-admin.sidebar-link href="{{ route('admin.components') }}" icon="fas fa-cubes" :active="request()->routeIs('admin.components')">Components</x-admin.sidebar-link>
-        </x-admin.sidebar-section>
     </x-admin.sidebar>
 
     <!-- Main Content -->
