@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Admin;
 
+use App\Enum\Role;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules\Password;
@@ -26,6 +27,7 @@ class UserManagement extends Component
     public string $email = '';
     public string $password = '';
     public string $password_confirmation = '';
+    public string $role = 'staff';
 
     // State
     public ?int $editingUserId = null;
@@ -38,6 +40,7 @@ class UserManagement extends Component
         $rules = [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'email', 'max:255'],
+            'role' => ['required', 'in:' . implode(',', Role::values())],
         ];
 
         if ($this->editingUserId) {
@@ -71,6 +74,7 @@ class UserManagement extends Component
         $this->editingUserId = $userId;
         $this->name = $user->name;
         $this->email = $user->email;
+        $this->role = $user->role->value;
         $this->password = '';
         $this->password_confirmation = '';
         $this->showModal = true;
@@ -84,6 +88,7 @@ class UserManagement extends Component
             $user = User::findOrFail($this->editingUserId);
             $user->name = $validated['name'];
             $user->email = $validated['email'];
+            $user->role = Role::from($validated['role']);
 
             if (!empty($this->password)) {
                 $user->password = Hash::make($this->password);
@@ -96,6 +101,7 @@ class UserManagement extends Component
                 'name' => $validated['name'],
                 'email' => $validated['email'],
                 'password' => Hash::make($validated['password']),
+                'role' => Role::from($validated['role']),
             ]);
             session()->flash('success', 'User created successfully.');
         }
@@ -139,6 +145,7 @@ class UserManagement extends Component
         $this->email = '';
         $this->password = '';
         $this->password_confirmation = '';
+        $this->role = Role::STAFF->value;
         $this->editingUserId = null;
     }
 
@@ -154,6 +161,7 @@ class UserManagement extends Component
 
         return view('livewire.admin.user-management', [
             'users' => $users,
+            'roles' => Role::cases(),
         ]);
     }
 }

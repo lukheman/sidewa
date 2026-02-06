@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enum\StatusPengaduan;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -34,6 +35,7 @@ class Pengaduan extends Model
     {
         return [
             'tanggal_pengaduan' => 'date',
+            'status' => StatusPengaduan::class,
         ];
     }
 
@@ -58,7 +60,7 @@ class Pengaduan extends Model
      */
     public function isPending(): bool
     {
-        return $this->status === 'pending';
+        return $this->status === StatusPengaduan::PENDING;
     }
 
     /**
@@ -66,7 +68,7 @@ class Pengaduan extends Model
      */
     public function isInProcess(): bool
     {
-        return $this->status === 'proses';
+        return $this->status === StatusPengaduan::PROSES;
     }
 
     /**
@@ -74,7 +76,7 @@ class Pengaduan extends Model
      */
     public function isCompleted(): bool
     {
-        return $this->status === 'selesai';
+        return $this->status === StatusPengaduan::SELESAI;
     }
 
     /**
@@ -82,6 +84,6 @@ class Pengaduan extends Model
      */
     public function isRejected(): bool
     {
-        return $this->status === 'ditolak';
+        return $this->status === StatusPengaduan::DITOLAK;
     }
 }

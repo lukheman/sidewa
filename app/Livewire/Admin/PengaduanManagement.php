@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Admin;
 
+use App\Enum\StatusPengaduan;
 use App\Models\Masyarakat;
 use App\Models\Pengaduan;
 use Illuminate\Support\Facades\Auth;
@@ -43,7 +44,7 @@ class PengaduanManagement extends Component
         return [
             'isi_pengaduan' => ['required', 'string'],
             'tanggal_pengaduan' => ['required', 'date'],
-            'status' => ['required', 'in:pending,proses,selesai,ditolak'],
+            'status' => ['required', 'in:' . implode(',', StatusPengaduan::values())],
             'masyarakat_id' => ['required', 'exists:masyarakat,id'],
         ];
     }
@@ -71,7 +72,7 @@ class PengaduanManagement extends Component
         $this->editingId = $id;
         $this->isi_pengaduan = $pengaduan->isi_pengaduan;
         $this->tanggal_pengaduan = $pengaduan->tanggal_pengaduan->format('Y-m-d');
-        $this->status = $pengaduan->status;
+        $this->status = $pengaduan->status->value;
         $this->masyarakat_id = $pengaduan->masyarakat_id;
         $this->showModal = true;
     }
@@ -81,7 +82,7 @@ class PengaduanManagement extends Component
         $validated = $this->validate();
 
         // Set user_id jika status bukan pending
-        if ($validated['status'] !== 'pending') {
+        if ($validated['status'] !== StatusPengaduan::PENDING->value) {
             $validated['user_id'] = Auth::id();
         }
 
@@ -140,7 +141,7 @@ class PengaduanManagement extends Component
     {
         $this->isi_pengaduan = '';
         $this->tanggal_pengaduan = date('Y-m-d');
-        $this->status = 'pending';
+        $this->status = StatusPengaduan::PENDING->value;
         $this->masyarakat_id = null;
         $this->editingId = null;
     }
@@ -166,6 +167,7 @@ class PengaduanManagement extends Component
         return view('livewire.admin.pengaduan-management', [
             'pengaduans' => $data,
             'masyarakats' => $masyarakats,
+            'statuses' => StatusPengaduan::cases(),
         ]);
     }
 }

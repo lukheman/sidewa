@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Enum\Role;
 use App\Models\JenisSurat;
 use App\Models\Kegiatan;
 use App\Models\Masyarakat;
@@ -24,7 +25,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'Administrator',
             'email' => 'admin@gmail.com',
             'password' => Hash::make('password123'),
-            'role' => 'admin',
+            'role' => Role::ADMIN,
         ]);
 
         // Create kades user
@@ -32,7 +33,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'Kepala Desa',
             'email' => 'kades@gmail.com',
             'password' => Hash::make('password123'),
-            'role' => 'kades',
+            'role' => Role::KADES,
         ]);
 
         // Create staff users

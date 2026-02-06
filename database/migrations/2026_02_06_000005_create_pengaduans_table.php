@@ -1,5 +1,6 @@
 <?php
 
+use App\Enum\StatusPengaduan;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -14,7 +15,7 @@ return new class extends Migration {
             $table->id();
             $table->text('isi_pengaduan');
             $table->date('tanggal_pengaduan');
-            $table->enum('status', ['pending', 'proses', 'selesai', 'ditolak'])->default('pending');
+            $table->enum('status', StatusPengaduan::values())->default(StatusPengaduan::PENDING->value);
             $table->foreignId('masyarakat_id')
                 ->constrained('masyarakat')
                 ->onDelete('cascade');

@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Admin;
 
+use App\Enum\StatusPengajuanSurat;
 use App\Models\JenisSurat;
 use App\Models\Masyarakat;
 use App\Models\PengajuanSurat;
@@ -44,7 +45,7 @@ class PengajuanSuratManagement extends Component
     {
         return [
             'tanggal_pengajuan' => ['required', 'date'],
-            'status' => ['required', 'in:diajukan,diproses,siap_ambil,selesai,ditolak'],
+            'status' => ['required', 'in:' . implode(',', StatusPengajuanSurat::values())],
             'keterangan' => ['nullable', 'string'],
             'masyarakat_id' => ['required', 'exists:masyarakat,id'],
             'jenis_surat_id' => ['required', 'exists:jenis_surat,id'],
@@ -73,7 +74,7 @@ class PengajuanSuratManagement extends Component
         $pengajuan = PengajuanSurat::findOrFail($id);
         $this->editingId = $id;
         $this->tanggal_pengajuan = $pengajuan->tanggal_pengajuan->format('Y-m-d');
-        $this->status = $pengajuan->status;
+        $this->status = $pengajuan->status->value;
         $this->keterangan = $pengajuan->keterangan ?? '';
         $this->masyarakat_id = $pengajuan->masyarakat_id;
         $this->jenis_surat_id = $pengajuan->jenis_surat_id;
@@ -85,7 +86,7 @@ class PengajuanSuratManagement extends Component
         $validated = $this->validate();
 
         // Set user_id jika status bukan diajukan
-        if ($validated['status'] !== 'diajukan') {
+        if ($validated['status'] !== StatusPengajuanSurat::DIAJUKAN->value) {
             $validated['user_id'] = Auth::id();
         }
 
@@ -143,7 +144,7 @@ class PengajuanSuratManagement extends Component
     protected function resetForm(): void
     {
         $this->tanggal_pengajuan = date('Y-m-d');
-        $this->status = 'diajukan';
+        $this->status = StatusPengajuanSurat::DIAJUKAN->value;
         $this->keterangan = '';
         $this->masyarakat_id = null;
         $this->jenis_surat_id = null;
@@ -176,6 +177,7 @@ class PengajuanSuratManagement extends Component
             'pengajuans' => $data,
             'masyarakats' => $masyarakats,
             'jenisSurats' => $jenisSurats,
+            'statuses' => StatusPengajuanSurat::cases(),
         ]);
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enum\StatusPengajuanSurat;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -35,6 +36,7 @@ class PengajuanSurat extends Model
     {
         return [
             'tanggal_pengajuan' => 'date',
+            'status' => StatusPengajuanSurat::class,
         ];
     }
 
@@ -67,7 +69,7 @@ class PengajuanSurat extends Model
      */
     public function isSubmitted(): bool
     {
-        return $this->status === 'diajukan';
+        return $this->status === StatusPengajuanSurat::DIAJUKAN;
     }
 
     /**
@@ -75,7 +77,7 @@ class PengajuanSurat extends Model
      */
     public function isInProcess(): bool
     {
-        return $this->status === 'diproses';
+        return $this->status === StatusPengajuanSurat::DIPROSES;
     }
 
     /**
@@ -83,7 +85,7 @@ class PengajuanSurat extends Model
      */
     public function isReadyToPickup(): bool
     {
-        return $this->status === 'siap_ambil';
+        return $this->status === StatusPengajuanSurat::SIAP_AMBIL;
     }
 
     /**
@@ -91,7 +93,7 @@ class PengajuanSurat extends Model
      */
     public function isCompleted(): bool
     {
-        return $this->status === 'selesai';
+        return $this->status === StatusPengajuanSurat::SELESAI;
     }
 
     /**
@@ -99,6 +101,6 @@ class PengajuanSurat extends Model
      */
     public function isRejected(): bool
     {
-        return $this->status === 'ditolak';
+        return $this->status === StatusPengajuanSurat::DITOLAK;
     }
 }

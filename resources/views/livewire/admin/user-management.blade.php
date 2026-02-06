@@ -42,6 +42,7 @@
                     <tr>
                         <th>User</th>
                         <th>Email</th>
+                        <th>Role</th>
                         <th>Created</th>
                         <th>Status</th>
                         <th style="width: 120px;">Actions</th>
@@ -60,6 +61,11 @@
                                 </div>
                             </td>
                             <td style="color: var(--text-secondary);">{{ $user->email }}</td>
+                            <td>
+                                <x-admin.badge variant="{{ $user->role->color() }}" icon="{{ $user->role->icon() }}">
+                                    {{ $user->role->label() }}
+                                </x-admin.badge>
+                            </td>
                             <td class="text-muted">{{ $user->created_at->format('M d, Y') }}</td>
                             <td>
                                 @if($user->email_verified_at)
@@ -83,7 +89,7 @@
                         </tr>
                     @empty
                         <tr>
-                            <td colspan="5" class="text-center py-4">
+                            <td colspan="6" class="text-center py-4">
                                 <div class="text-muted">
                                     <i class="fas fa-users mb-2" style="font-size: 2rem;"></i>
                                     <p class="mb-0">No users found</p>
@@ -153,10 +159,22 @@
                         @enderror
                     </div>
 
-                    <div class="mb-4">
+                    <div class="mb-3">
                         <label for="password_confirmation" class="form-label">Confirm Password</label>
                         <input type="password" class="form-control" id="password_confirmation"
                             wire:model="password_confirmation" placeholder="Confirm password">
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="role" class="form-label">Role <span style="color: var(--danger-color);">*</span></label>
+                        <select class="form-control @error('role') is-invalid @enderror" id="role" wire:model="role">
+                            @foreach($roles as $roleOption)
+                                <option value="{{ $roleOption->value }}">{{ $roleOption->label() }}</option>
+                            @endforeach
+                        </select>
+                        @error('role')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
                     </div>
 
                     <div class="d-flex justify-content-end gap-2">
@@ -173,15 +191,9 @@
     @endif
 
     {{-- Delete Confirmation Modal --}}
-    <x-admin.confirm-modal
-        :show="$showDeleteModal"
-        title="Confirm Delete"
-        message="Are you sure you want to delete this user? This action cannot be undone."
-        on-confirm="deleteUser"
-        on-cancel="cancelDelete"
-        variant="danger"
-        icon="fas fa-exclamation-triangle"
-    >
+    <x-admin.confirm-modal :show="$showDeleteModal" title="Confirm Delete"
+        message="Are you sure you want to delete this user? This action cannot be undone." on-confirm="deleteUser"
+        on-cancel="cancelDelete" variant="danger" icon="fas fa-exclamation-triangle">
         <x-slot:confirmButton>
             <i class="fas fa-trash-alt me-2"></i>Delete User
         </x-slot:confirmButton>

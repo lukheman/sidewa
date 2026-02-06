@@ -19,13 +19,13 @@
             <div class="d-flex gap-2 flex-wrap">
                 <select class="form-select" wire:model.live="filterStatus" style="min-width: 150px;">
                     <option value="">Semua Status</option>
-                    <option value="pending">Pending</option>
-                    <option value="proses">Diproses</option>
-                    <option value="selesai">Selesai</option>
-                    <option value="ditolak">Ditolak</option>
+                    @foreach($statuses as $statusOption)
+                        <option value="{{ $statusOption->value }}">{{ $statusOption->label() }}</option>
+                    @endforeach
                 </select>
                 <div class="input-group" style="max-width: 300px;">
-                    <span class="input-group-text" style="background: var(--input-bg); border-color: var(--border-color);">
+                    <span class="input-group-text"
+                        style="background: var(--input-bg); border-color: var(--border-color);">
                         <i class="fas fa-search" style="color: var(--text-muted);"></i>
                     </span>
                     <input type="text" class="form-control" placeholder="Cari pengaduan..."
@@ -49,40 +49,32 @@
                     @forelse ($pengaduans as $item)
                         <tr wire:key="pengaduan-{{ $item->id }}">
 
-            <td>
+                            <td>
 
                                 <x-admin.badge variant="info">
                                     {{ $item->tanggal_pengaduan->format('d M Y') }}
                                 </x-admin.badge>
 
-            </td>
+                            </td>
                             <td>
-                                <div style="color: var(--text-primary); font-weight: 500;">{{ $item->masyarakat->nama ?? '-' }}</div>
+                                <div style="color: var(--text-primary); font-weight: 500;">
+                                    {{ $item->masyarakat->nama ?? '-' }}</div>
                                 <small style="color: var(--text-muted);">{{ $item->masyarakat->nik ?? '' }}</small>
                             </td>
                             <td style="color: var(--text-secondary);">{{ Str::limit($item->isi_pengaduan, 60) }}</td>
                             <td>
-                                @switch($item->status)
-                                    @case('pending')
-                                        <x-admin.badge variant="warning" icon="fas fa-clock">Pending</x-admin.badge>
-                                        @break
-                                    @case('proses')
-                                        <x-admin.badge variant="info" icon="fas fa-spinner">Diproses</x-admin.badge>
-                                        @break
-                                    @case('selesai')
-                                        <x-admin.badge variant="success" icon="fas fa-check">Selesai</x-admin.badge>
-                                        @break
-                                    @case('ditolak')
-                                        <x-admin.badge variant="danger" icon="fas fa-times">Ditolak</x-admin.badge>
-                                        @break
-                                @endswitch
+                                <x-admin.badge variant="{{ $item->status->color() }}" icon="{{ $item->status->icon() }}">
+                                    {{ $item->status->label() }}
+                                </x-admin.badge>
                             </td>
                             <td>
                                 <div class="d-flex gap-1">
-                                    <button class="action-btn action-btn-edit" wire:click="openEditModal({{ $item->id }})" title="Edit">
+                                    <button class="action-btn action-btn-edit" wire:click="openEditModal({{ $item->id }})"
+                                        title="Edit">
                                         <i class="fas fa-edit"></i>
                                     </button>
-                                    <button class="action-btn action-btn-delete" wire:click="confirmDelete({{ $item->id }})" title="Hapus">
+                                    <button class="action-btn action-btn-delete" wire:click="confirmDelete({{ $item->id }})"
+                                        title="Hapus">
                                         <i class="fas fa-trash-alt"></i>
                                     </button>
                                 </div>
@@ -123,8 +115,10 @@
 
                 <form wire:submit="save">
                     <div class="mb-3">
-                        <label for="masyarakat_id" class="form-label">Pelapor <span style="color: var(--danger-color);">*</span></label>
-                        <select class="form-select @error('masyarakat_id') is-invalid @enderror" id="masyarakat_id" wire:model="masyarakat_id">
+                        <label for="masyarakat_id" class="form-label">Pelapor <span
+                                style="color: var(--danger-color);">*</span></label>
+                        <select class="form-select @error('masyarakat_id') is-invalid @enderror" id="masyarakat_id"
+                            wire:model="masyarakat_id">
                             <option value="">Pilih Masyarakat</option>
                             @foreach($masyarakats as $m)
                                 <option value="{{ $m->id }}">{{ $m->nama }} - {{ $m->nik }}</option>
@@ -137,20 +131,22 @@
 
                     <div class="row mb-3">
                         <div class="col-md-6">
-                            <label for="tanggal_pengaduan" class="form-label">Tanggal <span style="color: var(--danger-color);">*</span></label>
-                            <input type="date" class="form-control @error('tanggal_pengaduan') is-invalid @enderror" id="tanggal_pengaduan"
-                                wire:model="tanggal_pengaduan">
+                            <label for="tanggal_pengaduan" class="form-label">Tanggal <span
+                                    style="color: var(--danger-color);">*</span></label>
+                            <input type="date" class="form-control @error('tanggal_pengaduan') is-invalid @enderror"
+                                id="tanggal_pengaduan" wire:model="tanggal_pengaduan">
                             @error('tanggal_pengaduan')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
                         <div class="col-md-6">
-                            <label for="status" class="form-label">Status <span style="color: var(--danger-color);">*</span></label>
-                            <select class="form-select @error('status') is-invalid @enderror" id="status" wire:model="status">
-                                <option value="pending">Pending</option>
-                                <option value="proses">Diproses</option>
-                                <option value="selesai">Selesai</option>
-                                <option value="ditolak">Ditolak</option>
+                            <label for="status" class="form-label">Status <span
+                                    style="color: var(--danger-color);">*</span></label>
+                            <select class="form-select @error('status') is-invalid @enderror" id="status"
+                                wire:model="status">
+                                @foreach($statuses as $statusOption)
+                                    <option value="{{ $statusOption->value }}">{{ $statusOption->label() }}</option>
+                                @endforeach
                             </select>
                             @error('status')
                                 <div class="invalid-feedback">{{ $message }}</div>
@@ -159,7 +155,8 @@
                     </div>
 
                     <div class="mb-4">
-                        <label for="isi_pengaduan" class="form-label">Isi Pengaduan <span style="color: var(--danger-color);">*</span></label>
+                        <label for="isi_pengaduan" class="form-label">Isi Pengaduan <span
+                                style="color: var(--danger-color);">*</span></label>
                         <textarea class="form-control @error('isi_pengaduan') is-invalid @enderror" id="isi_pengaduan"
                             wire:model="isi_pengaduan" placeholder="Tulis isi pengaduan..." rows="5"></textarea>
                         @error('isi_pengaduan')
@@ -180,15 +177,9 @@
         </div>
     @endif
 
-    <x-admin.confirm-modal
-        :show="$showDeleteModal"
-        title="Konfirmasi Hapus"
-        message="Apakah Anda yakin ingin menghapus pengaduan ini?"
-        on-confirm="delete"
-        on-cancel="cancelDelete"
-        variant="danger"
-        icon="fas fa-exclamation-triangle"
-    >
+    <x-admin.confirm-modal :show="$showDeleteModal" title="Konfirmasi Hapus"
+        message="Apakah Anda yakin ingin menghapus pengaduan ini?" on-confirm="delete" on-cancel="cancelDelete"
+        variant="danger" icon="fas fa-exclamation-triangle">
         <x-slot:confirmButton>
             <i class="fas fa-trash-alt me-2"></i>Hapus
         </x-slot:confirmButton>
