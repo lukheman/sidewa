@@ -4,21 +4,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ $title ?? 'Login - AdminPro' }}</title>
+    <title>{{ $title ?? 'Login - SIDEWA' }}</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #6366f1;
-            --primary-dark: #4f46e5;
-            --primary-light: #818cf8;
-            --secondary-color: #0ea5e9;
-            --success-color: #10b981;
-            --text-primary: #1e293b;
-            --text-secondary: #64748b;
-            --text-muted: #94a3b8;
-            --border-color: #e2e8f0;
+            --primary-color: #10b981;
+            --primary-dark: #059669;
+            --primary-light: #34d399;
+            --secondary-color: #14b8a6;
+            --success-color: #22c55e;
+            --text-primary: #064e3b;
+            --text-secondary: #047857;
+            --text-muted: #6b7280;
+            --border-color: #d1fae5;
         }
 
         * {
@@ -30,7 +30,7 @@
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
             min-height: 100vh;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #059669 0%, #0d9488 50%, #0891b2 100%);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -140,7 +140,7 @@
             align-items: center;
             justify-content: center;
             margin-bottom: 1rem;
-            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.4);
+            box-shadow: 0 10px 30px rgba(16, 185, 129, 0.4);
             animation: pulse 2s infinite;
         }
 
@@ -148,11 +148,11 @@
 
             0%,
             100% {
-                box-shadow: 0 10px 30px rgba(99, 102, 241, 0.4);
+                box-shadow: 0 10px 30px rgba(16, 185, 129, 0.4);
             }
 
             50% {
-                box-shadow: 0 10px 40px rgba(99, 102, 241, 0.6);
+                box-shadow: 0 10px 40px rgba(16, 185, 129, 0.6);
             }
         }
 
@@ -189,7 +189,7 @@
 
         .form-floating .form-control:focus {
             border-color: var(--primary-color);
-            box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
+            box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.1);
             background: white;
         }
 
@@ -249,7 +249,7 @@
         }
 
         .form-check-input:focus {
-            box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
+            box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.1);
             border-color: var(--primary-color);
         }
 
@@ -298,7 +298,7 @@
 
         .btn-login:hover {
             transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.4);
+            box-shadow: 0 10px 30px rgba(16, 185, 129, 0.4);
         }
 
         .btn-login:hover::before {

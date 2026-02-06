@@ -1,6 +1,6 @@
 @props([
     'title' => 'Modern Admin Dashboard',
-    'brandName' => 'AdminPro',
+    'brandName' => 'SIDEWA',
     'brandIcon' => 'fas fa-layer-group'
 ])
 
@@ -16,40 +16,42 @@
         :root {
             --sidebar-width: 280px;
             --topbar-height: 70px;
-            --primary-color: #6366f1;
-            --primary-dark: #4f46e5;
-            --primary-light: #818cf8;
-            --secondary-color: #0ea5e9;
-            --success-color: #10b981;
+            --primary-color: #10b981;
+            --primary-dark: #059669;
+            --primary-light: #34d399;
+            --secondary-color: #14b8a6;
+            --success-color: #22c55e;
             --warning-color: #f59e0b;
             --danger-color: #ef4444;
-            --card-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+            --info-color: #06b6d4;
+            --card-shadow: none;
 
-            /* Light theme (default) */
-            --bg-primary: #f1f5f9;
+            /* Light theme (default) - Fresh & Clean */
+            --bg-primary: #f0fdf4;
             --bg-secondary: #ffffff;
-            --bg-tertiary: #f8fafc;
-            --text-primary: #1e293b;
-            --text-secondary: #64748b;
-            --text-muted: #94a3b8;
-            --border-color: #e2e8f0;
-            --border-light: #f1f5f9;
+            --bg-tertiary: #ecfdf5;
+            --text-primary: #064e3b;
+            --text-secondary: #047857;
+            --text-muted: #6b7280;
+            --border-color: #d1fae5;
+            --border-light: #ecfdf5;
             --input-bg: #ffffff;
-            --hover-bg: #f8fafc;
+            --hover-bg: #ecfdf5;
+            --accent-gradient: linear-gradient(135deg, #10b981 0%, #14b8a6 100%);
         }
 
         [data-theme="dark"] {
-            --bg-primary: #0f172a;
-            --bg-secondary: #1e293b;
-            --bg-tertiary: #334155;
-            --text-primary: #f1f5f9;
-            --text-secondary: #cbd5e1;
-            --text-muted: #94a3b8;
-            --border-color: #334155;
-            --border-light: #475569;
-            --input-bg: #1e293b;
-            --hover-bg: #334155;
-            --card-shadow: 0 1px 3px rgba(0,0,0,0.3), 0 1px 2px rgba(0,0,0,0.4);
+            --bg-primary: #022c22;
+            --bg-secondary: #064e3b;
+            --bg-tertiary: #065f46;
+            --text-primary: #ecfdf5;
+            --text-secondary: #a7f3d0;
+            --text-muted: #6ee7b7;
+            --border-color: #065f46;
+            --border-light: #047857;
+            --input-bg: #064e3b;
+            --hover-bg: #065f46;
+            --card-shadow: none;
         }
 
         * {
@@ -182,12 +184,12 @@
         }
 
         .modern-card:hover {
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-            transform: translateY(-2px);
+            box-shadow: none;
+            transform: none;
         }
 
         [data-theme="dark"] .modern-card:hover {
-            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+            box-shadow: none;
         }
 
         .stat-card {
@@ -212,12 +214,12 @@
         }
 
         .stat-card:hover {
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-            transform: translateY(-4px);
+            box-shadow: none;
+            transform: none;
         }
 
         [data-theme="dark"] .stat-card:hover {
-            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+            box-shadow: none;
         }
 
         .stat-icon {
@@ -295,7 +297,7 @@
         .btn-primary-modern:hover {
             background: var(--primary-dark);
             transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.4);
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.4);
         }
 
         .alert-modern {
