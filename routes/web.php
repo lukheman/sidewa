@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Livewire\LandingPage;
 use App\Livewire\Admin\Dashboard;
 use App\Livewire\Admin\UserManagement;
 use App\Livewire\Admin\MasyarakatManagement;
@@ -14,6 +15,9 @@ use App\Livewire\Admin\ComponentDocs;
 use App\Livewire\Auth\Login;
 use App\Livewire\Auth\Register;
 use App\Http\Controllers\Admin\LogoutController;
+
+// Public Routes
+Route::get('/', LandingPage::class)->name('home');
 
 // Auth Routes
 Route::get('/login', Login::class)->name('login');
