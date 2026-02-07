@@ -28,6 +28,7 @@ class MasyarakatFactory extends Factory
         return [
             'nik' => fake()->unique()->numerify('################'),
             'nama' => fake('id_ID')->name(),
+            'email' => fake()->unique()->safeEmail(),
             'alamat' => fake('id_ID')->address(),
             'phone' => fake()->numerify('08##########'),
             'password' => static::$password ??= Hash::make('password'),

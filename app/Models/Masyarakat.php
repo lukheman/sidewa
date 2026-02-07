@@ -22,6 +22,7 @@ class Masyarakat extends Authenticatable
     protected $fillable = [
         'nik',
         'nama',
+        'email',
         'alamat',
         'phone',
         'password',
@@ -34,6 +35,7 @@ class Masyarakat extends Authenticatable
      */
     protected $hidden = [
         'password',
+        'remember_token',
     ];
 
     /**

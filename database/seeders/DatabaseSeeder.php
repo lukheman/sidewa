@@ -42,8 +42,18 @@ class DatabaseSeeder extends Seeder
         // Create jenis surat
         $jenisSurats = JenisSurat::factory(10)->create();
 
-        // Create masyarakat
-        $masyarakats = Masyarakat::factory(20)->create();
+        // Create masyarakat demo (for testing login)
+        Masyarakat::factory()->create([
+            'nik' => '1234567890123456',
+            'nama' => 'Budi Santoso',
+            'email' => 'budi@gmail.com',
+            'alamat' => 'Jl. Merdeka No. 10, Desa Sidoasih',
+            'phone' => '081234567890',
+            'password' => Hash::make('password123'),
+        ]);
+
+        // Create more masyarakat
+        $masyarakats = Masyarakat::factory(4)->create();
 
         // Create pengumumans
         Pengumuman::factory(5)->create(['user_id' => $admin->id]);
