@@ -16,12 +16,36 @@ use App\Livewire\Auth\Login;
 use App\Livewire\Auth\Register;
 use App\Http\Controllers\Admin\LogoutController;
 
+// Masyarakat Livewire Components
+use App\Livewire\Masyarakat\Login as MasyarakatLogin;
+use App\Livewire\Masyarakat\Register as MasyarakatRegister;
+use App\Livewire\Masyarakat\Dashboard as MasyarakatDashboard;
+use App\Livewire\Masyarakat\Profile as MasyarakatProfile;
+
 // Public Routes
 Route::get('/', LandingPage::class)->name('home');
 
-// Auth Routes
+// Admin Auth Routes
 Route::get('/login', Login::class)->name('login');
 Route::get('/register', Register::class)->name('register');
+
+// Masyarakat Auth Routes
+Route::prefix('masyarakat')->group(function () {
+    Route::get('/login', MasyarakatLogin::class)->name('masyarakat.login');
+    Route::get('/register', MasyarakatRegister::class)->name('masyarakat.register');
+
+    // Protected Masyarakat Routes
+    Route::middleware('auth:masyarakat')->group(function () {
+        Route::get('/dashboard', MasyarakatDashboard::class)->name('masyarakat.dashboard');
+        Route::get('/profile', MasyarakatProfile::class)->name('masyarakat.profile');
+        Route::post('/logout', function () {
+            auth()->guard('masyarakat')->logout();
+            session()->invalidate();
+            session()->regenerateToken();
+            return redirect()->route('masyarakat.login');
+        })->name('masyarakat.logout');
+    });
+});
 
 Route::prefix('admin')->middleware('auth')->group(function () {
     Route::get('/dashboard', Dashboard::class)->name('dashboard');

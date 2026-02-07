@@ -77,4 +77,28 @@ class Masyarakat extends Authenticatable
     {
         return $this->hasMany(PengajuanSurat::class);
     }
+
+    /**
+     * Get the masyarakat's avatar URL
+     */
+    public function avatarUrl(): ?string
+    {
+        return null;
+    }
+
+    /**
+     * Check if masyarakat has an avatar
+     */
+    public function hasAvatar(): bool
+    {
+        return false;
+    }
+
+    /**
+     * Get the masyarakat's name (for compatibility with User model)
+     */
+    public function getNameAttribute(): string
+    {
+        return $this->nama;
+    }
 }
