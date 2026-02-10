@@ -1,18 +1,4 @@
 <div>
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg"
-        style="background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(20px); box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); padding: 1rem 0; position: fixed; width: 100%; top: 0; z-index: 1000;">
-        <div class="container">
-            <a class="navbar-brand" href="{{ route('home') }}"
-                style="font-weight: 700; font-size: 1.5rem; color: #10b981; display: flex; align-items: center; gap: 0.5rem;">
-                <i class="fas fa-layer-group" style="font-size: 1.75rem;"></i>
-                SIDEWA
-            </a>
-            <a href="{{ route('login') }}" style="color: #047857; text-decoration: none; font-weight: 500;">
-                <i class="fas fa-user-shield me-1"></i> Login Admin
-            </a>
-        </div>
-    </nav>
 
     <!-- Login Section -->
     <section

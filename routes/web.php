@@ -26,7 +26,7 @@ use App\Livewire\Masyarakat\Profile as MasyarakatProfile;
 Route::get('/', LandingPage::class)->name('home');
 
 // Admin Auth Routes
-Route::get('/login', Login::class)->name('login');
+Route::get('/admin/login', Login::class)->name('admin.login');
 Route::get('/register', Register::class)->name('register');
 
 // Masyarakat Auth Routes

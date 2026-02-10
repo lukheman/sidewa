@@ -1,5 +1,5 @@
 <div>
-    <!-- Navbar -->
+
     <nav class="navbar navbar-expand-lg"
         style="background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(20px); box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); padding: 1rem 0; position: fixed; width: 100%; top: 0; z-index: 1000;">
         <div class="container">
@@ -7,6 +7,9 @@
                 style="font-weight: 700; font-size: 1.5rem; color: #10b981; display: flex; align-items: center; gap: 0.5rem;">
                 <i class="fas fa-layer-group" style="font-size: 1.75rem;"></i>
                 SIDEWA
+            </a>
+            <a href="{{ route('admin.login') }}" style="color: #047857; text-decoration: none; font-weight: 500;">
+                <i class="fas fa-user-shield me-1"></i> Login Admin
             </a>
         </div>
     </nav>
@@ -97,10 +100,10 @@
                 </div>
 
                 <!-- Sign Up Link -->
-                <div style="text-align: center; color: #047857;">
-                    Belum punya akun? <a href="{{ route('register') }}"
-                        style="color: #10b981; font-weight: 600; text-decoration: none;">Daftar Sekarang</a>
-                </div>
+                <!-- <div style="text-align: center; color: #047857;"> -->
+                <!--     Belum punya akun? <a href="{{ route('register') }}" -->
+                <!--         style="color: #10b981; font-weight: 600; text-decoration: none;">Daftar Sekarang</a> -->
+                <!-- </div> -->
 
                 <!-- Back to Home -->
                 <div style="text-align: center; margin-top: 1.5rem;">
