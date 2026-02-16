@@ -27,7 +27,7 @@ class UserManagement extends Component
     public string $email = '';
     public string $password = '';
     public string $password_confirmation = '';
-    public string $role = 'staff';
+    public string $role = 'pelayanan';
 
     // State
     public ?int $editingUserId = null;
@@ -145,7 +145,7 @@ class UserManagement extends Component
         $this->email = '';
         $this->password = '';
         $this->password_confirmation = '';
-        $this->role = Role::STAFF->value;
+        $this->role = Role::PELAYANAN->value;
         $this->editingUserId = null;
     }
 

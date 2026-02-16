@@ -28,7 +28,7 @@ class UserFactory extends Factory
             'email' => fake()->unique()->safeEmail(),
             'email_verified_at' => now(),
             'password' => static::$password ??= Hash::make('password'),
-            'role' => fake()->randomElement(['admin', 'kades', 'staff']),
+            'role' => fake()->randomElement(['admin', 'kepala_desa', 'pelayanan']),
             'remember_token' => Str::random(10),
         ];
     }
@@ -54,22 +54,22 @@ class UserFactory extends Factory
     }
 
     /**
-     * Indicate that the user is a kades.
+     * Indicate that the user is a kepala desa.
      */
-    public function kades(): static
+    public function kepalaDesa(): static
     {
         return $this->state(fn(array $attributes) => [
-            'role' => 'kades',
+            'role' => 'kepala_desa',
         ]);
     }
 
     /**
-     * Indicate that the user is a staff.
+     * Indicate that the user is a pelayanan.
      */
-    public function staff(): static
+    public function pelayanan(): static
     {
         return $this->state(fn(array $attributes) => [
-            'role' => 'staff',
+            'role' => 'pelayanan',
         ]);
     }
 }

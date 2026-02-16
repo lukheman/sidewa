@@ -72,19 +72,19 @@ class User extends Authenticatable
     }
 
     /**
-     * Check if user is kades
+     * Check if user is kepala desa
      */
-    public function isKades(): bool
+    public function isKepalaDesa(): bool
     {
-        return $this->role === 'kades';
+        return $this->role === 'kepala_desa';
     }
 
     /**
-     * Check if user is staff
+     * Check if user is pelayanan
      */
-    public function isStaff(): bool
+    public function isPelayanan(): bool
     {
-        return $this->role === 'staff';
+        return $this->role === 'pelayanan';
     }
 
     /**

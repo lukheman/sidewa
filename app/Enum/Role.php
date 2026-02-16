@@ -5,8 +5,8 @@ namespace App\Enum;
 enum Role: string
 {
     case ADMIN = 'admin';
-    case KADES = 'kades';
-    case STAFF = 'staff';
+    case KEPALA_DESA = 'kepala_desa';
+    case PELAYANAN = 'pelayanan';
 
     /**
      * Get all role values as array
@@ -23,8 +23,8 @@ enum Role: string
     {
         return match ($this) {
             self::ADMIN => 'Administrator',
-            self::KADES => 'Kepala Desa',
-            self::STAFF => 'Staff',
+            self::KEPALA_DESA => 'Kepala Desa',
+            self::PELAYANAN => 'Pelayanan',
         };
     }
 
@@ -35,8 +35,8 @@ enum Role: string
     {
         return match ($this) {
             self::ADMIN => 'danger',
-            self::KADES => 'primary',
-            self::STAFF => 'secondary',
+            self::KEPALA_DESA => 'primary',
+            self::PELAYANAN => 'secondary',
         };
     }
 
@@ -47,8 +47,8 @@ enum Role: string
     {
         return match ($this) {
             self::ADMIN => 'fas fa-user-shield',
-            self::KADES => 'fas fa-user-tie',
-            self::STAFF => 'fas fa-user',
+            self::KEPALA_DESA => 'fas fa-user-tie',
+            self::PELAYANAN => 'fas fa-user',
         };
     }
 }

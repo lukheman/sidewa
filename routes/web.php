@@ -21,6 +21,18 @@ use App\Livewire\Masyarakat\Login as MasyarakatLogin;
 use App\Livewire\Masyarakat\Register as MasyarakatRegister;
 use App\Livewire\Masyarakat\Dashboard as MasyarakatDashboard;
 use App\Livewire\Masyarakat\Profile as MasyarakatProfile;
+use App\Livewire\Masyarakat\PengaduanPage as MasyarakatPengaduan;
+use App\Livewire\Masyarakat\PengaduanCreate as MasyarakatPengaduanCreate;
+use App\Livewire\Masyarakat\PengajuanSuratPage as MasyarakatPengajuanSurat;
+use App\Livewire\Masyarakat\PengajuanSuratCreate as MasyarakatPengajuanSuratCreate;
+
+// Pelayanan Livewire Components
+use App\Livewire\Pelayanan\Dashboard as PelayananDashboard;
+use App\Livewire\Pelayanan\PengajuanSuratMasuk;
+
+// Kepala Desa Livewire Components
+use App\Livewire\KepalaDesa\Dashboard as KepalaDesaDashboard;
+use App\Livewire\KepalaDesa\VerifikasiSurat;
 
 // Public Routes
 Route::get('/', LandingPage::class)->name('home');
@@ -38,6 +50,10 @@ Route::prefix('masyarakat')->group(function () {
     Route::middleware('auth:masyarakat')->group(function () {
         Route::get('/dashboard', MasyarakatDashboard::class)->name('masyarakat.dashboard');
         Route::get('/profile', MasyarakatProfile::class)->name('masyarakat.profile');
+        Route::get('/pengaduan', MasyarakatPengaduan::class)->name('masyarakat.pengaduan');
+        Route::get('/pengaduan/create', MasyarakatPengaduanCreate::class)->name('masyarakat.pengaduan.create');
+        Route::get('/pengajuan-surat', MasyarakatPengajuanSurat::class)->name('masyarakat.pengajuan-surat');
+        Route::get('/pengajuan-surat/create', MasyarakatPengajuanSuratCreate::class)->name('masyarakat.pengajuan-surat.create');
         Route::post('/logout', function () {
             auth()->guard('masyarakat')->logout();
             session()->invalidate();
@@ -69,4 +85,16 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     Route::get('/profile', Profile::class)->name('admin.profile');
     Route::get('/components', ComponentDocs::class)->name('admin.components');
     Route::post('/logout', [LogoutController::class, '__invoke'])->name('logout');
+});
+
+// Pelayanan Routes
+Route::prefix('pelayanan')->middleware('auth')->group(function () {
+    Route::get('/dashboard', PelayananDashboard::class)->name('pelayanan.dashboard');
+    Route::get('/pengajuan-surat', PengajuanSuratMasuk::class)->name('pelayanan.pengajuan-surat');
+});
+
+// Kepala Desa Routes
+Route::prefix('kepala-desa')->middleware('auth')->group(function () {
+    Route::get('/dashboard', KepalaDesaDashboard::class)->name('kepala-desa.dashboard');
+    Route::get('/verifikasi-surat', VerifikasiSurat::class)->name('kepala-desa.verifikasi-surat');
 });

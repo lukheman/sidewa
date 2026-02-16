@@ -28,16 +28,25 @@ class DatabaseSeeder extends Seeder
             'role' => Role::ADMIN,
         ]);
 
-        // Create kades user
-        $kades = User::factory()->create([
+        // Create kepala desa user
+        $kepalaDesa = User::factory()->create([
             'name' => 'Kepala Desa',
-            'email' => 'kades@gmail.com',
+            'email' => 'kepaladesa@gmail.com',
             'password' => Hash::make('password123'),
-            'role' => Role::KADES,
+            'role' => Role::KEPALA_DESA,
         ]);
 
-        // Create staff users
-        $staffUsers = User::factory(3)->staff()->create();
+        // Create pelayanan user
+        $pelayanan = User::factory()->create([
+            'name' => 'Pelayanan',
+            'email' => 'pelayanan@gmail.com',
+            'password' => Hash::make('password123'),
+            'role' => Role::PELAYANAN,
+        ]);
+
+        // Create more pelayanan users
+        $pelayananUsers = User::factory(3)->pelayanan()->create();
+        $pelayananUsers->push($pelayanan);
 
         // Create jenis surat
         $jenisSurats = JenisSurat::factory(10)->create();
@@ -57,17 +66,17 @@ class DatabaseSeeder extends Seeder
 
         // Create pengumumans
         Pengumuman::factory(5)->create(['user_id' => $admin->id]);
-        Pengumuman::factory(3)->create(['user_id' => $kades->id]);
+        Pengumuman::factory(3)->create(['user_id' => $kepalaDesa->id]);
 
         // Create kegiatans
         Kegiatan::factory(3)->completed()->create(['user_id' => $admin->id]);
-        Kegiatan::factory(5)->create(['user_id' => $staffUsers->random()->id]);
+        Kegiatan::factory(5)->create(['user_id' => $pelayananUsers->random()->id]);
 
         // Create pengaduans
         foreach ($masyarakats->take(10) as $masyarakat) {
             Pengaduan::factory()->create([
                 'masyarakat_id' => $masyarakat->id,
-                'user_id' => $staffUsers->random()->id,
+                'user_id' => $pelayananUsers->random()->id,
             ]);
         }
 
@@ -76,7 +85,7 @@ class DatabaseSeeder extends Seeder
             PengajuanSurat::factory()->create([
                 'masyarakat_id' => $masyarakat->id,
                 'jenis_surat_id' => $jenisSurats->random()->id,
-                'user_id' => fake()->boolean(70) ? $staffUsers->random()->id : null,
+                'user_id' => fake()->boolean(70) ? $pelayananUsers->random()->id : null,
             ]);
         }
     }

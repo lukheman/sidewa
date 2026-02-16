@@ -9,7 +9,7 @@
     </x-admin.page-header>
 
     <div class="row justify-content-center">
-        <div class="col-lg-8">
+        <div class="col-lg-12">
             <div class="modern-card">
                 <div class="preview-title d-flex align-items-center gap-2">
                     <i class="fas fa-file-alt" style="color: var(--primary-color);"></i>

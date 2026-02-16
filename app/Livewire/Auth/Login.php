@@ -27,6 +27,15 @@ class Login extends Component
 
         if (Auth::attempt($credentials, $this->remember)) {
             session()->regenerate();
+
+            if (Auth::user()->role->value === 'pelayanan') {
+                return redirect()->to(route('pelayanan.dashboard'));
+            }
+
+            if (Auth::user()->role->value === 'kepala_desa') {
+                return redirect()->to(route('kepala-desa.dashboard'));
+            }
+
             return redirect()->to(route('dashboard'));
         }
 
