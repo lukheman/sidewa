@@ -97,4 +97,6 @@ Route::prefix('pelayanan')->middleware('auth')->group(function () {
 Route::prefix('kepala-desa')->middleware('auth')->group(function () {
     Route::get('/dashboard', KepalaDesaDashboard::class)->name('kepala-desa.dashboard');
     Route::get('/verifikasi-surat', VerifikasiSurat::class)->name('kepala-desa.verifikasi-surat');
+    Route::get('/pengaduan', App\Livewire\KepalaDesa\PengaduanIndex::class)->name('kepala-desa.pengaduan');
+    Route::get('/pengaduan/print', [App\Http\Controllers\KepalaDesa\PengaduanReportController::class, 'print'])->name('kepala-desa.pengaduan.print');
 });

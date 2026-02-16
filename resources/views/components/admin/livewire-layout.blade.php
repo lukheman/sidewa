@@ -606,6 +606,7 @@
 
                 <x-admin.sidebar-section title="Layanan">
                     <x-admin.sidebar-link href="{{ route('kepala-desa.verifikasi-surat') }}" icon="fas fa-clipboard-check" :active="request()->routeIs('kepala-desa.verifikasi-surat')">Verifikasi Surat</x-admin.sidebar-link>
+                    <x-admin.sidebar-link href="{{ route('kepala-desa.pengaduan') }}" icon="fas fa-bullhorn" :active="request()->routeIs('kepala-desa.pengaduan')">Laporan Pengaduan</x-admin.sidebar-link>
                 </x-admin.sidebar-section>
 
                 <x-admin.sidebar-section title="Account">
