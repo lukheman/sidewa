@@ -18,8 +18,7 @@ class Dashboard extends Component
         return view('livewire.kepala-desa.dashboard', [
             'totalPengajuan' => PengajuanSurat::count(),
             'menungguVerifikasi' => PengajuanSurat::where('status', StatusPengajuanSurat::DIPROSES)->count(),
-            'disetujui' => PengajuanSurat::where('status', StatusPengajuanSurat::SIAP_AMBIL)->count(),
-            'selesai' => PengajuanSurat::where('status', StatusPengajuanSurat::SELESAI)->count(),
+            'disetujui' => PengajuanSurat::where('status', StatusPengajuanSurat::DISETUJUI)->count(),
             'ditolak' => PengajuanSurat::where('status', StatusPengajuanSurat::DITOLAK)->count(),
             'totalPengaduan' => Pengaduan::count(),
             'recentPengajuan' => PengajuanSurat::with(['masyarakat', 'jenisSurat'])

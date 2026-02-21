@@ -156,6 +156,12 @@
                     </div>
                 @endforelse
             </div>
+            <div class="text-center mt-4">
+                <a href="{{ route('pengumuman') }}" class="btn-hero-secondary"
+                    style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.75rem 2rem; font-size: 1rem;">
+                    <i class="fas fa-bullhorn"></i> Lihat Semua Pengumuman
+                </a>
+            </div>
         </div>
     </section>
 
@@ -193,6 +199,12 @@
                     </div>
                 @endforelse
             </div>
+            <div class="text-center mt-4">
+                <a href="{{ route('kegiatan') }}"
+                    style="background: white; color: var(--primary-color); border: 2px solid var(--primary-color); border-radius: 12px; padding: 0.75rem 2rem; font-weight: 600; font-size: 1rem; transition: all 0.3s ease; text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem;">
+                    <i class="fas fa-calendar-alt"></i> Lihat Semua Kegiatan
+                </a>
+            </div>
         </div>
     </section>
 
@@ -221,8 +233,8 @@
                     <ul class="list-unstyled">
                         <li class="mb-2"><a href="#layanan">Pengajuan Surat</a></li>
                         <li class="mb-2"><a href="#layanan">Pengaduan</a></li>
-                        <li class="mb-2"><a href="#pengumuman">Pengumuman</a></li>
-                        <li class="mb-2"><a href="#kegiatan">Kegiatan</a></li>
+                        <li class="mb-2"><a href="{{ route('pengumuman') }}">Pengumuman</a></li>
+                        <li class="mb-2"><a href="{{ route('kegiatan') }}">Kegiatan</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-3 col-md-4 mb-4">

@@ -40,7 +40,7 @@
             <x-admin.stat-card 
                 icon="fas fa-envelope" 
                 label="Pengajuan Baru" 
-                :value="$pengajuanDiajukan"
+                :value="$pengajuanPending"
                 trend-value="Surat menunggu proses" 
                 variant="info" 
             />
@@ -122,17 +122,17 @@
                                     <small style="color: var(--text-muted);">{{ $pengajuan->jenisSurat?->nama_surat ?? '-' }}</small>
                                 </div>
                                 @switch($pengajuan->status)
-                                    @case('diajukan')
-                                        <x-admin.badge variant="secondary" size="sm">Diajukan</x-admin.badge>
+                                    @case('pending')
+                                        <x-admin.badge variant="secondary" size="sm">Pending</x-admin.badge>
                                         @break
                                     @case('diproses')
                                         <x-admin.badge variant="info" size="sm">Diproses</x-admin.badge>
                                         @break
-                                    @case('siap_ambil')
-                                        <x-admin.badge variant="primary" size="sm">Siap</x-admin.badge>
+                                    @case('disetujui')
+                                        <x-admin.badge variant="success" size="sm">Disetujui</x-admin.badge>
                                         @break
-                                    @case('selesai')
-                                        <x-admin.badge variant="success" size="sm">Selesai</x-admin.badge>
+                                    @case('ditolak')
+                                        <x-admin.badge variant="danger" size="sm">Ditolak</x-admin.badge>
                                         @break
                                     @default
                                         <x-admin.badge variant="secondary" size="sm">{{ $pengajuan->status }}</x-admin.badge>

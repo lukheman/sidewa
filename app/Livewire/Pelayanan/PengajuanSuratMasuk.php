@@ -85,10 +85,9 @@ class PengajuanSuratMasuk extends Component
 
         $stats = [
             'total' => PengajuanSurat::count(),
-            'diajukan' => PengajuanSurat::where('status', StatusPengajuanSurat::DIAJUKAN)->count(),
+            'pending' => PengajuanSurat::where('status', StatusPengajuanSurat::PENDING)->count(),
             'diproses' => PengajuanSurat::where('status', StatusPengajuanSurat::DIPROSES)->count(),
-            'siap_ambil' => PengajuanSurat::where('status', StatusPengajuanSurat::SIAP_AMBIL)->count(),
-            'selesai' => PengajuanSurat::where('status', StatusPengajuanSurat::SELESAI)->count(),
+            'disetujui' => PengajuanSurat::where('status', StatusPengajuanSurat::DISETUJUI)->count(),
         ];
 
         return view('livewire.pelayanan.pengajuan-surat-masuk', [

@@ -55,10 +55,9 @@ class PengajuanSuratPage extends Component
 
         $stats = [
             'total' => PengajuanSurat::where('masyarakat_id', $masyarakatId)->count(),
-            'diajukan' => PengajuanSurat::where('masyarakat_id', $masyarakatId)->where('status', StatusPengajuanSurat::DIAJUKAN)->count(),
+            'pending' => PengajuanSurat::where('masyarakat_id', $masyarakatId)->where('status', StatusPengajuanSurat::PENDING)->count(),
             'diproses' => PengajuanSurat::where('masyarakat_id', $masyarakatId)->where('status', StatusPengajuanSurat::DIPROSES)->count(),
-            'siap_ambil' => PengajuanSurat::where('masyarakat_id', $masyarakatId)->where('status', StatusPengajuanSurat::SIAP_AMBIL)->count(),
-            'selesai' => PengajuanSurat::where('masyarakat_id', $masyarakatId)->where('status', StatusPengajuanSurat::SELESAI)->count(),
+            'disetujui' => PengajuanSurat::where('masyarakat_id', $masyarakatId)->where('status', StatusPengajuanSurat::DISETUJUI)->count(),
         ];
 
         return view('livewire.masyarakat.pengajuan-surat', [

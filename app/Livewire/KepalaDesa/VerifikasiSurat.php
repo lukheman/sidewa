@@ -31,6 +31,10 @@ class VerifikasiSurat extends Component
     public ?int $rejectId = null;
     public string $rejectNote = '';
 
+    // Approve modal
+    public bool $showApproveModal = false;
+    public ?int $approveId = null;
+
     public function updatedSearch(): void
     {
         $this->resetPage();
@@ -54,19 +58,38 @@ class VerifikasiSurat extends Component
     }
 
     /**
-     * Setujui pengajuan surat (diproses → siap_ambil)
+     * Buka modal konfirmasi approve
      */
-    public function approve(int $id): void
+    public function confirmApprove(int $id): void
     {
-        $pengajuan = PengajuanSurat::findOrFail($id);
-        $pengajuan->status = StatusPengajuanSurat::SIAP_AMBIL->value;
+        $this->approveId = $id;
+        $this->showApproveModal = true;
+    }
+
+    /**
+     * Tutup modal konfirmasi approve
+     */
+    public function cancelApprove(): void
+    {
+        $this->showApproveModal = false;
+        $this->approveId = null;
+    }
+
+    /**
+     * Setujui pengajuan surat (diproses → disetujui)
+     */
+    public function approve(): void
+    {
+        $pengajuan = PengajuanSurat::findOrFail($this->approveId);
+        $pengajuan->status = StatusPengajuanSurat::DISETUJUI->value;
         $pengajuan->user_id = Auth::id();
         $pengajuan->save();
 
-        if ($this->selectedPengajuan && $this->selectedPengajuan->id === $id) {
+        if ($this->selectedPengajuan && $this->selectedPengajuan->id === $this->approveId) {
             $this->selectedPengajuan = $pengajuan->fresh(['masyarakat', 'jenisSurat', 'user']);
         }
 
+        $this->cancelApprove();
         session()->flash('success', 'Pengajuan surat berhasil disetujui.');
     }
 
@@ -132,22 +155,20 @@ class VerifikasiSurat extends Component
             ->when($this->filterStatus, function ($query) {
                 $query->where('status', $this->filterStatus);
             }, function ($query) {
-                // Default: hanya tampilkan yang perlu diverifikasi + yang sudah disetujui/ditolak
+                // Default: tampilkan yang perlu diverifikasi + yang sudah disetujui/ditolak
                 $query->whereIn('status', [
                     StatusPengajuanSurat::DIPROSES->value,
-                    StatusPengajuanSurat::SIAP_AMBIL->value,
+                    StatusPengajuanSurat::DISETUJUI->value,
                     StatusPengajuanSurat::DITOLAK->value,
-                    StatusPengajuanSurat::SELESAI->value,
                 ]);
             })
-            ->orderByRaw("FIELD(status, 'diproses', 'siap_ambil', 'selesai', 'ditolak')")
+            ->orderByRaw("FIELD(status, 'diproses', 'disetujui', 'ditolak')")
             ->orderBy('tanggal_pengajuan', 'desc')
             ->paginate(10);
 
         $stats = [
             'menunggu' => PengajuanSurat::where('status', StatusPengajuanSurat::DIPROSES)->count(),
-            'disetujui' => PengajuanSurat::where('status', StatusPengajuanSurat::SIAP_AMBIL)->count(),
-            'selesai' => PengajuanSurat::where('status', StatusPengajuanSurat::SELESAI)->count(),
+            'disetujui' => PengajuanSurat::where('status', StatusPengajuanSurat::DISETUJUI)->count(),
             'ditolak' => PengajuanSurat::where('status', StatusPengajuanSurat::DITOLAK)->count(),
         ];
 

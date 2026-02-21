@@ -72,9 +72,9 @@
                 <div class="d-flex flex-column gap-3">
                     <div class="d-flex justify-content-between align-items-center">
                         <span style="color: var(--text-secondary);">
-                            <i class="fas fa-check-circle me-2" style="color: var(--success-color);"></i>Selesai
+                            <i class="fas fa-check-circle me-2" style="color: var(--success-color);"></i>Disetujui
                         </span>
-                        <span style="color: var(--text-primary); font-weight: 600;">{{ $selesai }}</span>
+                        <span style="color: var(--text-primary); font-weight: 600;">{{ $disetujui }}</span>
                     </div>
                     <div class="d-flex justify-content-between align-items-center">
                         <span style="color: var(--text-secondary);">

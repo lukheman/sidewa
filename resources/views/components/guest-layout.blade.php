@@ -441,16 +441,16 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto align-items-center">
                     <li class="nav-item">
-                        <a class="nav-link" href="#beranda">Beranda</a>
+                        <a class="nav-link" href="{{ route('home') }}">Beranda</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#layanan">Layanan</a>
+                        <a class="nav-link" href="{{route('home')}}#layanan">Layanan</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#pengumuman">Pengumuman</a>
+                        <a class="nav-link" href="{{ route('pengumuman')}}">Pengumuman</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#kegiatan">Kegiatan</a>
+                        <a class="nav-link" href="{{ route('kegiatan')}}">Kegiatan</a>
                     </li>
                     <li class="nav-item ms-2">
                         <a class="nav-link btn-login" href="{{ route('masyarakat.login') }}">

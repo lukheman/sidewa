@@ -4,10 +4,9 @@ namespace App\Enum;
 
 enum StatusPengajuanSurat: string
 {
-    case DIAJUKAN = 'diajukan';
+    case PENDING = 'pending';
     case DIPROSES = 'diproses';
-    case SIAP_AMBIL = 'siap_ambil';
-    case SELESAI = 'selesai';
+    case DISETUJUI = 'disetujui';
     case DITOLAK = 'ditolak';
 
     /**
@@ -24,10 +23,9 @@ enum StatusPengajuanSurat: string
     public function label(): string
     {
         return match ($this) {
-            self::DIAJUKAN => 'Diajukan',
+            self::PENDING => 'Pending',
             self::DIPROSES => 'Diproses',
-            self::SIAP_AMBIL => 'Siap Diambil',
-            self::SELESAI => 'Selesai',
+            self::DISETUJUI => 'Disetujui',
             self::DITOLAK => 'Ditolak',
         };
     }
@@ -38,10 +36,9 @@ enum StatusPengajuanSurat: string
     public function color(): string
     {
         return match ($this) {
-            self::DIAJUKAN => 'secondary',
+            self::PENDING => 'secondary',
             self::DIPROSES => 'info',
-            self::SIAP_AMBIL => 'primary',
-            self::SELESAI => 'success',
+            self::DISETUJUI => 'success',
             self::DITOLAK => 'danger',
         };
     }
@@ -52,10 +49,9 @@ enum StatusPengajuanSurat: string
     public function icon(): string
     {
         return match ($this) {
-            self::DIAJUKAN => 'fas fa-paper-plane',
+            self::PENDING => 'fas fa-clock',
             self::DIPROSES => 'fas fa-spinner',
-            self::SIAP_AMBIL => 'fas fa-box',
-            self::SELESAI => 'fas fa-check-circle',
+            self::DISETUJUI => 'fas fa-check-circle',
             self::DITOLAK => 'fas fa-times-circle',
         };
     }

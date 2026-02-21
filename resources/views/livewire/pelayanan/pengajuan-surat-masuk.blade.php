@@ -14,7 +14,7 @@
                 trend-value="Semua pengajuan" variant="primary" />
         </div>
         <div class="col-6 col-lg-3">
-            <x-admin.stat-card icon="fas fa-paper-plane" label="Baru Masuk" :value="$stats['diajukan']"
+            <x-admin.stat-card icon="fas fa-paper-plane" label="Baru Masuk" :value="$stats['pending']"
                 trend-value="Perlu diproses" variant="warning" />
         </div>
         <div class="col-6 col-lg-3">
@@ -22,8 +22,8 @@
                 trend-value="Sedang dikerjakan" variant="info" />
         </div>
         <div class="col-6 col-lg-3">
-            <x-admin.stat-card icon="fas fa-box" label="Siap Diambil" :value="$stats['siap_ambil']"
-                trend-value="Menunggu diambil" variant="success" />
+            <x-admin.stat-card icon="fas fa-check-circle" label="Disetujui" :value="$stats['disetujui']"
+                trend-value="Sudah disetujui" variant="success" />
         </div>
     </div>
 
@@ -86,26 +86,14 @@
                                         title="Detail">
                                         <i class="fas fa-eye"></i>
                                     </button>
-                                    @if($item->status->value === 'diajukan')
+                                    @if($item->status->value === 'pending')
                                         <button class="btn btn-sm"
                                             style="background: var(--info-color); color: white; border: none; border-radius: 6px; padding: 4px 10px;"
                                             wire:click="updateStatus({{ $item->id }}, 'diproses')" title="Proses">
                                             <i class="fas fa-play me-1"></i>Proses
                                         </button>
-                                    @elseif($item->status->value === 'diproses')
-                                        <button class="btn btn-sm"
-                                            style="background: var(--primary-color); color: white; border: none; border-radius: 6px; padding: 4px 10px;"
-                                            wire:click="updateStatus({{ $item->id }}, 'siap_ambil')" title="Siap Ambil">
-                                            <i class="fas fa-box me-1"></i>Siap
-                                        </button>
-                                    @elseif($item->status->value === 'siap_ambil')
-                                        <button class="btn btn-sm"
-                                            style="background: var(--success-color); color: white; border: none; border-radius: 6px; padding: 4px 10px;"
-                                            wire:click="updateStatus({{ $item->id }}, 'selesai')" title="Selesai">
-                                            <i class="fas fa-check me-1"></i>Selesai
-                                        </button>
                                     @endif
-                                    @if(in_array($item->status->value, ['diajukan', 'diproses']))
+                                    @if(in_array($item->status->value, ['pending', 'diproses']))
                                         <button class="btn btn-sm"
                                             style="background: var(--danger-color); color: white; border: none; border-radius: 6px; padding: 4px 10px;"
                                             wire:click="updateStatus({{ $item->id }}, 'ditolak')" title="Tolak">
@@ -205,7 +193,7 @@
                 {{-- Quick Action Buttons --}}
                 <div class="d-flex justify-content-between mt-4 flex-wrap gap-2">
                     <div class="d-flex gap-2 flex-wrap">
-                        @if($selectedPengajuan->status->value === 'diajukan')
+                        @if($selectedPengajuan->status->value === 'pending')
                             <x-admin.button type="button" variant="primary"
                                 wire:click="updateStatus({{ $selectedPengajuan->id }}, 'diproses')">
                                 <i class="fas fa-play me-1"></i> Proses
@@ -215,14 +203,9 @@
                                 <i class="fas fa-times me-1"></i> Tolak
                             </x-admin.button>
                         @elseif($selectedPengajuan->status->value === 'diproses')
-                            <x-admin.button type="button" variant="primary"
-                                wire:click="updateStatus({{ $selectedPengajuan->id }}, 'siap_ambil')">
-                                <i class="fas fa-box me-1"></i> Siap Diambil
-                            </x-admin.button>
-                        @elseif($selectedPengajuan->status->value === 'siap_ambil')
-                            <x-admin.button type="button" variant="primary"
-                                wire:click="updateStatus({{ $selectedPengajuan->id }}, 'selesai')">
-                                <i class="fas fa-check me-1"></i> Selesai
+                            <x-admin.button type="button" variant="danger"
+                                wire:click="updateStatus({{ $selectedPengajuan->id }}, 'ditolak')">
+                                <i class="fas fa-times me-1"></i> Tolak
                             </x-admin.button>
                         @endif
                     </div>

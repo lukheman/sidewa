@@ -8,7 +8,7 @@
                 trend-value="Semua pengajuan surat" variant="primary" />
         </div>
         <div class="col-6 col-lg-3">
-            <x-admin.stat-card icon="fas fa-paper-plane" label="Baru Masuk" :value="$pengajuanDiajukan"
+            <x-admin.stat-card icon="fas fa-paper-plane" label="Baru Masuk" :value="$pengajuanPending"
                 trend-value="Perlu diproses" variant="warning" />
         </div>
         <div class="col-6 col-lg-3">
@@ -16,8 +16,8 @@
                 trend-value="Sedang dikerjakan" variant="info" />
         </div>
         <div class="col-6 col-lg-3">
-            <x-admin.stat-card icon="fas fa-box" label="Siap Diambil" :value="$pengajuanSiapAmbil"
-                trend-value="Menunggu diambil" variant="success" />
+            <x-admin.stat-card icon="fas fa-check-circle" label="Disetujui" :value="$pengajuanDisetujui"
+                trend-value="Sudah disetujui" variant="success" />
         </div>
     </div>
 
@@ -76,9 +76,9 @@
                 <div class="d-flex flex-column gap-3">
                     <div class="d-flex justify-content-between align-items-center">
                         <span style="color: var(--text-secondary);">
-                            <i class="fas fa-check-circle me-2" style="color: var(--success-color);"></i>Selesai
+                            <i class="fas fa-check-circle me-2" style="color: var(--success-color);"></i>Disetujui
                         </span>
-                        <span style="color: var(--text-primary); font-weight: 600;">{{ $pengajuanSelesai }}</span>
+                        <span style="color: var(--text-primary); font-weight: 600;">{{ $pengajuanDisetujui }}</span>
                     </div>
                     <div class="d-flex justify-content-between align-items-center">
                         <span style="color: var(--text-secondary);">

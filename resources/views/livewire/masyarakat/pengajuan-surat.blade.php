@@ -23,16 +23,16 @@
                 trend-value="Semua pengajuan" variant="primary" />
         </div>
         <div class="col-6 col-lg-3">
-            <x-admin.stat-card icon="fas fa-paper-plane" label="Diajukan" :value="$stats['diajukan']"
+            <x-admin.stat-card icon="fas fa-paper-plane" label="Pending" :value="$stats['pending']"
                 trend-value="Menunggu proses" variant="secondary" />
         </div>
         <div class="col-6 col-lg-3">
-            <x-admin.stat-card icon="fas fa-box" label="Siap Diambil" :value="$stats['siap_ambil']"
-                trend-value="Ambil di kantor desa" variant="info" />
+            <x-admin.stat-card icon="fas fa-spinner" label="Diproses" :value="$stats['diproses']"
+                trend-value="Sedang dikerjakan" variant="info" />
         </div>
         <div class="col-6 col-lg-3">
-            <x-admin.stat-card icon="fas fa-check-circle" label="Selesai" :value="$stats['selesai']"
-                trend-value="Sudah selesai" variant="success" />
+            <x-admin.stat-card icon="fas fa-check-circle" label="Disetujui" :value="$stats['disetujui']"
+                trend-value="Sudah disetujui" variant="success" />
         </div>
     </div>
 

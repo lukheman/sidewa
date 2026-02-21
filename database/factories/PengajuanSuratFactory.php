@@ -2,9 +2,9 @@
 
 namespace Database\Factories;
 
+use App\Enum\StatusPengajuanSurat;
 use App\Models\JenisSurat;
 use App\Models\Masyarakat;
-use App\Models\PengajuanSurat;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -13,8 +13,6 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  */
 class PengajuanSuratFactory extends Factory
 {
-    protected $model = PengajuanSurat::class;
-
     /**
      * Define the model's default state.
      *
@@ -22,71 +20,61 @@ class PengajuanSuratFactory extends Factory
      */
     public function definition(): array
     {
-        $status = fake()->randomElement(['diajukan', 'diproses', 'siap_ambil', 'selesai', 'ditolak']);
+        $status = fake()->randomElement(['pending', 'diproses', 'disetujui', 'ditolak']);
 
         return [
             'tanggal_pengajuan' => fake()->dateTimeBetween('-1 month', 'now'),
             'status' => $status,
-            'keterangan' => $status === 'ditolak'
-                ? fake('id_ID')->sentence()
-                : (fake()->boolean(30) ? fake('id_ID')->sentence() : null),
+            'keterangan' => fake()->optional(0.3)->sentence(),
             'masyarakat_id' => Masyarakat::factory(),
             'jenis_surat_id' => JenisSurat::factory(),
-            'user_id' => in_array($status, ['diproses', 'siap_ambil', 'selesai', 'ditolak'])
+            'user_id' => in_array($status, ['diproses', 'disetujui', 'ditolak'])
                 ? User::factory()
                 : null,
         ];
     }
 
     /**
-     * Indicate that the pengajuan is submitted.
+     * Indicate that the pengajuan is pending.
      */
-    public function submitted(): static
+    public function pending(): static
     {
         return $this->state(fn(array $attributes) => [
-            'status' => 'diajukan',
+            'status' => 'pending',
             'user_id' => null,
         ]);
     }
 
     /**
-     * Indicate that the pengajuan is in process.
+     * Indicate that the pengajuan is diproses.
      */
-    public function inProcess(): static
+    public function diproses(): static
     {
         return $this->state(fn(array $attributes) => [
             'status' => 'diproses',
+            'user_id' => User::factory(),
         ]);
     }
 
     /**
-     * Indicate that the surat is ready to pickup.
+     * Indicate that the pengajuan is disetujui.
      */
-    public function readyToPickup(): static
+    public function disetujui(): static
     {
         return $this->state(fn(array $attributes) => [
-            'status' => 'siap_ambil',
+            'status' => 'disetujui',
+            'user_id' => User::factory(),
         ]);
     }
 
     /**
-     * Indicate that the pengajuan is completed.
+     * Indicate that the pengajuan is ditolak.
      */
-    public function completed(): static
-    {
-        return $this->state(fn(array $attributes) => [
-            'status' => 'selesai',
-        ]);
-    }
-
-    /**
-     * Indicate that the pengajuan is rejected.
-     */
-    public function rejected(): static
+    public function ditolak(): static
     {
         return $this->state(fn(array $attributes) => [
             'status' => 'ditolak',
-            'keterangan' => fake('id_ID')->sentence(),
+            'user_id' => User::factory(),
         ]);
     }
 }

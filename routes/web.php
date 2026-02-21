@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Livewire\LandingPage;
+use App\Livewire\PengumumanPage;
+use App\Livewire\KegiatanPage;
 use App\Livewire\Admin\Dashboard;
 use App\Livewire\Admin\UserManagement;
 use App\Livewire\Admin\MasyarakatManagement;
@@ -36,6 +38,8 @@ use App\Livewire\KepalaDesa\VerifikasiSurat;
 
 // Public Routes
 Route::get('/', LandingPage::class)->name('home');
+Route::get('/pengumuman', PengumumanPage::class)->name('pengumuman');
+Route::get('/kegiatan', KegiatanPage::class)->name('kegiatan');
 
 // Admin Auth Routes
 Route::get('/admin/login', Login::class)->name('admin.login');

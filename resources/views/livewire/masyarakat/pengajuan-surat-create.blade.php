@@ -18,7 +18,7 @@
 
                 <form wire:submit="submit" class="mt-3">
                     <div class="row g-3">
-                        <div class="col-md-6">
+                        <div class="col-12">
                             <label for="jenis_surat_id" class="form-label">Jenis Surat <span
                                     style="color: var(--danger-color);">*</span></label>
                             <select class="form-select @error('jenis_surat_id') is-invalid @enderror"
@@ -29,16 +29,6 @@
                                 @endforeach
                             </select>
                             @error('jenis_surat_id')
-                                <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
-                        </div>
-
-                        <div class="col-md-6">
-                            <label for="tanggal_pengajuan" class="form-label">Tanggal Pengajuan <span
-                                    style="color: var(--danger-color);">*</span></label>
-                            <input type="date" class="form-control @error('tanggal_pengajuan') is-invalid @enderror"
-                                id="tanggal_pengajuan" wire:model="tanggal_pengajuan">
-                            @error('tanggal_pengajuan')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>

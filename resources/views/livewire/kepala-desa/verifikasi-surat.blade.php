@@ -9,19 +9,15 @@
 
     {{-- Stats Cards --}}
     <div class="row g-4 mb-4">
-        <div class="col-6 col-lg-3">
+        <div class="col-6 col-lg-4">
             <x-admin.stat-card icon="fas fa-hourglass-half" label="Menunggu Verifikasi" :value="$stats['menunggu']"
                 trend-value="Perlu ditinjau" variant="warning" />
         </div>
-        <div class="col-6 col-lg-3">
+        <div class="col-6 col-lg-4">
             <x-admin.stat-card icon="fas fa-check-circle" label="Disetujui" :value="$stats['disetujui']"
-                trend-value="Siap diambil" variant="success" />
+                trend-value="Sudah disetujui" variant="success" />
         </div>
-        <div class="col-6 col-lg-3">
-            <x-admin.stat-card icon="fas fa-clipboard-check" label="Selesai" :value="$stats['selesai']"
-                trend-value="Sudah diambil" variant="primary" />
-        </div>
-        <div class="col-6 col-lg-3">
+        <div class="col-6 col-lg-4">
             <x-admin.stat-card icon="fas fa-times-circle" label="Ditolak" :value="$stats['ditolak']"
                 trend-value="Tidak disetujui" variant="danger" />
         </div>
@@ -35,7 +31,7 @@
                 <select class="form-select" wire:model.live="filterStatus" style="min-width: 150px;">
                     <option value="">Semua Status</option>
                     @foreach($statuses as $statusOption)
-                        @if(!in_array($statusOption->value, ['diajukan']))
+                        @if(!in_array($statusOption->value, ['pending']))
                             <option value="{{ $statusOption->value }}">{{ $statusOption->label() }}</option>
                         @endif
                     @endforeach
@@ -93,9 +89,7 @@
                                     @if($item->status->value === 'diproses')
                                         <button class="btn btn-sm"
                                             style="background: var(--success-color); color: white; border: none; border-radius: 6px; padding: 4px 10px;"
-                                            wire:click="approve({{ $item->id }})"
-                                            wire:confirm="Apakah Anda yakin ingin menyetujui pengajuan surat ini?"
-                                            title="Setujui">
+                                            wire:click="confirmApprove({{ $item->id }})" title="Setujui">
                                             <i class="fas fa-check me-1"></i>Setujui
                                         </button>
                                         <button class="btn btn-sm"
@@ -148,8 +142,10 @@
                             <i class="fas fa-user me-2" style="color: var(--primary-color);"></i>
                             {{ $selectedPengajuan->masyarakat->nama ?? '-' }}
                         </p>
-                        <small style="color: var(--text-muted);">NIK:
-                            {{ $selectedPengajuan->masyarakat->nik ?? '-' }}</small>
+                        <p style="color: var(--text-primary); font-weight: 500;">
+                            <i class="fas fa-id-card me-2" style="color: var(--info-color);"></i>
+                            NIK: {{ $selectedPengajuan->masyarakat->nik ?? '-' }}
+                        </p>
                     </div>
                     <div class="col-md-6">
                         <label class="form-label text-muted">Jenis Surat</label>
@@ -185,7 +181,7 @@
                     @endif
                     @if($selectedPengajuan->user)
                         <div class="col-12">
-                            <label class="form-label text-muted">Diproses oleh</label>
+                            <label class="form-label text-muted">Diterima oleh</label>
                             <p style="color: var(--text-primary); font-weight: 500;">
                                 <i class="fas fa-user-shield me-2" style="color: var(--success-color);"></i>
                                 {{ $selectedPengajuan->user->name }}
@@ -197,8 +193,8 @@
                 <div class="d-flex justify-content-between mt-4 flex-wrap gap-2">
                     <div class="d-flex gap-2">
                         @if($selectedPengajuan->status->value === 'diproses')
-                            <x-admin.button type="button" variant="primary" wire:click="approve({{ $selectedPengajuan->id }})"
-                                wire:confirm="Apakah Anda yakin ingin menyetujui pengajuan surat ini?">
+                            <x-admin.button type="button" variant="primary"
+                                wire:click="confirmApprove({{ $selectedPengajuan->id }})">
                                 <i class="fas fa-check me-1"></i> Setujui
                             </x-admin.button>
                             <x-admin.button type="button" variant="danger"
@@ -253,4 +249,13 @@
             </div>
         </div>
     @endif
+
+    {{-- Approve Confirm Modal --}}
+    <x-admin.confirm-modal :show="$showApproveModal" title="Konfirmasi Persetujuan"
+        message="Apakah Anda yakin ingin menyetujui pengajuan surat ini?" on-confirm="approve" on-cancel="cancelApprove"
+        confirm-variant="primary">
+        <x-slot:confirmButton>
+            <i class="fas fa-check-circle me-2"></i>Ya, Setujui
+        </x-slot:confirmButton>
+    </x-admin.confirm-modal>
 </div>

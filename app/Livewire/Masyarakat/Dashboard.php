@@ -36,7 +36,7 @@ class Dashboard extends Component
 
         $totalPengajuan = PengajuanSurat::where('masyarakat_id', $masyarakat->id)->count();
         $siapAmbil = PengajuanSurat::where('masyarakat_id', $masyarakat->id)
-            ->where('status', StatusPengajuanSurat::SIAP_AMBIL->value)
+            ->where('status', StatusPengajuanSurat::DISETUJUI->value)
             ->count();
 
         // Get recent data

@@ -24,7 +24,7 @@ class Dashboard extends Component
             'totalPengaduan' => Pengaduan::count(),
             'totalPengajuanSurat' => PengajuanSurat::count(),
             'pengaduanPending' => Pengaduan::where('status', 'pending')->count(),
-            'pengajuanDiajukan' => PengajuanSurat::where('status', 'diajukan')->count(),
+            'pengajuanPending' => PengajuanSurat::where('status', 'pending')->count(),
             'kegiatanAktif' => Kegiatan::where('progres', '<', 100)->count(),
             'recentPengaduan' => Pengaduan::with('masyarakat')->latest('tanggal_pengaduan')->take(5)->get(),
             'recentPengajuan' => PengajuanSurat::with(['masyarakat', 'jenisSurat'])->latest('tanggal_pengajuan')->take(5)->get(),

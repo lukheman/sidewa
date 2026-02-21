@@ -65,11 +65,11 @@ class PengajuanSurat extends Model
     }
 
     /**
-     * Check if pengajuan is submitted (diajukan)
+     * Check if pengajuan is pending
      */
-    public function isSubmitted(): bool
+    public function isPending(): bool
     {
-        return $this->status === StatusPengajuanSurat::DIAJUKAN;
+        return $this->status === StatusPengajuanSurat::PENDING;
     }
 
     /**
@@ -81,19 +81,11 @@ class PengajuanSurat extends Model
     }
 
     /**
-     * Check if surat is ready to pickup
+     * Check if pengajuan is approved
      */
-    public function isReadyToPickup(): bool
+    public function isApproved(): bool
     {
-        return $this->status === StatusPengajuanSurat::SIAP_AMBIL;
-    }
-
-    /**
-     * Check if pengajuan is completed
-     */
-    public function isCompleted(): bool
-    {
-        return $this->status === StatusPengajuanSurat::SELESAI;
+        return $this->status === StatusPengajuanSurat::DISETUJUI;
     }
 
     /**

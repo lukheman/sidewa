@@ -26,7 +26,7 @@ class PengajuanSuratManagement extends Component
     public string $filterStatus = '';
 
     public string $tanggal_pengajuan = '';
-    public string $status = 'diajukan';
+    public string $status = 'pending';
     public string $keterangan = '';
     public ?int $masyarakat_id = null;
     public ?int $jenis_surat_id = null;
@@ -85,8 +85,8 @@ class PengajuanSuratManagement extends Component
     {
         $validated = $this->validate();
 
-        // Set user_id jika status bukan diajukan
-        if ($validated['status'] !== StatusPengajuanSurat::DIAJUKAN->value) {
+        // Set user_id jika status bukan pending
+        if ($validated['status'] !== StatusPengajuanSurat::PENDING->value) {
             $validated['user_id'] = Auth::id();
         }
 
@@ -144,7 +144,7 @@ class PengajuanSuratManagement extends Component
     protected function resetForm(): void
     {
         $this->tanggal_pengajuan = date('Y-m-d');
-        $this->status = StatusPengajuanSurat::DIAJUKAN->value;
+        $this->status = StatusPengajuanSurat::PENDING->value;
         $this->keterangan = '';
         $this->masyarakat_id = null;
         $this->jenis_surat_id = null;

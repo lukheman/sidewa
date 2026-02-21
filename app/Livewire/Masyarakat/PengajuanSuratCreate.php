@@ -45,7 +45,7 @@ class PengajuanSuratCreate extends Component
             'jenis_surat_id' => $validated['jenis_surat_id'],
             'tanggal_pengajuan' => $validated['tanggal_pengajuan'],
             'keterangan' => $validated['keterangan'] ?? null,
-            'status' => StatusPengajuanSurat::DIAJUKAN->value,
+            'status' => StatusPengajuanSurat::PENDING->value,
             'masyarakat_id' => Auth::guard('masyarakat')->id(),
         ]);
 

@@ -17,10 +17,9 @@ class Dashboard extends Component
     {
         return view('livewire.pelayanan.dashboard', [
             'totalPengajuan' => PengajuanSurat::count(),
-            'pengajuanDiajukan' => PengajuanSurat::where('status', StatusPengajuanSurat::DIAJUKAN)->count(),
+            'pengajuanPending' => PengajuanSurat::where('status', StatusPengajuanSurat::PENDING)->count(),
             'pengajuanDiproses' => PengajuanSurat::where('status', StatusPengajuanSurat::DIPROSES)->count(),
-            'pengajuanSiapAmbil' => PengajuanSurat::where('status', StatusPengajuanSurat::SIAP_AMBIL)->count(),
-            'pengajuanSelesai' => PengajuanSurat::where('status', StatusPengajuanSurat::SELESAI)->count(),
+            'pengajuanDisetujui' => PengajuanSurat::where('status', StatusPengajuanSurat::DISETUJUI)->count(),
             'totalPengaduan' => Pengaduan::count(),
             'pengaduanPending' => Pengaduan::where('status', 'pending')->count(),
             'recentPengajuan' => PengajuanSurat::with(['masyarakat', 'jenisSurat'])->latest('tanggal_pengajuan')->take(5)->get(),
