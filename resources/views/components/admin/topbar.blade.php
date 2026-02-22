@@ -45,7 +45,17 @@
                 <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="font-size: 0.65rem;">{{ $notificationCount }}</span>
             @endif
         </button>
-        <a href="{{ route('admin.profile') }}" class="d-flex align-items-center gap-2 text-decoration-none" title="Go to Profile">
+        @php
+            $profileRoute = 'admin.profile';
+            if (Auth::guard('masyarakat')->check()) {
+                $profileRoute = 'masyarakat.profile';
+            } elseif (Auth::user()?->role?->value === 'pelayanan') {
+                $profileRoute = 'pelayanan.profile';
+            } elseif (Auth::user()?->role?->value === 'kepala_desa') {
+                $profileRoute = 'kepala-desa.profile';
+            }
+        @endphp
+        <a href="{{ route($profileRoute) }}" class="d-flex align-items-center gap-2 text-decoration-none" title="Go to Profile">
             @if(Auth::user()?->hasAvatar())
                 <img src="{{ Auth::user()->avatarUrl() }}" alt="Avatar" class="rounded-circle" style="width: 40px; height: 40px; object-fit: cover;">
             @else

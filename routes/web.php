@@ -95,6 +95,8 @@ Route::prefix('admin')->middleware('auth')->group(function () {
 Route::prefix('pelayanan')->middleware('auth')->group(function () {
     Route::get('/dashboard', PelayananDashboard::class)->name('pelayanan.dashboard');
     Route::get('/pengajuan-surat', PengajuanSuratMasuk::class)->name('pelayanan.pengajuan-surat');
+    Route::get('/pengaduan', App\Livewire\Pelayanan\PengaduanMasuk::class)->name('pelayanan.pengaduan');
+    Route::get('/profile', Profile::class)->name('pelayanan.profile');
 });
 
 // Kepala Desa Routes
@@ -103,4 +105,5 @@ Route::prefix('kepala-desa')->middleware('auth')->group(function () {
     Route::get('/verifikasi-surat', VerifikasiSurat::class)->name('kepala-desa.verifikasi-surat');
     Route::get('/pengaduan', App\Livewire\KepalaDesa\PengaduanIndex::class)->name('kepala-desa.pengaduan');
     Route::get('/pengaduan/print', [App\Http\Controllers\KepalaDesa\PengaduanReportController::class, 'print'])->name('kepala-desa.pengaduan.print');
+    Route::get('/profile', Profile::class)->name('kepala-desa.profile');
 });

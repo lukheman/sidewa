@@ -572,7 +572,7 @@
     <x-admin.sidebar :brand-name="$brandName" :brand-icon="$brandIcon">
         @auth('masyarakat')
             {{-- Menu untuk Masyarakat --}}
-            <x-admin.sidebar-section title="Menu">
+            <x-admin.sidebar-section title="UTAMA">
                 <x-admin.sidebar-link href="{{ route('masyarakat.dashboard') }}" icon="fas fa-home" :active="request()->routeIs('masyarakat.dashboard')">Dashboard</x-admin.sidebar-link>
             </x-admin.sidebar-section>
 
@@ -587,34 +587,35 @@
         @else
             @if(auth()->user()->role->value === 'pelayanan')
                 {{-- Menu untuk Pelayanan --}}
-                <x-admin.sidebar-section title="Main">
+                <x-admin.sidebar-section title="UTAMA">
                     <x-admin.sidebar-link href="{{ route('pelayanan.dashboard') }}" icon="fas fa-home" :active="request()->routeIs('pelayanan.dashboard')">Dashboard</x-admin.sidebar-link>
                 </x-admin.sidebar-section>
 
-                <x-admin.sidebar-section title="Layanan">
+                <x-admin.sidebar-section title="LAYANAN">
                     <x-admin.sidebar-link href="{{ route('pelayanan.pengajuan-surat') }}" icon="fas fa-envelope" :active="request()->routeIs('pelayanan.pengajuan-surat')">Pengajuan Surat</x-admin.sidebar-link>
+                    <x-admin.sidebar-link href="{{ route('pelayanan.pengaduan') }}" icon="fas fa-comments" :active="request()->routeIs('pelayanan.pengaduan')">Pengaduan</x-admin.sidebar-link>
                 </x-admin.sidebar-section>
 
-                <x-admin.sidebar-section title="Account">
-                    <x-admin.sidebar-link href="{{ route('admin.profile') }}" icon="fas fa-user-circle" :active="request()->routeIs('admin.profile')">Profile</x-admin.sidebar-link>
+                <x-admin.sidebar-section title="AKUN">
+                    <x-admin.sidebar-link href="{{ route('pelayanan.profile') }}" icon="fas fa-user-circle" :active="request()->routeIs('pelayanan.profile')">Profile</x-admin.sidebar-link>
                 </x-admin.sidebar-section>
             @elseif(auth()->user()->role->value === 'kepala_desa')
                 {{-- Menu untuk Kepala Desa --}}
-                <x-admin.sidebar-section title="Main">
+                <x-admin.sidebar-section title="UTAMA">
                     <x-admin.sidebar-link href="{{ route('kepala-desa.dashboard') }}" icon="fas fa-home" :active="request()->routeIs('kepala-desa.dashboard')">Dashboard</x-admin.sidebar-link>
                 </x-admin.sidebar-section>
 
-                <x-admin.sidebar-section title="Layanan">
+                <x-admin.sidebar-section title="LAYANAN">
                     <x-admin.sidebar-link href="{{ route('kepala-desa.verifikasi-surat') }}" icon="fas fa-clipboard-check" :active="request()->routeIs('kepala-desa.verifikasi-surat')">Verifikasi Surat</x-admin.sidebar-link>
                     <x-admin.sidebar-link href="{{ route('kepala-desa.pengaduan') }}" icon="fas fa-bullhorn" :active="request()->routeIs('kepala-desa.pengaduan')">Laporan Pengaduan</x-admin.sidebar-link>
                 </x-admin.sidebar-section>
 
-                <x-admin.sidebar-section title="Account">
-                    <x-admin.sidebar-link href="{{ route('admin.profile') }}" icon="fas fa-user-circle" :active="request()->routeIs('admin.profile')">Profile</x-admin.sidebar-link>
+                <x-admin.sidebar-section title="AKUN">
+                    <x-admin.sidebar-link href="{{ route('kepala-desa.profile') }}" icon="fas fa-user-circle" :active="request()->routeIs('kepala-desa.profile')">Profile</x-admin.sidebar-link>
                 </x-admin.sidebar-section>
             @else
                 {{-- Menu untuk Admin & Kepala Desa --}}
-                <x-admin.sidebar-section title="Main">
+                <x-admin.sidebar-section title="UTAMA">
                     <x-admin.sidebar-link href="{{ route('dashboard') }}" icon="fas fa-home" :active="request()->routeIs('dashboard')">Dashboard</x-admin.sidebar-link>
                 </x-admin.sidebar-section>
 
@@ -629,10 +630,10 @@
                     <x-admin.sidebar-link href="{{ route('admin.kegiatan') }}" icon="fas fa-calendar-alt" :active="request()->routeIs('admin.kegiatan')">Kegiatan</x-admin.sidebar-link>
                 </x-admin.sidebar-section>
 
-                <x-admin.sidebar-section title="Layanan">
-                    <x-admin.sidebar-link href="{{ route('admin.pengaduan') }}" icon="fas fa-comments" :active="request()->routeIs('admin.pengaduan')">Pengaduan</x-admin.sidebar-link>
-                    <x-admin.sidebar-link href="{{ route('admin.pengajuan-surat') }}" icon="fas fa-envelope" :active="request()->routeIs('admin.pengajuan-surat')">Pengajuan Surat</x-admin.sidebar-link>
-                </x-admin.sidebar-section>
+                <!-- <x-admin.sidebar-section title="Layanan"> -->
+                <!--     <x-admin.sidebar-link href="{{ route('admin.pengaduan') }}" icon="fas fa-comments" :active="request()->routeIs('admin.pengaduan')">Pengaduan</x-admin.sidebar-link> -->
+                <!--     <x-admin.sidebar-link href="{{ route('admin.pengajuan-surat') }}" icon="fas fa-envelope" :active="request()->routeIs('admin.pengajuan-surat')">Pengajuan Surat</x-admin.sidebar-link> -->
+                <!-- </x-admin.sidebar-section> -->
 
                 <x-admin.sidebar-section title="Account">
                     <x-admin.sidebar-link href="{{ route('admin.profile') }}" icon="fas fa-user-circle" :active="request()->routeIs('admin.profile')">Profile</x-admin.sidebar-link>
