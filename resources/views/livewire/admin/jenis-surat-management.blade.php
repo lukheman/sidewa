@@ -120,11 +120,17 @@
         </div>
     @endif
 
-    <x-admin.confirm-modal :show="$showDeleteModal" title="Konfirmasi Hapus"
-        message="Apakah Anda yakin ingin menghapus jenis surat ini?" on-confirm="delete" on-cancel="cancelDelete"
+    <x-admin.confirm-modal :show="$showDeleteModal" :title="$forceDeleteMode ? 'Peringatan!' : 'Konfirmasi Hapus'"
+        :message="$forceDeleteMode
+        ? 'Jenis surat ini memiliki ' . $relatedCount . ' pengajuan surat yang terkait. Apakah Anda tetap ingin menghapus jenis surat ini? Semua pengajuan surat yang menggunakan jenis ini akan ikut terhapus.'
+        : 'Apakah Anda yakin ingin menghapus jenis surat ini?'" on-confirm="delete" on-cancel="cancelDelete"
         variant="danger" icon="fas fa-exclamation-triangle">
         <x-slot:confirmButton>
-            <i class="fas fa-trash-alt me-2"></i>Hapus
+            @if($forceDeleteMode)
+                <i class="fas fa-trash-alt me-2"></i>Ya, Hapus Semua
+            @else
+                <i class="fas fa-trash-alt me-2"></i>Hapus
+            @endif
         </x-slot:confirmButton>
     </x-admin.confirm-modal>
 </div>

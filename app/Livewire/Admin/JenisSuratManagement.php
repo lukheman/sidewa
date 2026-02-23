@@ -25,6 +25,8 @@ class JenisSuratManagement extends Component
     public bool $showModal = false;
     public bool $showDeleteModal = false;
     public ?int $deletingId = null;
+    public bool $forceDeleteMode = false;
+    public int $relatedCount = 0;
 
     protected function rules(): array
     {
@@ -81,24 +83,41 @@ class JenisSuratManagement extends Component
     public function confirmDelete(int $id): void
     {
         $this->deletingId = $id;
+        $this->forceDeleteMode = false;
+        $this->relatedCount = 0;
         $this->showDeleteModal = true;
     }
 
     public function delete(): void
     {
         if ($this->deletingId) {
-            JenisSurat::destroy($this->deletingId);
+            $jenisSurat = JenisSurat::withCount('pengajuanSurats')->findOrFail($this->deletingId);
+
+            if ($jenisSurat->pengajuan_surats_count > 0 && !$this->forceDeleteMode) {
+                // Ada relasi, tampilkan konfirmasi force delete
+                $this->relatedCount = $jenisSurat->pengajuan_surats_count;
+                $this->forceDeleteMode = true;
+                return;
+            }
+
+            // Hapus semua pengajuan surat terkait terlebih dahulu
+            $jenisSurat->pengajuanSurats()->delete();
+            $jenisSurat->delete();
             session()->flash('success', 'Jenis surat berhasil dihapus.');
         }
 
         $this->showDeleteModal = false;
         $this->deletingId = null;
+        $this->forceDeleteMode = false;
+        $this->relatedCount = 0;
     }
 
     public function cancelDelete(): void
     {
         $this->showDeleteModal = false;
         $this->deletingId = null;
+        $this->forceDeleteMode = false;
+        $this->relatedCount = 0;
     }
 
     protected function resetForm(): void
