@@ -58,6 +58,7 @@ Route::prefix('masyarakat')->group(function () {
         Route::get('/pengaduan/create', MasyarakatPengaduanCreate::class)->name('masyarakat.pengaduan.create');
         Route::get('/pengajuan-surat', MasyarakatPengajuanSurat::class)->name('masyarakat.pengajuan-surat');
         Route::get('/pengajuan-surat/create', MasyarakatPengajuanSuratCreate::class)->name('masyarakat.pengajuan-surat.create');
+        Route::get('/surat/{id}/cetak', [App\Http\Controllers\SuratPdfController::class, 'cetak'])->name('masyarakat.surat.cetak');
         Route::post('/logout', function () {
             auth()->guard('masyarakat')->logout();
             session()->invalidate();
@@ -66,6 +67,11 @@ Route::prefix('masyarakat')->group(function () {
         })->name('masyarakat.logout');
     });
 });
+
+// Shared route: Cetak Surat (accessible by all authenticated users)
+Route::get('/surat/{id}/cetak', [App\Http\Controllers\SuratPdfController::class, 'cetak'])
+    ->middleware('auth')
+    ->name('surat.cetak');
 
 Route::prefix('admin')->middleware('auth')->group(function () {
     Route::get('/dashboard', Dashboard::class)->name('dashboard');
