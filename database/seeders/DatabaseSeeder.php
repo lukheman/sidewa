@@ -49,7 +49,7 @@ class DatabaseSeeder extends Seeder
         $pelayananUsers->push($pelayanan);
 
         // Create jenis surat
-        $jenisSurats = JenisSurat::factory(10)->create();
+        $jenisSurats = JenisSurat::factory(3)->create();
 
         // Create masyarakat demo (for testing login)
         Masyarakat::factory()->create([

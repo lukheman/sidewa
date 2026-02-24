@@ -96,6 +96,14 @@
                                 title="Lihat Detail">
                                 <i class="fas fa-eye"></i>
                             </button>
+                            @if($pengajuan->status->value === 'disetujui')
+                                <a href="{{ route('masyarakat.surat.cetak', $pengajuan->id) }}" target="_blank"
+                                    class="btn btn-sm"
+                                    style="background: var(--primary-color); color: white; border: none; border-radius: 8px;"
+                                    title="Cetak Surat">
+                                    <i class="fas fa-print"></i>
+                                </a>
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -174,7 +182,16 @@
                     @endif
                 </div>
 
-                <div class="d-flex justify-content-end mt-4">
+                <div class="d-flex justify-content-between mt-4">
+                    <div>
+                        @if($selectedPengajuan->status->value === 'disetujui')
+                            <a href="{{ route('masyarakat.surat.cetak', $selectedPengajuan->id) }}" target="_blank">
+                                <x-admin.button type="button" variant="primary">
+                                    <i class="fas fa-print me-1"></i> Cetak Surat
+                                </x-admin.button>
+                            </a>
+                        @endif
+                    </div>
                     <x-admin.button type="button" variant="outline" wire:click="closeDetailModal">
                         Tutup
                     </x-admin.button>

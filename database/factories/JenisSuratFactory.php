@@ -17,10 +17,6 @@ class JenisSuratFactory extends Factory
      */
     protected static array $jenisSuratList = [
         ['nama_surat' => 'Surat Keterangan Tidak Mampu', 'keterangan' => 'Surat keterangan untuk warga kurang mampu'],
-        ['nama_surat' => 'Surat Keterangan Usaha', 'keterangan' => 'Surat keterangan untuk keperluan usaha'],
-        ['nama_surat' => 'Surat Keterangan Kelahiran', 'keterangan' => 'Surat keterangan untuk kelahiran'],
-        ['nama_surat' => 'Surat Keterangan Kematian', 'keterangan' => 'Surat keterangan untuk kematian'],
-        ['nama_surat' => 'Surat Keterangan Pindah', 'keterangan' => 'Surat keterangan pindah domisili'],
         ['nama_surat' => 'Surat Keterangan Berkelakuan Baik', 'keterangan' => 'Surat keterangan berkelakuan baik dari desa'],
         ['nama_surat' => 'Surat Keterangan Belum Menikah', 'keterangan' => 'Surat keterangan status belum menikah'],
     ];

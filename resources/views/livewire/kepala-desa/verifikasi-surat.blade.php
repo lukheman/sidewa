@@ -98,6 +98,13 @@
                                             <i class="fas fa-times"></i>
                                         </button>
                                     @endif
+                                    @if($item->status->value === 'disetujui')
+                                        <a href="{{ route('surat.cetak', $item->id) }}" target="_blank" class="btn btn-sm"
+                                            style="background: var(--primary-color); color: white; border: none; border-radius: 6px; padding: 4px 10px;"
+                                            title="Cetak Surat">
+                                            <i class="fas fa-print me-1"></i>Cetak
+                                        </a>
+                                    @endif
                                 </div>
                             </td>
                         </tr>
@@ -201,6 +208,13 @@
                                 wire:click="confirmReject({{ $selectedPengajuan->id }})">
                                 <i class="fas fa-times me-1"></i> Tolak
                             </x-admin.button>
+                        @endif
+                        @if($selectedPengajuan->status->value === 'disetujui')
+                            <a href="{{ route('surat.cetak', $selectedPengajuan->id) }}" target="_blank">
+                                <x-admin.button type="button" variant="primary">
+                                    <i class="fas fa-print me-1"></i> Cetak Surat
+                                </x-admin.button>
+                            </a>
                         @endif
                     </div>
                     <x-admin.button type="button" variant="outline" wire:click="closeDetailModal">
