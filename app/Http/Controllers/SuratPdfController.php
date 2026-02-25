@@ -89,23 +89,23 @@ class SuratPdfController extends Controller
 
         // Isi surat sesuai jenis
         if (str_contains($namaSurat, 'tidak mampu')) {
-            return "Dengan ini menerangkan bahwa yang bersangkutan di atas adalah benar warga Desa Sidewa yang tergolong keluarga kurang mampu/tidak mampu. Surat keterangan ini dibuat untuk dipergunakan sebagaimana mestinya.";
+            return "Dengan ini menerangkan bahwa yang bersangkutan di atas adalah benar warga Desa Watalara yang tergolong keluarga kurang mampu/tidak mampu. Surat keterangan ini dibuat untuk dipergunakan sebagaimana mestinya.";
         }
 
         if (str_contains($namaSurat, 'berkelakuan baik')) {
-            return "Dengan ini menerangkan bahwa yang bersangkutan di atas adalah benar warga Desa Sidewa yang berkelakuan baik dan tidak pernah terlibat dalam tindak kriminal atau kejahatan apapun. Surat keterangan ini dibuat untuk dipergunakan sebagaimana mestinya.";
+            return "Dengan ini menerangkan bahwa yang bersangkutan di atas adalah benar warga Desa Watalara yang berkelakuan baik dan tidak pernah terlibat dalam tindak kriminal atau kejahatan apapun. Surat keterangan ini dibuat untuk dipergunakan sebagaimana mestinya.";
         }
 
         if (str_contains($namaSurat, 'belum menikah')) {
-            return "Dengan ini menerangkan bahwa yang bersangkutan di atas adalah benar warga Desa Sidewa yang sampai saat dikeluarkannya surat keterangan ini belum pernah menikah/belum terikat perkawinan dengan siapapun. Surat keterangan ini dibuat untuk dipergunakan sebagaimana mestinya.";
+            return "Dengan ini menerangkan bahwa yang bersangkutan di atas adalah benar warga Desa Watalara yang sampai saat dikeluarkannya surat keterangan ini belum pernah menikah/belum terikat perkawinan dengan siapapun. Surat keterangan ini dibuat untuk dipergunakan sebagaimana mestinya.";
         }
 
         if (str_contains($namaSurat, 'domisili')) {
-            return "Dengan ini menerangkan bahwa yang bersangkutan di atas adalah benar berdomisili/bertempat tinggal di alamat tersebut dan merupakan warga Desa Sidewa. Surat keterangan ini dibuat untuk dipergunakan sebagaimana mestinya.";
+            return "Dengan ini menerangkan bahwa yang bersangkutan di atas adalah benar berdomisili/bertempat tinggal di alamat tersebut dan merupakan warga Desa Watalara. Surat keterangan ini dibuat untuk dipergunakan sebagaimana mestinya.";
         }
 
         if (str_contains($namaSurat, 'usaha')) {
-            return "Dengan ini menerangkan bahwa yang bersangkutan di atas adalah benar warga Desa Sidewa yang memiliki usaha di wilayah Desa Sidewa. Surat keterangan ini dibuat untuk dipergunakan sebagaimana mestinya.";
+            return "Dengan ini menerangkan bahwa yang bersangkutan di atas adalah benar warga Desa Watalara yang memiliki usaha di wilayah Desa Watalara. Surat keterangan ini dibuat untuk dipergunakan sebagaimana mestinya.";
         }
 
         if (str_contains($namaSurat, 'kematian')) {
@@ -113,14 +113,14 @@ class SuratPdfController extends Controller
         }
 
         if (str_contains($namaSurat, 'pindah')) {
-            return "Dengan ini menerangkan bahwa yang bersangkutan di atas adalah benar warga Desa Sidewa yang akan pindah tempat tinggal. Surat keterangan ini dibuat untuk dipergunakan sebagaimana mestinya.";
+            return "Dengan ini menerangkan bahwa yang bersangkutan di atas adalah benar warga Desa Watalara yang akan pindah tempat tinggal. Surat keterangan ini dibuat untuk dipergunakan sebagaimana mestinya.";
         }
 
         if (str_contains($namaSurat, 'kelahiran')) {
-            return "Dengan ini menerangkan bahwa telah lahir seorang anak dari warga Desa Sidewa tersebut di atas. Surat keterangan ini dibuat untuk dipergunakan sebagaimana mestinya.";
+            return "Dengan ini menerangkan bahwa telah lahir seorang anak dari warga Desa Watalara tersebut di atas. Surat keterangan ini dibuat untuk dipergunakan sebagaimana mestinya.";
         }
 
         // Default untuk jenis surat lainnya
-        return "Dengan ini menerangkan bahwa yang bersangkutan di atas adalah benar warga Desa Sidewa. Surat keterangan ini dibuat untuk dipergunakan sebagaimana mestinya.";
+        return "Dengan ini menerangkan bahwa yang bersangkutan di atas adalah benar warga Desa Watalara. Surat keterangan ini dibuat untuk dipergunakan sebagaimana mestinya.";
     }
 }
