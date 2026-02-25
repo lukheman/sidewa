@@ -195,7 +195,7 @@
                 <i class="fas fa-check-circle"></i>
             </div>
             <h1 class="title title-valid">Surat Terverifikasi</h1>
-            <p class="subtitle subtitle-valid">Surat ini resmi dikeluarkan oleh Desa Sidewa</p>
+            <p class="subtitle subtitle-valid">Surat ini resmi dikeluarkan oleh Desa Watalara</p>
 
             <div class="detail-group">
                 <div class="detail-row">
@@ -260,7 +260,7 @@
                     <i class="fas fa-exclamation-triangle"
                         style="font-size: 2rem; color: #f59e0b; margin-bottom: 0.75rem;"></i>
                     <p style="font-size: 0.9rem;">Surat ini mungkin palsu atau kode verifikasi telah kedaluwarsa. Silakan
-                        hubungi kantor Desa Sidewa untuk konfirmasi lebih lanjut.</p>
+                        hubungi kantor Desa Watalara untuk konfirmasi lebih lanjut.</p>
                 </div>
             </div>
 

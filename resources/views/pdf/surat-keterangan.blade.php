@@ -146,9 +146,9 @@
     {{-- KOP SURAT --}}
     <div class="kop-surat">
         <div class="instansi">PEMERINTAH DESA</div>
-        <div class="desa">DESA SIDEWA</div>
-        <div class="alamat">Jl. Raya Sidewa No. 1, Kecamatan Sidewa, Kabupaten Sidewa</div>
-        <div class="alamat">Telp: (021) 1234567 | Email: desa.sidewa@email.com</div>
+        <div class="desa">DESA WATALARA</div>
+        <div class="alamat">Kecamatan Baula, Kabupaten Kolaka, Provinsi Sulawesi Tenggara</div>
+        <div class="alamat">Email: desa.watalara@email.com</div>
     </div>
 
     {{-- JUDUL SURAT --}}
@@ -159,7 +159,7 @@
 
     {{-- PEMBUKA --}}
     <div class="pembuka">
-        Yang bertanda tangan di bawah ini, Kepala Desa Sidewa, Kecamatan Sidewa, Kabupaten Sidewa, menerangkan bahwa:
+        Yang bertanda tangan di bawah ini, Kepala Desa Watalara, Kecamatan Baula, Kabupaten Kolaka, menerangkan bahwa:
     </div>
 
     {{-- DATA PEMOHON --}}
@@ -217,8 +217,8 @@
                 </div>
             </td>
             <td style="width: 60%; vertical-align: top; text-align: center;">
-                <div>Sidewa, {{ $pengajuan->tanggal_pengajuan->translatedFormat('d F Y') }}</div>
-                <div style="font-weight: bold;">Kepala Desa Sidewa</div>
+                <div>Watalara, {{ $pengajuan->tanggal_pengajuan->translatedFormat('d F Y') }}</div>
+                <div style="font-weight: bold;">Kepala Desa Watalara</div>
                 <div style="margin-top: 70px; font-weight: bold; text-decoration: underline;">
                     ( ..................................... )
                 </div>

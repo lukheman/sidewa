@@ -64,8 +64,8 @@
 <body>
     <div class="header">
         <h1>LAPORAN PENGADUAN MASYARAKAT</h1>
-        <h2>DESA SIDEWA</h2>
-        <p>Alamat: Jl. Raya Sidewa No. 1, Kecamatan Sidewa, Kabupaten Sidewa</p>
+        <h2>DESA WATALARA</h2>
+        <p>Kecamatan Baula, Kabupaten Kolaka, Provinsi Sulawesi Tenggara</p>
     </div>
 
     <div class="meta">
@@ -107,8 +107,8 @@
     </table>
 
     <div class="footer">
-        <p>Sidewa, {{ date('d F Y') }}</p>
-        <p>Kepala Desa Sidewa</p>
+        <p>Watalara, {{ date('d F Y') }}</p>
+        <p>Kepala Desa Watalara</p>
         <div class="ttd">
             ( ..................................... )
         </div>
