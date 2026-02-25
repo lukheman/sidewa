@@ -25,6 +25,7 @@ return new class extends Migration {
             $table->foreignId('user_id')
                 ->nullable()
                 ->constrained('users');
+            $table->string('verification_token', 64)->unique()->nullable();
             $table->timestamps();
         });
     }

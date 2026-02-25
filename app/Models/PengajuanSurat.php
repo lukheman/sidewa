@@ -6,6 +6,7 @@ use App\Enum\StatusPengajuanSurat;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Support\Str;
 
 class PengajuanSurat extends Model
 {
@@ -25,7 +26,17 @@ class PengajuanSurat extends Model
         'masyarakat_id',
         'jenis_surat_id',
         'user_id',
+        'verification_token',
     ];
+
+    protected static function booted(): void
+    {
+        static::creating(function (PengajuanSurat $pengajuan) {
+            if (empty($pengajuan->verification_token)) {
+                $pengajuan->verification_token = Str::random(32);
+            }
+        });
+    }
 
     /**
      * The attributes that should be cast.

@@ -22,20 +22,11 @@ class SuratPdfController extends Controller
         $nomorSurat = $this->generateNomorSurat($pengajuan);
         $isiSurat = $this->generateIsiSurat($pengajuan);
 
-        // Generate QR Code sebagai tanda tangan digital
-        $qrData = implode("\n", [
-            'SURAT RESMI DESA SIDEWA',
-            'No: ' . $nomorSurat,
-            'Jenis: ' . $namaSurat,
-            'Nama: ' . ($pengajuan->masyarakat->nama ?? '-'),
-            'NIK: ' . ($pengajuan->masyarakat->nik ?? '-'),
-            'Tanggal: ' . $pengajuan->tanggal_pengajuan->format('d/m/Y'),
-            'Status: Disetujui',
-            'Dicetak: ' . now()->format('d/m/Y H:i'),
-        ]);
+        // Generate QR Code berisi URL verifikasi
+        $verificationUrl = route('verifikasi.surat', $pengajuan->verification_token);
 
         $qrCode = base64_encode(
-            QrCode::format('svg')->size(150)->errorCorrection('H')->generate($qrData)
+            QrCode::format('svg')->size(150)->errorCorrection('H')->generate($verificationUrl)
         );
 
         $pdf = Pdf::loadView('pdf.surat-keterangan', [

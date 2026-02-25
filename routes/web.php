@@ -40,6 +40,7 @@ use App\Livewire\KepalaDesa\VerifikasiSurat;
 Route::get('/', LandingPage::class)->name('home');
 Route::get('/pengumuman', PengumumanPage::class)->name('pengumuman');
 Route::get('/kegiatan', KegiatanPage::class)->name('kegiatan');
+Route::get('/verifikasi/{token}', [App\Http\Controllers\VerifikasiSuratController::class, 'verify'])->name('verifikasi.surat');
 
 // Admin Auth Routes
 Route::get('/admin/login', Login::class)->name('admin.login');
