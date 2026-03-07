@@ -24,6 +24,7 @@ class Kegiatan extends Model
         'tanggal_selesai',
         'progres',
         'user_id',
+        'foto_dokumentasi',
     ];
 
     /**
@@ -36,6 +37,7 @@ class Kegiatan extends Model
         return [
             'tanggal_mulai' => 'date',
             'tanggal_selesai' => 'date',
+            'foto_dokumentasi' => 'array',
         ];
     }
 

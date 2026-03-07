@@ -17,6 +17,20 @@ class KegiatanPage extends Component
 
     #[Url(as: 'q')]
     public string $search = '';
+    public ?Kegiatan $selectedKegiatan = null;
+    public bool $showModal = false;
+
+    public function openModal(int $id): void
+    {
+        $this->selectedKegiatan = Kegiatan::with('user')->findOrFail($id);
+        $this->showModal = true;
+    }
+
+    public function closeModal(): void
+    {
+        $this->showModal = false;
+        $this->selectedKegiatan = null;
+    }
 
     public function updatedSearch(): void
     {

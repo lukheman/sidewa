@@ -154,6 +154,57 @@
                         @enderror
                     </div>
 
+                    {{-- Foto Dokumentasi --}}
+                    <div class="mb-4">
+                        <label class="form-label">Dokumentasi Foto <small class="text-muted">(Opsional, maks. 3 foto)</small></label>
+
+                        {{-- Existing Photos --}}
+                        @if(!empty($existingFoto))
+                            <div class="d-flex gap-2 flex-wrap mb-2">
+                                @foreach($existingFoto as $index => $path)
+                                    <div style="position: relative; width: 100px; height: 100px;">
+                                        <img src="{{ Storage::url($path) }}" alt="Foto {{ $index + 1 }}"
+                                            style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px; border: 2px solid var(--border-color);">
+                                        <button type="button" wire:click="removeExistingFoto({{ $index }})"
+                                            style="position: absolute; top: -6px; right: -6px; background: var(--danger-color); color: white; border: none; border-radius: 50%; width: 22px; height: 22px; font-size: 0.7rem; cursor: pointer; display: flex; align-items: center; justify-content: center;">
+                                            <i class="fas fa-times"></i>
+                                        </button>
+                                    </div>
+                                @endforeach
+                            </div>
+                        @endif
+
+                        {{-- New Photo Upload --}}
+                        @if(count($existingFoto) + count($foto) < 3)
+                            <input type="file" class="form-control @error('foto.*') is-invalid @enderror"
+                                wire:model="foto" accept="image/*" multiple>
+                            <small class="text-muted">Format: JPG, PNG, GIF. Maks. 2MB per foto. Sisa: {{ 3 - count($existingFoto) - count($foto) }} foto.</small>
+                            @error('foto.*')
+                                <div class="text-danger small mt-1">{{ $message }}</div>
+                            @enderror
+                        @else
+                            <div class="alert alert-info py-2 small mb-0">
+                                <i class="fas fa-info-circle me-1"></i>Batas maksimal 3 foto sudah tercapai.
+                            </div>
+                        @endif
+
+                        {{-- Preview New Uploads --}}
+                        @if(!empty($foto))
+                            <div class="d-flex gap-2 flex-wrap mt-2">
+                                @foreach($foto as $index => $file)
+                                    <div style="position: relative; width: 100px; height: 100px;">
+                                        <img src="{{ $file->temporaryUrl() }}" alt="Preview"
+                                            style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px; border: 2px dashed var(--primary-color);">
+                                        <button type="button" wire:click="removeFoto({{ $index }})"
+                                            style="position: absolute; top: -6px; right: -6px; background: var(--danger-color); color: white; border: none; border-radius: 50%; width: 22px; height: 22px; font-size: 0.7rem; cursor: pointer; display: flex; align-items: center; justify-content: center;">
+                                            <i class="fas fa-times"></i>
+                                        </button>
+                                    </div>
+                                @endforeach
+                            </div>
+                        @endif
+                    </div>
+
                     <div class="d-flex justify-content-end gap-2">
                         <x-admin.button type="button" variant="outline" wire:click="closeModal">
                             Batal
