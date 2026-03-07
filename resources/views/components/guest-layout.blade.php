@@ -452,6 +452,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('kegiatan')}}">Kegiatan</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('struktur-organisasi')}}">Struktur Organisasi</a>
+                    </li>
                     <li class="nav-item ms-2">
                         <a class="nav-link btn-login" href="{{ route('masyarakat.login') }}">
                             <i class="fas fa-sign-in-alt me-1"></i> Masuk

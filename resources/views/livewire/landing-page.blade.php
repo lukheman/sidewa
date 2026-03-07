@@ -40,42 +40,66 @@
                 <h2>Layanan Kami</h2>
                 <p>Berbagai layanan digital untuk memudahkan kebutuhan administrasi dan informasi warga desa</p>
             </div>
-            <div class="row g-4">
-                <div class="col-md-6 col-lg-3">
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <i class="fas fa-file-alt"></i>
+            <div class="row g-4 justify-content-center">
+                <div class="col-6 col-md-4 col-lg-2">
+                    <a href="{{ route('home') }}#layanan"
+                        style="text-decoration: none; color: inherit; display: block; height: 100%;">
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-file-alt"></i>
+                            </div>
+                            <h3>Surat</h3>
+                            <p style="font-size: 0.85rem;">Ajukan surat online</p>
                         </div>
-                        <h3>Pengajuan Surat</h3>
-                        <p>Ajukan berbagai jenis surat keterangan secara online tanpa perlu datang ke kantor desa</p>
-                    </div>
+                    </a>
                 </div>
-                <div class="col-md-6 col-lg-3">
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <i class="fas fa-comments"></i>
+                <div class="col-6 col-md-4 col-lg-2">
+                    <a href="{{ route('home') }}#layanan"
+                        style="text-decoration: none; color: inherit; display: block; height: 100%;">
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-comments"></i>
+                            </div>
+                            <h3>Pengaduan</h3>
+                            <p style="font-size: 0.85rem;">Sampaikan keluhan</p>
                         </div>
-                        <h3>Pengaduan</h3>
-                        <p>Sampaikan keluhan atau aspirasi Anda langsung kepada perangkat desa</p>
-                    </div>
+                    </a>
                 </div>
-                <div class="col-md-6 col-lg-3">
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <i class="fas fa-bullhorn"></i>
+                <div class="col-6 col-md-4 col-lg-2">
+                    <a href="{{ route('pengumuman') }}"
+                        style="text-decoration: none; color: inherit; display: block; height: 100%;">
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-bullhorn"></i>
+                            </div>
+                            <h3>Pengumuman</h3>
+                            <p style="font-size: 0.85rem;">Info terbaru desa</p>
                         </div>
-                        <h3>Pengumuman</h3>
-                        <p>Dapatkan informasi terbaru tentang berbagai kegiatan dan pengumuman desa</p>
-                    </div>
+                    </a>
                 </div>
-                <div class="col-md-6 col-lg-3">
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <i class="fas fa-calendar-alt"></i>
+                <div class="col-6 col-md-4 col-lg-2">
+                    <a href="{{ route('kegiatan') }}"
+                        style="text-decoration: none; color: inherit; display: block; height: 100%;">
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-calendar-alt"></i>
+                            </div>
+                            <h3>Kegiatan</h3>
+                            <p style="font-size: 0.85rem;">Progress pembangunan</p>
                         </div>
-                        <h3>Kegiatan Desa</h3>
-                        <p>Pantau progress kegiatan pembangunan dan program desa secara transparan</p>
-                    </div>
+                    </a>
+                </div>
+                <div class="col-6 col-md-4 col-lg-2">
+                    <a href="{{ route('struktur-organisasi') }}"
+                        style="text-decoration: none; color: inherit; display: block; height: 100%;">
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-sitemap"></i>
+                            </div>
+                            <h3>Organisasi</h3>
+                            <p style="font-size: 0.85rem;">Aparatur & Struktur</p>
+                        </div>
+                    </a>
                 </div>
             </div>
         </div>
