@@ -22,6 +22,8 @@ class Masyarakat extends Authenticatable
     protected $fillable = [
         'nik',
         'nama',
+        'jenis_kelamin',
+        'tanggal_lahir',
         'email',
         'alamat',
         'phone',
@@ -47,6 +49,7 @@ class Masyarakat extends Authenticatable
     {
         return [
             'password' => 'hashed',
+            'tanggal_lahir' => 'date',
         ];
     }
 

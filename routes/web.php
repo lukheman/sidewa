@@ -5,6 +5,7 @@ use App\Livewire\LandingPage;
 use App\Livewire\PengumumanPage;
 use App\Livewire\KegiatanPage;
 use App\Livewire\Admin\AparaturManagement;
+use App\Livewire\Admin\AnggaranManagement;
 use App\Livewire\Admin\Dashboard;
 use App\Livewire\Admin\UserManagement;
 use App\Livewire\Admin\MasyarakatManagement;
@@ -42,6 +43,7 @@ Route::get('/', LandingPage::class)->name('home');
 Route::get('/pengumuman', PengumumanPage::class)->name('pengumuman');
 Route::get('/kegiatan', KegiatanPage::class)->name('kegiatan');
 Route::get('/struktur-organisasi', \App\Livewire\StrukturOrganisasiPage::class)->name('struktur-organisasi');
+Route::get('/transparansi-anggaran', \App\Livewire\TransparansiAnggaranPage::class)->name('transparansi-anggaran');
 Route::get('/verifikasi/{token}', [App\Http\Controllers\VerifikasiSuratController::class, 'verify'])->name('verifikasi.surat');
 
 // Admin Auth Routes
@@ -90,6 +92,7 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     Route::get('/pengumuman', PengumumanManagement::class)->name('admin.pengumuman');
     Route::get('/kegiatan', KegiatanManagement::class)->name('admin.kegiatan');
     Route::get('/aparatur', AparaturManagement::class)->name('admin.aparatur');
+    Route::get('/anggaran', AnggaranManagement::class)->name('admin.anggaran');
 
     // Layanan Publik
     Route::get('/pengaduan', PengaduanManagement::class)->name('admin.pengaduan');

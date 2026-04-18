@@ -28,6 +28,8 @@ class MasyarakatFactory extends Factory
         return [
             'nik' => fake()->unique()->numerify('################'),
             'nama' => fake('id_ID')->name(),
+            'jenis_kelamin' => fake()->randomElement(['L', 'P']),
+            'tanggal_lahir' => fake()->dateTimeBetween('-60 years', '-17 years')->format('Y-m-d'),
             'email' => fake()->unique()->safeEmail(),
             'alamat' => fake('id_ID')->address(),
             'phone' => fake()->numerify('08##########'),

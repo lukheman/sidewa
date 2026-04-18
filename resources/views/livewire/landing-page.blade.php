@@ -101,6 +101,18 @@
                         </div>
                     </a>
                 </div>
+                <div class="col-6 col-md-4 col-lg-2">
+                    <a href="{{ route('transparansi-anggaran') }}"
+                        style="text-decoration: none; color: inherit; display: block; height: 100%;">
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-chart-pie"></i>
+                            </div>
+                            <h3>Anggaran</h3>
+                            <p style="font-size: 0.85rem;">Transparansi Dana</p>
+                        </div>
+                    </a>
+                </div>
             </div>
         </div>
     </section>
@@ -232,6 +244,72 @@
         </div>
     </section>
 
+    <!-- Demografis Penduduk Section -->
+    <section class="features-section" id="demografis">
+        <div class="container">
+            <div class="section-title">
+                <h2>Demografis Penduduk</h2>
+                <p>Data statistik kependudukan Desa Watalara</p>
+            </div>
+
+            {{-- Stat Numbers --}}
+            <div class="row g-4 mb-5 justify-content-center">
+                <div class="col-6 col-md-4 col-lg-3 text-center">
+                    <div
+                        style="background: white; border: 1px solid var(--border-color); border-radius: 16px; padding: 1.5rem;">
+                        <i class="fas fa-users mb-2" style="font-size: 2rem; color: var(--primary-color);"></i>
+                        <h2
+                            style="font-size: 2rem; font-weight: 800; color: var(--text-primary); margin-bottom: 0.25rem;">
+                            {{ number_format($totalMasyarakat) }}</h2>
+                        <p style="color: var(--text-muted); font-size: 0.9rem; margin: 0;">Total Penduduk</p>
+                    </div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3 text-center">
+                    <div
+                        style="background: white; border: 1px solid var(--border-color); border-radius: 16px; padding: 1.5rem;">
+                        <i class="fas fa-male mb-2" style="font-size: 2rem; color: #3b82f6;"></i>
+                        <h2 style="font-size: 2rem; font-weight: 800; color: #3b82f6; margin-bottom: 0.25rem;">
+                            {{ number_format($laki) }}</h2>
+                        <p style="color: var(--text-muted); font-size: 0.9rem; margin: 0;">Laki-laki</p>
+                    </div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3 text-center">
+                    <div
+                        style="background: white; border: 1px solid var(--border-color); border-radius: 16px; padding: 1.5rem;">
+                        <i class="fas fa-female mb-2" style="font-size: 2rem; color: #ec4899;"></i>
+                        <h2 style="font-size: 2rem; font-weight: 800; color: #ec4899; margin-bottom: 0.25rem;">
+                            {{ number_format($perempuan) }}</h2>
+                        <p style="color: var(--text-muted); font-size: 0.9rem; margin: 0;">Perempuan</p>
+                    </div>
+                </div>
+            </div>
+
+            {{-- Charts --}}
+            <div class="row g-4 justify-content-center" wire:ignore>
+                <div class="col-md-5">
+                    <div
+                        style="background: white; border: 1px solid var(--border-color); border-radius: 16px; padding: 2rem; text-align: center;">
+                        <h5 style="font-weight: 700; color: var(--text-primary); margin-bottom: 1.5rem;">
+                            <i class="fas fa-venus-mars me-2" style="color: var(--primary-color);"></i>Jenis Kelamin
+                        </h5>
+                        <div style="max-width: 280px; margin: 0 auto;">
+                            <canvas id="genderChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-7">
+                    <div
+                        style="background: white; border: 1px solid var(--border-color); border-radius: 16px; padding: 2rem;">
+                        <h5 style="font-weight: 700; color: var(--text-primary); margin-bottom: 1.5rem;">
+                            <i class="fas fa-chart-bar me-2" style="color: var(--primary-color);"></i>Kelompok Usia
+                        </h5>
+                        <canvas id="ageChart" style="max-height: 300px;"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Lokasi Desa Section -->
     <section class="services-section" id="lokasi">
         <div class="container">
@@ -325,6 +403,98 @@
         </div>
     </section>
 
+
+    <!-- Chart.js for Demographics -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Gender Doughnut Chart
+            const genderCtx = document.getElementById('genderChart');
+            if (genderCtx) {
+                new Chart(genderCtx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['Laki-laki', 'Perempuan'],
+                        datasets: [{
+                            data: [{{ $laki }}, {{ $perempuan }}],
+                            backgroundColor: ['#3b82f6', '#ec4899'],
+                            borderWidth: 3,
+                            borderColor: '#fff',
+                            hoverOffset: 8
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        cutout: '55%',
+                        plugins: {
+                            legend: {
+                                position: 'bottom',
+                                labels: {
+                                    padding: 16,
+                                    usePointStyle: true,
+                                    pointStyle: 'circle',
+                                    font: { family: 'Inter', size: 13, weight: '500' }
+                                }
+                            },
+                            tooltip: {
+                                callbacks: {
+                                    label: function (ctx) {
+                                        let total = ctx.dataset.data.reduce((a, b) => a + b, 0);
+                                        let pct = total > 0 ? ((ctx.parsed / total) * 100).toFixed(1) : 0;
+                                        return ctx.label + ': ' + ctx.parsed.toLocaleString('id-ID') + ' (' + pct + '%)';
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+
+            // Age Bar Chart
+            const ageCtx = document.getElementById('ageChart');
+            if (ageCtx) {
+                new Chart(ageCtx, {
+                    type: 'bar',
+                    data: {
+                        labels: {!! json_encode(array_keys($ageGroups)) !!},
+                        datasets: [{
+                            label: 'Jumlah Penduduk',
+                            data: {!! json_encode(array_values($ageGroups)) !!},
+                            backgroundColor: [
+                                'rgba(16, 185, 129, 0.8)',
+                                'rgba(59, 130, 246, 0.8)',
+                                'rgba(139, 92, 246, 0.8)',
+                                'rgba(245, 158, 11, 0.8)',
+                                'rgba(239, 68, 68, 0.8)'
+                            ],
+                            borderRadius: 8,
+                            borderSkipped: false
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        plugins: {
+                            legend: { display: false }
+                        },
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                ticks: {
+                                    stepSize: 1,
+                                    font: { family: 'Inter' }
+                                },
+                                grid: { color: 'rgba(0,0,0,0.05)' }
+                            },
+                            x: {
+                                ticks: { font: { family: 'Inter', weight: '500' } },
+                                grid: { display: false }
+                            }
+                        }
+                    }
+                });
+            }
+        });
+    </script>
 
     <!-- Leaflet CSS & JS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />

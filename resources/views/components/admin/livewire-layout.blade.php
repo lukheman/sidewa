@@ -629,6 +629,7 @@
                     <x-admin.sidebar-link href="{{ route('admin.pengumuman') }}" icon="fas fa-bullhorn" :active="request()->routeIs('admin.pengumuman')">Pengumuman</x-admin.sidebar-link>
                     <x-admin.sidebar-link href="{{ route('admin.kegiatan') }}" icon="fas fa-calendar-alt" :active="request()->routeIs('admin.kegiatan')">Kegiatan</x-admin.sidebar-link>
                     <x-admin.sidebar-link href="{{ route('admin.aparatur') }}" icon="fas fa-sitemap" :active="request()->routeIs('admin.aparatur')">Struktur Organisasi</x-admin.sidebar-link>
+                    <x-admin.sidebar-link href="{{ route('admin.anggaran') }}" icon="fas fa-chart-pie" :active="request()->routeIs('admin.anggaran')">Penggunaan Anggaran Desa</x-admin.sidebar-link>
                 </x-admin.sidebar-section>
 
                 <!-- <x-admin.sidebar-section title="Layanan"> -->
