@@ -1,5 +1,7 @@
 <div>
 
+<div>
+
     <!-- Hero Section -->
     <section class="hero-section" id="beranda">
         <div class="hero-shapes">
@@ -568,4 +570,5 @@
             </div>
         </div>
     </footer>
+</div>
 </div>
