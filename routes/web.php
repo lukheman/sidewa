@@ -46,8 +46,8 @@ Route::get('/struktur-organisasi', \App\Livewire\StrukturOrganisasiPage::class)-
 Route::get('/transparansi-anggaran', \App\Livewire\TransparansiAnggaranPage::class)->name('transparansi-anggaran');
 Route::get('/verifikasi/{token}', [App\Http\Controllers\VerifikasiSuratController::class, 'verify'])->name('verifikasi.surat');
 
-// Admin Auth Routes
-Route::get('/admin/login', Login::class)->name('admin.login');
+// Auth Routes (Pelayanan & Kepala Desa)
+Route::get('/login', Login::class)->name('login');
 Route::get('/register', Register::class)->name('register');
 
 // Masyarakat Auth Routes
@@ -78,38 +78,29 @@ Route::get('/surat/{id}/cetak', [App\Http\Controllers\SuratPdfController::class,
     ->middleware('auth')
     ->name('surat.cetak');
 
-Route::prefix('admin')->middleware('auth')->group(function () {
-    Route::get('/dashboard', Dashboard::class)->name('dashboard');
-
-    // User & Masyarakat Management
-    Route::get('/users', UserManagement::class)->name('admin.users');
-    Route::get('/masyarakat', MasyarakatManagement::class)->name('admin.masyarakat');
-
-    // Master Data
-    Route::get('/jenis-surat', JenisSuratManagement::class)->name('admin.jenis-surat');
-
-    // Informasi & Kegiatan
-    Route::get('/pengumuman', PengumumanManagement::class)->name('admin.pengumuman');
-    Route::get('/kegiatan', KegiatanManagement::class)->name('admin.kegiatan');
-    Route::get('/aparatur', AparaturManagement::class)->name('admin.aparatur');
-    Route::get('/anggaran', AnggaranManagement::class)->name('admin.anggaran');
-
-    // Layanan Publik
-    Route::get('/pengaduan', PengaduanManagement::class)->name('admin.pengaduan');
-    Route::get('/pengajuan-surat', PengajuanSuratManagement::class)->name('admin.pengajuan-surat');
-
-    // Profile & Others
-    Route::get('/profile', Profile::class)->name('admin.profile');
-    Route::get('/components', ComponentDocs::class)->name('admin.components');
-    Route::post('/logout', [LogoutController::class, '__invoke'])->name('logout');
-});
-
-// Pelayanan Routes
+// Pelayanan Routes (includes all management features previously under admin)
 Route::prefix('pelayanan')->middleware('auth')->group(function () {
     Route::get('/dashboard', PelayananDashboard::class)->name('pelayanan.dashboard');
-    Route::get('/pengajuan-surat', PengajuanSuratMasuk::class)->name('pelayanan.pengajuan-surat');
+
+    // Data Master
+    Route::get('/users', UserManagement::class)->name('pelayanan.users');
+    Route::get('/masyarakat', MasyarakatManagement::class)->name('pelayanan.masyarakat');
+    Route::get('/jenis-surat', JenisSuratManagement::class)->name('pelayanan.jenis-surat');
+
+    // Informasi & Kegiatan
+    Route::get('/pengumuman', PengumumanManagement::class)->name('pelayanan.pengumuman');
+    Route::get('/kegiatan', KegiatanManagement::class)->name('pelayanan.kegiatan');
+    Route::get('/aparatur', AparaturManagement::class)->name('pelayanan.aparatur');
+    Route::get('/anggaran', AnggaranManagement::class)->name('pelayanan.anggaran');
+
+    // Layanan Publik
     Route::get('/pengaduan', App\Livewire\Pelayanan\PengaduanMasuk::class)->name('pelayanan.pengaduan');
+    Route::get('/pengajuan-surat', PengajuanSuratMasuk::class)->name('pelayanan.pengajuan-surat');
+
+    // Profile & Others
     Route::get('/profile', Profile::class)->name('pelayanan.profile');
+    Route::get('/components', ComponentDocs::class)->name('pelayanan.components');
+    Route::post('/logout', [LogoutController::class, '__invoke'])->name('logout');
 });
 
 // Kepala Desa Routes

@@ -56,7 +56,7 @@
                         <i class="fas fa-comments me-2" style="color: var(--primary-color);"></i>
                         Pengaduan Terbaru
                     </h5>
-                    <a href="{{ route('admin.pengaduan') }}" class="text-decoration-none" style="color: var(--primary-color); font-size: 0.875rem;">
+                    <a href="{{ route('pelayanan.pengaduan') }}" class="text-decoration-none" style="color: var(--primary-color); font-size: 0.875rem;">
                         Lihat Semua <i class="fas fa-arrow-right ms-1"></i>
                     </a>
                 </div>
@@ -105,7 +105,7 @@
                         <i class="fas fa-envelope me-2" style="color: var(--secondary-color);"></i>
                         Pengajuan Surat Terbaru
                     </h5>
-                    <a href="{{ route('admin.pengajuan-surat') }}" class="text-decoration-none" style="color: var(--primary-color); font-size: 0.875rem;">
+                    <a href="{{ route('pelayanan.pengajuan-surat') }}" class="text-decoration-none" style="color: var(--primary-color); font-size: 0.875rem;">
                         Lihat Semua <i class="fas fa-arrow-right ms-1"></i>
                     </a>
                 </div>
@@ -159,7 +159,7 @@
                         <i class="fas fa-bullhorn me-2" style="color: var(--warning-color);"></i>
                         Pengumuman Terbaru
                     </h5>
-                    <a href="{{ route('admin.pengumuman') }}" class="text-decoration-none" style="color: var(--primary-color); font-size: 0.875rem;">
+                    <a href="{{ route('pelayanan.pengumuman') }}" class="text-decoration-none" style="color: var(--primary-color); font-size: 0.875rem;">
                         Lihat Semua <i class="fas fa-arrow-right ms-1"></i>
                     </a>
                 </div>

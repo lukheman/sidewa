@@ -8,8 +8,8 @@
                 <i class="fas fa-layer-group" style="font-size: 1.75rem;"></i>
                 SIDEWA
             </a>
-            <a href="{{ route('admin.login') }}" style="color: #047857; text-decoration: none; font-weight: 500;">
-                <i class="fas fa-user-shield me-1"></i> Login Admin
+            <a href="{{ route('home') }}" style="color: #047857; text-decoration: none; font-weight: 500;">
+                <i class="fas fa-arrow-left me-1"></i> Beranda
             </a>
         </div>
     </nav>

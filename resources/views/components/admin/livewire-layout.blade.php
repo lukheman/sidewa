@@ -586,12 +586,25 @@
             </x-admin.sidebar-section>
         @else
             @if(auth()->user()->role->value === 'pelayanan')
-                {{-- Menu untuk Pelayanan --}}
+                {{-- Menu untuk Pelayanan (termasuk semua fitur manajemen) --}}
                 <x-admin.sidebar-section title="UTAMA">
                     <x-admin.sidebar-link href="{{ route('pelayanan.dashboard') }}" icon="fas fa-home" :active="request()->routeIs('pelayanan.dashboard')">Dashboard</x-admin.sidebar-link>
                 </x-admin.sidebar-section>
 
-                <x-admin.sidebar-section title="LAYANAN">
+                <x-admin.sidebar-section title="Data Master">
+                    <x-admin.sidebar-link href="{{ route('pelayanan.users') }}" icon="fas fa-users-cog" :active="request()->routeIs('pelayanan.users')">Users</x-admin.sidebar-link>
+                    <x-admin.sidebar-link href="{{ route('pelayanan.masyarakat') }}" icon="fas fa-users" :active="request()->routeIs('pelayanan.masyarakat')">Masyarakat</x-admin.sidebar-link>
+                    <x-admin.sidebar-link href="{{ route('pelayanan.jenis-surat') }}" icon="fas fa-file-alt" :active="request()->routeIs('pelayanan.jenis-surat')">Jenis Surat</x-admin.sidebar-link>
+                </x-admin.sidebar-section>
+
+                <x-admin.sidebar-section title="Informasi">
+                    <x-admin.sidebar-link href="{{ route('pelayanan.pengumuman') }}" icon="fas fa-bullhorn" :active="request()->routeIs('pelayanan.pengumuman')">Pengumuman</x-admin.sidebar-link>
+                    <x-admin.sidebar-link href="{{ route('pelayanan.kegiatan') }}" icon="fas fa-calendar-alt" :active="request()->routeIs('pelayanan.kegiatan')">Kegiatan</x-admin.sidebar-link>
+                    <x-admin.sidebar-link href="{{ route('pelayanan.aparatur') }}" icon="fas fa-sitemap" :active="request()->routeIs('pelayanan.aparatur')">Struktur Organisasi</x-admin.sidebar-link>
+                    <x-admin.sidebar-link href="{{ route('pelayanan.anggaran') }}" icon="fas fa-chart-pie" :active="request()->routeIs('pelayanan.anggaran')">Penggunaan Anggaran Desa</x-admin.sidebar-link>
+                </x-admin.sidebar-section>
+
+                <x-admin.sidebar-section title="Layanan">
                     <x-admin.sidebar-link href="{{ route('pelayanan.pengajuan-surat') }}" icon="fas fa-envelope" :active="request()->routeIs('pelayanan.pengajuan-surat')">Pengajuan Surat</x-admin.sidebar-link>
                     <x-admin.sidebar-link href="{{ route('pelayanan.pengaduan') }}" icon="fas fa-comments" :active="request()->routeIs('pelayanan.pengaduan')">Pengaduan</x-admin.sidebar-link>
                 </x-admin.sidebar-section>
@@ -612,33 +625,6 @@
 
                 <x-admin.sidebar-section title="AKUN">
                     <x-admin.sidebar-link href="{{ route('kepala-desa.profile') }}" icon="fas fa-user-circle" :active="request()->routeIs('kepala-desa.profile')">Profile</x-admin.sidebar-link>
-                </x-admin.sidebar-section>
-            @else
-                {{-- Menu untuk Admin & Kepala Desa --}}
-                <x-admin.sidebar-section title="UTAMA">
-                    <x-admin.sidebar-link href="{{ route('dashboard') }}" icon="fas fa-home" :active="request()->routeIs('dashboard')">Dashboard</x-admin.sidebar-link>
-                </x-admin.sidebar-section>
-
-                <x-admin.sidebar-section title="Data Master">
-                    <x-admin.sidebar-link href="{{ route('admin.users') }}" icon="fas fa-users-cog" :active="request()->routeIs('admin.users')">Users</x-admin.sidebar-link>
-                    <x-admin.sidebar-link href="{{ route('admin.masyarakat') }}" icon="fas fa-users" :active="request()->routeIs('admin.masyarakat')">Masyarakat</x-admin.sidebar-link>
-                    <x-admin.sidebar-link href="{{ route('admin.jenis-surat') }}" icon="fas fa-file-alt" :active="request()->routeIs('admin.jenis-surat')">Jenis Surat</x-admin.sidebar-link>
-                </x-admin.sidebar-section>
-
-                <x-admin.sidebar-section title="Informasi">
-                    <x-admin.sidebar-link href="{{ route('admin.pengumuman') }}" icon="fas fa-bullhorn" :active="request()->routeIs('admin.pengumuman')">Pengumuman</x-admin.sidebar-link>
-                    <x-admin.sidebar-link href="{{ route('admin.kegiatan') }}" icon="fas fa-calendar-alt" :active="request()->routeIs('admin.kegiatan')">Kegiatan</x-admin.sidebar-link>
-                    <x-admin.sidebar-link href="{{ route('admin.aparatur') }}" icon="fas fa-sitemap" :active="request()->routeIs('admin.aparatur')">Struktur Organisasi</x-admin.sidebar-link>
-                    <x-admin.sidebar-link href="{{ route('admin.anggaran') }}" icon="fas fa-chart-pie" :active="request()->routeIs('admin.anggaran')">Penggunaan Anggaran Desa</x-admin.sidebar-link>
-                </x-admin.sidebar-section>
-
-                <!-- <x-admin.sidebar-section title="Layanan"> -->
-                <!--     <x-admin.sidebar-link href="{{ route('admin.pengaduan') }}" icon="fas fa-comments" :active="request()->routeIs('admin.pengaduan')">Pengaduan</x-admin.sidebar-link> -->
-                <!--     <x-admin.sidebar-link href="{{ route('admin.pengajuan-surat') }}" icon="fas fa-envelope" :active="request()->routeIs('admin.pengajuan-surat')">Pengajuan Surat</x-admin.sidebar-link> -->
-                <!-- </x-admin.sidebar-section> -->
-
-                <x-admin.sidebar-section title="Account">
-                    <x-admin.sidebar-link href="{{ route('admin.profile') }}" icon="fas fa-user-circle" :active="request()->routeIs('admin.profile')">Profile</x-admin.sidebar-link>
                 </x-admin.sidebar-section>
             @endif
         @endauth

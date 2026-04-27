@@ -49,11 +49,9 @@
         </button>
 --}}
         @php
-            $profileRoute = 'admin.profile';
+            $profileRoute = 'pelayanan.profile';
             if (Auth::guard('masyarakat')->check()) {
                 $profileRoute = 'masyarakat.profile';
-            } elseif (Auth::user()?->role?->value === 'pelayanan') {
-                $profileRoute = 'pelayanan.profile';
             } elseif (Auth::user()?->role?->value === 'kepala_desa') {
                 $profileRoute = 'kepala-desa.profile';
             }

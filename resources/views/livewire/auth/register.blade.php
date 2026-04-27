@@ -137,7 +137,7 @@
 
                 <!-- Sign In Link -->
                 <div style="text-align: center; color: #047857;">
-                    Sudah punya akun? <a href="{{ route('admin.login') }}"
+                    Sudah punya akun? <a href="{{ route('login') }}"
                         style="color: #10b981; font-weight: 600; text-decoration: none;">Masuk</a>
                 </div>
 

@@ -63,13 +63,6 @@ class User extends Authenticatable
             ->implode('');
     }
 
-    /**
-     * Check if user is admin
-     */
-    public function isAdmin(): bool
-    {
-        return $this->role === 'admin';
-    }
 
     /**
      * Check if user is kepala desa

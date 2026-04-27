@@ -4,7 +4,6 @@ namespace App\Enum;
 
 enum Role: string
 {
-    case ADMIN = 'admin';
     case KEPALA_DESA = 'kepala_desa';
     case PELAYANAN = 'pelayanan';
 
@@ -22,7 +21,6 @@ enum Role: string
     public function label(): string
     {
         return match ($this) {
-            self::ADMIN => 'Administrator',
             self::KEPALA_DESA => 'Kepala Desa',
             self::PELAYANAN => 'Pelayanan',
         };
@@ -34,7 +32,6 @@ enum Role: string
     public function color(): string
     {
         return match ($this) {
-            self::ADMIN => 'danger',
             self::KEPALA_DESA => 'primary',
             self::PELAYANAN => 'secondary',
         };
@@ -46,7 +43,6 @@ enum Role: string
     public function icon(): string
     {
         return match ($this) {
-            self::ADMIN => 'fas fa-user-shield',
             self::KEPALA_DESA => 'fas fa-user-tie',
             self::PELAYANAN => 'fas fa-user',
         };

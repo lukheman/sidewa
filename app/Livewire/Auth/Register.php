@@ -48,13 +48,14 @@ class Register extends Component
             'name' => $validated['name'],
             'email' => $validated['email'],
             'password' => Hash::make($validated['password']),
+            'role' => \App\Enum\Role::PELAYANAN,
         ]);
 
         Auth::login($user);
 
         session()->regenerate();
 
-        return redirect()->route('dashboard');
+        return redirect()->route('pelayanan.dashboard');
     }
 
     public function render()
