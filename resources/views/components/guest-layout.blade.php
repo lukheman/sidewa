@@ -456,7 +456,7 @@
                         <a class="nav-link" href="{{ route('struktur-organisasi')}}">Struktur Organisasi</a>
                     </li>
                     <li class="nav-item ms-2">
-                        <a class="nav-link btn-login" href="{{ route('masyarakat.login') }}">
+                        <a class="nav-link btn-login" href="{{ route('login') }}">
                             <i class="fas fa-sign-in-alt me-1"></i> Masuk
                         </a>
                     </li>

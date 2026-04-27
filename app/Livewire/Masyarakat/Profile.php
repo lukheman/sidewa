@@ -106,7 +106,7 @@ class Profile extends Component
         Auth::guard('masyarakat')->logout();
         session()->invalidate();
         session()->regenerateToken();
-        return redirect()->route('masyarakat.login');
+        return redirect()->route('login');
     }
 
     public function render()

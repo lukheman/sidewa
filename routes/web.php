@@ -52,7 +52,6 @@ Route::get('/register', Register::class)->name('register');
 
 // Masyarakat Auth Routes
 Route::prefix('masyarakat')->group(function () {
-    Route::get('/login', MasyarakatLogin::class)->name('masyarakat.login');
     Route::get('/register', MasyarakatRegister::class)->name('masyarakat.register');
 
     // Protected Masyarakat Routes
@@ -68,7 +67,7 @@ Route::prefix('masyarakat')->group(function () {
             auth()->guard('masyarakat')->logout();
             session()->invalidate();
             session()->regenerateToken();
-            return redirect()->route('masyarakat.login');
+            return redirect()->route('login');
         })->name('masyarakat.logout');
     });
 });

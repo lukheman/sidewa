@@ -31,21 +31,44 @@
                     <p style="color: #047857; font-size: 0.95rem;">Masuk ke akun SIDEWA Anda</p>
                 </div>
 
+                <!-- Tabs -->
+                <div style="display: flex; background: #ecfdf5; border-radius: 12px; padding: 0.5rem; margin-bottom: 2rem;">
+                    <button type="button" wire:click="$set('tab', 'masyarakat')"
+                        style="flex: 1; padding: 0.75rem 0; border: none; border-radius: 8px; font-weight: 600; font-size: 0.95rem; cursor: pointer; transition: all 0.3s ease; {{ $tab === 'masyarakat' ? 'background: #10b981; color: white; box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);' : 'background: transparent; color: #047857;' }}">
+                        Masyarakat
+                    </button>
+                    <button type="button" wire:click="$set('tab', 'pelayanan')"
+                        style="flex: 1; padding: 0.75rem 0; border: none; border-radius: 8px; font-weight: 600; font-size: 0.95rem; cursor: pointer; transition: all 0.3s ease; {{ $tab === 'pelayanan' ? 'background: #10b981; color: white; box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);' : 'background: transparent; color: #047857;' }}">
+                        Pelayanan
+                    </button>
+                    <button type="button" wire:click="$set('tab', 'kepala_desa')"
+                        style="flex: 1; padding: 0.75rem 0; border: none; border-radius: 8px; font-weight: 600; font-size: 0.95rem; cursor: pointer; transition: all 0.3s ease; {{ $tab === 'kepala_desa' ? 'background: #10b981; color: white; box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);' : 'background: transparent; color: #047857;' }}">
+                        Kepala Desa
+                    </button>
+                </div>
+
                 <!-- Login Form -->
                 <form wire:submit="submit">
-                    <!-- Email Field -->
+                    <!-- Login Field -->
                     <div style="margin-bottom: 1.25rem;">
-                        <label for="email"
-                            style="display: block; margin-bottom: 0.5rem; color: #064e3b; font-weight: 500;">Email</label>
+                        <label for="login"
+                            style="display: block; margin-bottom: 0.5rem; color: #064e3b; font-weight: 500;">
+                            @if($tab === 'masyarakat')
+                                Email atau NIK
+                            @else
+                                Email
+                            @endif
+                        </label>
                         <div style="position: relative;">
-                            <i class="fas fa-envelope"
+                            <i class="fas fa-{{ $tab === 'masyarakat' ? 'user' : 'envelope' }}"
                                 style="position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); color: #6b7280;"></i>
-                            <input type="email" wire:model="email" id="email"
+                            <input type="{{ $tab === 'masyarakat' ? 'text' : 'email' }}" wire:model="login" id="login"
                                 style="width: 100%; height: 56px; border: 2px solid #d1fae5; border-radius: 12px; padding: 0 1rem 0 3rem; font-size: 1rem; background: #f8fafc; transition: all 0.3s ease;"
-                                class="@error('email') border-danger @enderror" placeholder="Masukkan email Anda"
+                                class="@error('login') border-danger @enderror" 
+                                placeholder="{{ $tab === 'masyarakat' ? 'Masukkan Email atau NIK' : 'Masukkan Email Anda' }}"
                                 autofocus>
                         </div>
-                        @error('email')
+                        @error('login')
                             <small style="color: #ef4444; margin-top: 0.25rem; display: block;">{{ $message }}</small>
                         @enderror
                     </div>
@@ -78,7 +101,9 @@
                                 style="width: 1.25rem; height: 1.25rem; border: 2px solid #d1fae5; border-radius: 6px; cursor: pointer;">
                             <label for="remember" style="color: #047857; cursor: pointer;">Ingat saya</label>
                         </div>
-                        <a href="#" style="color: #10b981; text-decoration: none; font-weight: 500;">Lupa Password?</a>
+                        @if($tab !== 'masyarakat')
+                            <a href="#" style="color: #10b981; text-decoration: none; font-weight: 500;">Lupa Password?</a>
+                        @endif
                     </div>
 
                     <!-- Login Button -->
@@ -100,10 +125,16 @@
                 </div>
 
                 <!-- Sign Up Link -->
-                <!-- <div style="text-align: center; color: #047857;"> -->
-                <!--     Belum punya akun? <a href="{{ route('register') }}" -->
-                <!--         style="color: #10b981; font-weight: 600; text-decoration: none;">Daftar Sekarang</a> -->
-                <!-- </div> -->
+                @if($tab === 'masyarakat')
+                    <div style="text-align: center; color: #047857;">
+                        Belum punya akun? <a href="{{ route('masyarakat.register') }}"
+                            style="color: #10b981; font-weight: 600; text-decoration: none;">Daftar Sekarang</a>
+                    </div>
+                @else
+                    <div style="text-align: center; color: #047857;">
+                        Belum punya akun? Hubungi administrator.
+                    </div>
+                @endif
 
                 <!-- Back to Home -->
                 <div style="text-align: center; margin-top: 1.5rem;">

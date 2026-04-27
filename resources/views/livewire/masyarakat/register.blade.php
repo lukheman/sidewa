@@ -171,7 +171,7 @@
 
                 <!-- Login Link -->
                 <div style="text-align: center; margin-top: 1.5rem; color: #047857;">
-                    Sudah punya akun? <a href="{{ route('masyarakat.login') }}"
+                    Sudah punya akun? <a href="{{ route('login') }}"
                         style="color: #10b981; font-weight: 600; text-decoration: none;">Masuk</a>
                 </div>
             </div>

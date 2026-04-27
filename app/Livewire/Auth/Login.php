@@ -13,29 +13,70 @@ use Livewire\Component;
 #[Title('Login - SIDEWA')]
 class Login extends Component
 {
-    #[Rule(['required', 'email'])]
-    public string $email = '';
-
-    #[Rule([])]
+    public string $tab = 'masyarakat'; // masyarakat, pelayanan, kepala_desa
+    public string $login = '';
     public string $password = '';
-
     public bool $remember = false;
+
+    protected function rules(): array
+    {
+        return [
+            'login' => ['required', 'string'],
+            'password' => ['required', 'string'],
+        ];
+    }
+
+    protected $messages = [
+        'login.required' => 'Email atau NIK harus diisi.',
+        'password.required' => 'Password harus diisi.',
+    ];
 
     public function submit()
     {
-        $credentials = $this->validate();
+        $this->validate();
 
-        if (Auth::attempt($credentials, $this->remember)) {
-            session()->regenerate();
+        if ($this->tab === 'masyarakat') {
+            // Determine if login is email or NIK
+            $field = filter_var($this->login, FILTER_VALIDATE_EMAIL) ? 'email' : 'nik';
 
-            if (Auth::user()->role->value === 'kepala_desa') {
-                return redirect()->to(route('kepala-desa.dashboard'));
+            $credentials = [
+                $field => $this->login,
+                'password' => $this->password,
+            ];
+
+            if (Auth::guard('masyarakat')->attempt($credentials, $this->remember)) {
+                session()->regenerate();
+                return redirect()->intended(route('masyarakat.dashboard'));
             }
 
-            return redirect()->to(route('pelayanan.dashboard'));
+            $this->addError('login', 'Email/NIK atau password salah.');
+            return;
         }
 
-        $this->addError('email', __('auth.failed'));
+        // Processing for pelayanan and kepala_desa
+        $credentials = [
+            'email' => $this->login,
+            'password' => $this->password,
+        ];
+
+        if (Auth::guard('web')->attempt($credentials, $this->remember)) {
+            $user = Auth::guard('web')->user();
+
+            if ($this->tab === 'pelayanan' && $user->role->value === 'pelayanan') {
+                session()->regenerate();
+                return redirect()->intended(route('pelayanan.dashboard'));
+            } elseif ($this->tab === 'kepala_desa' && $user->role->value === 'kepala_desa') {
+                session()->regenerate();
+                return redirect()->intended(route('kepala-desa.dashboard'));
+            }
+
+            // Correct credentials but wrong tab/role chosen
+            Auth::guard('web')->logout();
+            $this->addError('login', 'Akses ditolak untuk peran (' . ucfirst(str_replace('_', ' ', $this->tab)) . ') ini.');
+            return;
+        }
+
+        $this->addError('login', __('auth.failed'));
     }
 
     public function render()
