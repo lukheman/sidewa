@@ -15,11 +15,6 @@
                         <h1>Selamat Datang di <span style="color: var(--primary-color);">SIDEWA</span></h1>
                         <p>Sistem Informasi Desa terpadu yang memudahkan pelayanan administrasi dan informasi untuk
                             seluruh warga desa. Akses layanan kapan saja, di mana saja.</p>
-                        <div class="hero-buttons">
-                            <a href="{{ route('masyarakat.login') }}" class="btn-hero-primary">
-                                <i class="fas fa-rocket me-2"></i>Mulai Sekarang
-                            </a>
-                        </div>
                     </div>
                 </div>
                 <div class="col-lg-6">
