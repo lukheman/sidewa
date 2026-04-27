@@ -16,11 +16,8 @@
                         <p>Sistem Informasi Desa terpadu yang memudahkan pelayanan administrasi dan informasi untuk
                             seluruh warga desa. Akses layanan kapan saja, di mana saja.</p>
                         <div class="hero-buttons">
-                            <a href="{{ route('admin.login') }}" class="btn-hero-primary">
+                            <a href="{{ route('masyarakat.login') }}" class="btn-hero-primary">
                                 <i class="fas fa-rocket me-2"></i>Mulai Sekarang
-                            </a>
-                            <a href="#layanan" class="btn-hero-secondary">
-                                <i class="fas fa-info-circle me-2"></i>Pelajari Lebih Lanjut
                             </a>
                         </div>
                     </div>

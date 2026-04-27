@@ -39,12 +39,15 @@
                 <i id="theme-icon" class="fas fa-moon"></i>
             </button>
         @endif
+{{--
+
         <button class="btn btn-link position-relative">
             <i class="fas fa-bell" style="color: var(--text-secondary); font-size: 1.25rem;"></i>
             @if($notificationCount > 0)
                 <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="font-size: 0.65rem;">{{ $notificationCount }}</span>
             @endif
         </button>
+--}}
         @php
             $profileRoute = 'admin.profile';
             if (Auth::guard('masyarakat')->check()) {
