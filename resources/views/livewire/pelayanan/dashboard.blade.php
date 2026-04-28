@@ -80,8 +80,8 @@
                     <div class="d-flex align-items-center gap-3 py-3" style="border-bottom: 1px solid var(--border-color);">
                         <div class="d-flex align-items-center justify-content-center rounded-circle flex-shrink-0"
                             style="width: 40px; height: 40px; background: var(--bg-secondary);">
-                            <i class="{{ App\Enum\StatusPengaduan::from($pengaduan->status)->icon() }}"
-                                style="color: var(--{{ App\Enum\StatusPengaduan::from($pengaduan->status)->color() }}-color);"></i>
+                            <i class="{{ $pengaduan->status->icon() }}"
+                                style="color: var(--{{ $pengaduan->status->color() }}-color);"></i>
                         </div>
                         <div class="flex-grow-1">
                             <p class="mb-0" style="color: var(--text-primary); font-weight: 500;">
@@ -91,8 +91,8 @@
                                 {{ $pengaduan->isi_pengaduan }}
                             </small>
                         </div>
-                        <x-admin.badge variant="{{ App\Enum\StatusPengaduan::from($pengaduan->status)->color() }}" size="sm">
-                            {{ App\Enum\StatusPengaduan::from($pengaduan->status)->label() }}
+                        <x-admin.badge variant="{{ $pengaduan->status->color() }}" size="sm">
+                            {{ $pengaduan->status->label() }}
                         </x-admin.badge>
                     </div>
                 @empty
