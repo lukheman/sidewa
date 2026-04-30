@@ -592,7 +592,7 @@
                 </x-admin.sidebar-section>
 
                 <x-admin.sidebar-section title="Data Master">
-                    <x-admin.sidebar-link href="{{ route('pelayanan.users') }}" icon="fas fa-users-cog" :active="request()->routeIs('pelayanan.users')">Users</x-admin.sidebar-link>
+                    <x-admin.sidebar-link href="{{ route('pelayanan.users') }}" icon="fas fa-users-cog" :active="request()->routeIs('pelayanan.users')">Pengguna</x-admin.sidebar-link>
                     <x-admin.sidebar-link href="{{ route('pelayanan.masyarakat') }}" icon="fas fa-users" :active="request()->routeIs('pelayanan.masyarakat')">Masyarakat</x-admin.sidebar-link>
                     <x-admin.sidebar-link href="{{ route('pelayanan.jenis-surat') }}" icon="fas fa-file-alt" :active="request()->routeIs('pelayanan.jenis-surat')">Jenis Surat</x-admin.sidebar-link>
                 </x-admin.sidebar-section>
@@ -609,6 +609,10 @@
                     <x-admin.sidebar-link href="{{ route('pelayanan.pengaduan') }}" icon="fas fa-comments" :active="request()->routeIs('pelayanan.pengaduan')">Pengaduan</x-admin.sidebar-link>
                 </x-admin.sidebar-section>
 
+                <x-admin.sidebar-section title="Laporan">
+                    <x-admin.sidebar-link href="{{ route('pelayanan.laporan-masyarakat') }}" icon="fas fa-print" :active="request()->routeIs('pelayanan.laporan-masyarakat')">Laporan Masyarakat</x-admin.sidebar-link>
+                </x-admin.sidebar-section>
+
                 <x-admin.sidebar-section title="AKUN">
                     <x-admin.sidebar-link href="{{ route('pelayanan.profile') }}" icon="fas fa-user-circle" :active="request()->routeIs('pelayanan.profile')">Profile</x-admin.sidebar-link>
                 </x-admin.sidebar-section>
@@ -620,7 +624,12 @@
 
                 <x-admin.sidebar-section title="LAYANAN">
                     <x-admin.sidebar-link href="{{ route('kepala-desa.verifikasi-surat') }}" icon="fas fa-clipboard-check" :active="request()->routeIs('kepala-desa.verifikasi-surat')">Verifikasi Surat</x-admin.sidebar-link>
+                </x-admin.sidebar-section>
+
+                <x-admin.sidebar-section title="LAPORAN">
                     <x-admin.sidebar-link href="{{ route('kepala-desa.pengaduan') }}" icon="fas fa-bullhorn" :active="request()->routeIs('kepala-desa.pengaduan')">Laporan Pengaduan</x-admin.sidebar-link>
+                    <x-admin.sidebar-link href="{{ route('kepala-desa.laporan-masyarakat') }}" icon="fas fa-users" :active="request()->routeIs('kepala-desa.laporan-masyarakat')">Laporan Masyarakat</x-admin.sidebar-link>
+                    <x-admin.sidebar-link href="{{ route('kepala-desa.laporan-kegiatan') }}" icon="fas fa-calendar-alt" :active="request()->routeIs('kepala-desa.laporan-kegiatan')">Laporan Kegiatan</x-admin.sidebar-link>
                 </x-admin.sidebar-section>
 
                 <x-admin.sidebar-section title="AKUN">

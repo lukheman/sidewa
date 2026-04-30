@@ -33,10 +33,13 @@ use App\Livewire\Masyarakat\PengajuanSuratCreate as MasyarakatPengajuanSuratCrea
 // Pelayanan Livewire Components
 use App\Livewire\Pelayanan\Dashboard as PelayananDashboard;
 use App\Livewire\Pelayanan\PengajuanSuratMasuk;
+use App\Livewire\Pelayanan\LaporanMasyarakat;
 
 // Kepala Desa Livewire Components
 use App\Livewire\KepalaDesa\Dashboard as KepalaDesaDashboard;
 use App\Livewire\KepalaDesa\VerifikasiSurat;
+use App\Livewire\KepalaDesa\LaporanMasyarakat as KepalaDesaLaporanMasyarakat;
+use App\Livewire\KepalaDesa\LaporanKegiatan as KepalaDesaLaporanKegiatan;
 
 // Public Routes
 Route::get('/', LandingPage::class)->name('home');
@@ -96,6 +99,10 @@ Route::prefix('pelayanan')->middleware('auth')->group(function () {
     Route::get('/pengaduan', App\Livewire\Pelayanan\PengaduanMasuk::class)->name('pelayanan.pengaduan');
     Route::get('/pengajuan-surat', PengajuanSuratMasuk::class)->name('pelayanan.pengajuan-surat');
 
+    // Laporan
+    Route::get('/laporan-masyarakat', LaporanMasyarakat::class)->name('pelayanan.laporan-masyarakat');
+    Route::get('/laporan-masyarakat/print', [App\Http\Controllers\LaporanMasyarakatController::class, 'print'])->name('pelayanan.laporan-masyarakat.print');
+
     // Profile & Others
     Route::get('/profile', Profile::class)->name('pelayanan.profile');
     Route::get('/components', ComponentDocs::class)->name('pelayanan.components');
@@ -108,5 +115,13 @@ Route::prefix('kepala-desa')->middleware('auth')->group(function () {
     Route::get('/verifikasi-surat', VerifikasiSurat::class)->name('kepala-desa.verifikasi-surat');
     Route::get('/pengaduan', App\Livewire\KepalaDesa\PengaduanIndex::class)->name('kepala-desa.pengaduan');
     Route::get('/pengaduan/print', [App\Http\Controllers\KepalaDesa\PengaduanReportController::class, 'print'])->name('kepala-desa.pengaduan.print');
+    
+    // Laporan
+    Route::get('/laporan-masyarakat', KepalaDesaLaporanMasyarakat::class)->name('kepala-desa.laporan-masyarakat');
+    Route::get('/laporan-masyarakat/print', [App\Http\Controllers\LaporanMasyarakatController::class, 'print'])->name('kepala-desa.laporan-masyarakat.print');
+    
+    Route::get('/laporan-kegiatan', KepalaDesaLaporanKegiatan::class)->name('kepala-desa.laporan-kegiatan');
+    Route::get('/laporan-kegiatan/print', [App\Http\Controllers\KepalaDesa\LaporanKegiatanController::class, 'print'])->name('kepala-desa.laporan-kegiatan.print');
+
     Route::get('/profile', Profile::class)->name('kepala-desa.profile');
 });

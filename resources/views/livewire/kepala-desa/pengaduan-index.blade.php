@@ -56,7 +56,7 @@
 
                 {{-- Print Button --}}
                 <a href="{{ route('kepala-desa.pengaduan.print', ['status' => $filterStatus, 'start' => $startDate, 'end' => $endDate]) }}"
-                    target="_blank" class="btn btn-primary d-flex align-items-center gap-2"
+                    target="_blank" class="btn btn-primary-modern d-flex align-items-center gap-2"
                     style="white-space: nowrap;">
                     <i class="fas fa-print"></i> Cetak PDF
                 </a>
