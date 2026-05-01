@@ -34,12 +34,14 @@ use App\Livewire\Masyarakat\PengajuanSuratCreate as MasyarakatPengajuanSuratCrea
 use App\Livewire\Pelayanan\Dashboard as PelayananDashboard;
 use App\Livewire\Pelayanan\PengajuanSuratMasuk;
 use App\Livewire\Pelayanan\LaporanMasyarakat;
+use App\Livewire\Pelayanan\LaporanAnggaran as PelayananLaporanAnggaran;
 
 // Kepala Desa Livewire Components
 use App\Livewire\KepalaDesa\Dashboard as KepalaDesaDashboard;
 use App\Livewire\KepalaDesa\VerifikasiSurat;
 use App\Livewire\KepalaDesa\LaporanMasyarakat as KepalaDesaLaporanMasyarakat;
 use App\Livewire\KepalaDesa\LaporanKegiatan as KepalaDesaLaporanKegiatan;
+use App\Livewire\KepalaDesa\LaporanAnggaran as KepalaDesaLaporanAnggaran;
 
 // Public Routes
 Route::get('/', LandingPage::class)->name('home');
@@ -102,6 +104,9 @@ Route::prefix('pelayanan')->middleware('auth')->group(function () {
     // Laporan
     Route::get('/laporan-masyarakat', LaporanMasyarakat::class)->name('pelayanan.laporan-masyarakat');
     Route::get('/laporan-masyarakat/print', [App\Http\Controllers\LaporanMasyarakatController::class, 'print'])->name('pelayanan.laporan-masyarakat.print');
+    
+    Route::get('/laporan-anggaran', PelayananLaporanAnggaran::class)->name('pelayanan.laporan-anggaran');
+    Route::get('/laporan-anggaran/print', [App\Http\Controllers\LaporanAnggaranController::class, 'print'])->name('pelayanan.laporan-anggaran.print');
 
     // Profile & Others
     Route::get('/profile', Profile::class)->name('pelayanan.profile');
@@ -122,6 +127,9 @@ Route::prefix('kepala-desa')->middleware('auth')->group(function () {
     
     Route::get('/laporan-kegiatan', KepalaDesaLaporanKegiatan::class)->name('kepala-desa.laporan-kegiatan');
     Route::get('/laporan-kegiatan/print', [App\Http\Controllers\KepalaDesa\LaporanKegiatanController::class, 'print'])->name('kepala-desa.laporan-kegiatan.print');
+
+    Route::get('/laporan-anggaran', KepalaDesaLaporanAnggaran::class)->name('kepala-desa.laporan-anggaran');
+    Route::get('/laporan-anggaran/print', [App\Http\Controllers\LaporanAnggaranController::class, 'print'])->name('kepala-desa.laporan-anggaran.print');
 
     Route::get('/profile', Profile::class)->name('kepala-desa.profile');
 });

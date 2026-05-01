@@ -610,7 +610,8 @@
                 </x-admin.sidebar-section>
 
                 <x-admin.sidebar-section title="Laporan">
-                    <x-admin.sidebar-link href="{{ route('pelayanan.laporan-masyarakat') }}" icon="fas fa-print" :active="request()->routeIs('pelayanan.laporan-masyarakat')">Laporan Masyarakat</x-admin.sidebar-link>
+                    <x-admin.sidebar-link href="{{ route('pelayanan.laporan-masyarakat') }}" icon="fas fa-users" :active="request()->routeIs('pelayanan.laporan-masyarakat')">Laporan Masyarakat</x-admin.sidebar-link>
+                    <x-admin.sidebar-link href="{{ route('pelayanan.laporan-anggaran') }}" icon="fas fa-file-invoice-dollar" :active="request()->routeIs('pelayanan.laporan-anggaran')">Laporan Anggaran</x-admin.sidebar-link>
                 </x-admin.sidebar-section>
 
                 <x-admin.sidebar-section title="AKUN">
@@ -630,6 +631,7 @@
                     <x-admin.sidebar-link href="{{ route('kepala-desa.pengaduan') }}" icon="fas fa-bullhorn" :active="request()->routeIs('kepala-desa.pengaduan')">Laporan Pengaduan</x-admin.sidebar-link>
                     <x-admin.sidebar-link href="{{ route('kepala-desa.laporan-masyarakat') }}" icon="fas fa-users" :active="request()->routeIs('kepala-desa.laporan-masyarakat')">Laporan Masyarakat</x-admin.sidebar-link>
                     <x-admin.sidebar-link href="{{ route('kepala-desa.laporan-kegiatan') }}" icon="fas fa-calendar-alt" :active="request()->routeIs('kepala-desa.laporan-kegiatan')">Laporan Kegiatan</x-admin.sidebar-link>
+                    <x-admin.sidebar-link href="{{ route('kepala-desa.laporan-anggaran') }}" icon="fas fa-file-invoice-dollar" :active="request()->routeIs('kepala-desa.laporan-anggaran')">Laporan Anggaran</x-admin.sidebar-link>
                 </x-admin.sidebar-section>
 
                 <x-admin.sidebar-section title="AKUN">
