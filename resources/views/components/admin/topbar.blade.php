@@ -3,7 +3,6 @@
     'userRole' => 'Administrator',
     'userInitials' => null,
     'notificationCount' => 0,
-    'searchPlaceholder' => 'Search anything...',
     'showLogout' => true,
     'showThemeToggle' => true
 ])
@@ -26,12 +25,6 @@
         <button class="btn btn-link mobile-toggle me-3" onclick="toggleSidebar()">
             <i class="fas fa-bars"></i>
         </button>
-        <div class="input-group" style="max-width: 400px;">
-            <span class="input-group-text" style="background: var(--input-bg); border-color: var(--border-color);">
-                <i class="fas fa-search" style="color: var(--text-muted);"></i>
-            </span>
-            <input type="text" class="form-control" placeholder="{{ $searchPlaceholder }}" style="background: var(--input-bg); border-color: var(--border-color); color: var(--text-primary);">
-        </div>
     </div>
     <div class="d-flex align-items-center gap-3">
         @if($showThemeToggle)
