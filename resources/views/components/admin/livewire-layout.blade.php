@@ -17,10 +17,10 @@
         :root {
             --sidebar-width: 280px;
             --topbar-height: 70px;
-            --primary-color: #10b981;
-            --primary-dark: #059669;
-            --primary-light: #34d399;
-            --secondary-color: #14b8a6;
+            --primary-color: #0ea5e9;
+            --primary-dark: #0284c7;
+            --primary-light: #38bdf8;
+            --secondary-color: #06b6d4;
             --success-color: #22c55e;
             --warning-color: #f59e0b;
             --danger-color: #ef4444;
@@ -28,30 +28,30 @@
             --card-shadow: none;
 
             /* Light theme (default) - Fresh & Clean */
-            --bg-primary: #f0fdf4;
+            --bg-primary: #f0f9ff;
             --bg-secondary: #ffffff;
-            --bg-tertiary: #ecfdf5;
-            --text-primary: #064e3b;
-            --text-secondary: #047857;
+            --bg-tertiary: #e0f2fe;
+            --text-primary: #0c4a6e;
+            --text-secondary: #0369a1;
             --text-muted: #6b7280;
-            --border-color: #d1fae5;
-            --border-light: #ecfdf5;
+            --border-color: #bae6fd;
+            --border-light: #e0f2fe;
             --input-bg: #ffffff;
-            --hover-bg: #ecfdf5;
-            --accent-gradient: linear-gradient(135deg, #10b981 0%, #14b8a6 100%);
+            --hover-bg: #e0f2fe;
+            --accent-gradient: linear-gradient(135deg, #0ea5e9 0%, #06b6d4 100%);
         }
 
         [data-theme="dark"] {
-            --bg-primary: #022c22;
-            --bg-secondary: #064e3b;
-            --bg-tertiary: #065f46;
-            --text-primary: #ecfdf5;
-            --text-secondary: #a7f3d0;
-            --text-muted: #6ee7b7;
-            --border-color: #065f46;
-            --border-light: #047857;
-            --input-bg: #064e3b;
-            --hover-bg: #065f46;
+            --bg-primary: #082f49;
+            --bg-secondary: #0c4a6e;
+            --bg-tertiary: #075985;
+            --text-primary: #f0f9ff;
+            --text-secondary: #7dd3fc;
+            --text-muted: #38bdf8;
+            --border-color: #075985;
+            --border-light: #0369a1;
+            --input-bg: #0c4a6e;
+            --hover-bg: #075985;
             --card-shadow: none;
         }
 
@@ -282,7 +282,7 @@
         .btn-primary-modern:hover {
             background: var(--primary-dark);
             transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.4);
+            box-shadow: 0 4px 12px rgba(14, 165, 233, 0.4);
         }
 
         .alert-modern {
@@ -494,7 +494,7 @@
             background: var(--input-bg);
             border-color: var(--primary-color);
             color: var(--text-primary);
-            box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+            box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.1);
         }
 
         .form-control::placeholder {
