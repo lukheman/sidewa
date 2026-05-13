@@ -455,7 +455,7 @@
                             label: 'Jumlah Penduduk',
                             data: {!! json_encode(array_values($ageGroups)) !!},
                             backgroundColor: [
-                                'rgba(16, 185, 129, 0.8)',
+                                'rgba(14, 165, 233, 0.8)',
                                 'rgba(59, 130, 246, 0.8)',
                                 'rgba(139, 92, 246, 0.8)',
                                 'rgba(245, 158, 11, 0.8)',
@@ -507,7 +507,7 @@
             }).addTo(map);
 
             var customIcon = L.divIcon({
-                html: '<div style="background: linear-gradient(135deg, #10b981, #059669); width: 36px; height: 36px; border-radius: 50% 50% 50% 0; transform: rotate(-45deg); border: 3px solid white; box-shadow: 0 4px 12px rgba(0,0,0,0.3);"></div>',
+                html: '<div style="background: linear-gradient(135deg, #0ea5e9, #0284c7); width: 36px; height: 36px; border-radius: 50% 50% 50% 0; transform: rotate(-45deg); border: 3px solid white; box-shadow: 0 4px 12px rgba(0,0,0,0.3);"></div>',
                 iconSize: [36, 36],
                 iconAnchor: [18, 36],
                 popupAnchor: [0, -36],

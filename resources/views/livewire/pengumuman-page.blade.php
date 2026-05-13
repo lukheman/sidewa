@@ -32,7 +32,7 @@
                 @forelse($pengumumans as $pengumuman)
                     <div class="col-md-6 col-lg-4" wire:key="pengumuman-{{ $pengumuman->id }}">
                         <div style="background: white; border: 1px solid var(--border-color); border-radius: 16px; padding: 2rem; height: 100%; transition: all 0.3s ease; cursor: default;"
-                            onmouseover="this.style.transform='translateY(-8px)'; this.style.boxShadow='0 20px 40px rgba(16, 185, 129, 0.15)'; this.style.borderColor='var(--primary-light)';"
+                            onmouseover="this.style.transform='translateY(-8px)'; this.style.boxShadow='0 20px 40px rgba(14, 165, 233, 0.15)'; this.style.borderColor='var(--primary-light)';"
                             onmouseout="this.style.transform='none'; this.style.boxShadow='none'; this.style.borderColor='var(--border-color)';">
                             <div class="d-flex align-items-center gap-2 mb-3">
                                 <span

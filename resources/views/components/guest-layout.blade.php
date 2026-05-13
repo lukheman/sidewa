@@ -12,16 +12,16 @@
     @livewireStyles
     <style>
         :root {
-            --primary-color: #10b981;
-            --primary-dark: #059669;
-            --primary-light: #34d399;
-            --secondary-color: #14b8a6;
+            --primary-color: #0ea5e9;
+            --primary-dark: #0284c7;
+            --primary-light: #38bdf8;
+            --secondary-color: #06b6d4;
             --success-color: #22c55e;
-            --text-primary: #064e3b;
-            --text-secondary: #047857;
+            --text-primary: #0c4a6e;
+            --text-secondary: #0369a1;
             --text-muted: #6b7280;
-            --border-color: #d1fae5;
-            --bg-light: #ecfdf5;
+            --border-color: #bae6fd;
+            --bg-light: #e0f2fe;
         }
 
         * {
@@ -86,13 +86,16 @@
 
         .btn-login:hover {
             transform: translateY(-2px);
-            box-shadow: 0 5px 20px rgba(16, 185, 129, 0.4);
+            box-shadow: 0 5px 20px rgba(14, 165, 233, 0.4);
         }
 
         /* Hero Section */
         .hero-section {
             min-height: 100vh;
-            background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
+            background: linear-gradient(rgba(224, 242, 254, 0.85), rgba(186, 230, 253, 0.9)), url('{{ asset('images/desa_bg.png') }}');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
             display: flex;
             align-items: center;
             padding-top: 80px;
@@ -110,7 +113,7 @@
         .hero-shapes .shape {
             position: absolute;
             border-radius: 50%;
-            background: rgba(16, 185, 129, 0.1);
+            background: rgba(14, 165, 233, 0.1);
             animation: float 15s infinite ease-in-out;
         }
 
@@ -180,7 +183,7 @@
 
         .btn-hero-primary:hover {
             transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(16, 185, 129, 0.4);
+            box-shadow: 0 10px 30px rgba(14, 165, 233, 0.4);
             color: white;
         }
 
@@ -249,7 +252,7 @@
 
         .feature-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(16, 185, 129, 0.15);
+            box-shadow: 0 20px 40px rgba(14, 165, 233, 0.15);
             border-color: var(--primary-light);
         }
 
@@ -301,7 +304,7 @@
 
         .service-item:hover {
             transform: translateX(10px);
-            box-shadow: 0 10px 30px rgba(16, 185, 129, 0.1);
+            box-shadow: 0 10px 30px rgba(14, 165, 233, 0.1);
         }
 
         .service-icon {
@@ -376,7 +379,7 @@
 
         /* Footer */
         .footer {
-            background: #064e3b;
+            background: #0c4a6e;
             color: white;
             padding: 4rem 0 2rem;
         }

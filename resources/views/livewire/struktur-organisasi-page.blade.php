@@ -33,7 +33,7 @@
                     @if($topLevel)
                         <div class="col-12 text-center mb-5">
                             <div class="d-inline-block" style="position: relative;">
-                                <div style="background: white; border: 2px solid var(--primary-color); border-radius: 20px; padding: 2rem; width: 300px; box-shadow: 0 20px 40px rgba(16, 185, 129, 0.15); position: relative; z-index: 2;">
+                                <div style="background: white; border: 2px solid var(--primary-color); border-radius: 20px; padding: 2rem; width: 300px; box-shadow: 0 20px 40px rgba(14, 165, 233, 0.15); position: relative; z-index: 2;">
                                     <div style="width: 120px; height: 120px; margin: 0 auto 1.5rem; border-radius: 50%; overflow: hidden; border: 4px solid var(--bg-light); box-shadow: 0 8px 16px rgba(0,0,0,0.1);">
                                         @if($topLevel->foto)
                                             <img src="{{ Storage::url($topLevel->foto) }}" alt="{{ $topLevel->nama }}" style="width: 100%; height: 100%; object-fit: cover;">

@@ -28,7 +28,7 @@
             <div class="row g-4 justify-content-center">
                 <div class="col-md-4">
                     <div
-                        style="background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-radius: 16px; padding: 2rem; text-align: center; border: 1px solid #bbf7d0;">
+                        style="background: linear-gradient(135deg, #f0f9ff 0%, #dbeafe 100%); border-radius: 16px; padding: 2rem; text-align: center; border: 1px solid #93c5fd;">
                         <div
                             style="width: 56px; height: 56px; border-radius: 50%; background: rgba(34,197,94,0.15); display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem;">
                             <i class="fas fa-arrow-down" style="color: #22c55e; font-size: 1.3rem;"></i>
@@ -134,7 +134,7 @@
                                                     {{ number_format($item->jumlah, 0, ',', '.') }}</td>
                                             </tr>
                                         @endforeach
-                                        <tr style="background: #f0fdf4;">
+                                        <tr style="background: #f0f9ff;">
                                             <td colspan="2"
                                                 style="padding: 0.75rem; font-weight: 700; color: var(--text-primary);">
                                                 Total Pendapatan</td>
@@ -220,7 +220,7 @@
         <script>
             document.addEventListener('DOMContentLoaded', function () {
                 const colors = [
-                    '#10b981', '#14b8a6', '#06b6d4', '#3b82f6', '#8b5cf6',
+                    '#0ea5e9', '#06b6d4', '#06b6d4', '#3b82f6', '#8b5cf6',
                     '#ec4899', '#f59e0b', '#ef4444', '#6366f1', '#84cc16',
                     '#f97316', '#0ea5e9'
                 ];
