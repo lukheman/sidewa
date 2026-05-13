@@ -56,8 +56,8 @@
         }
 
         .icon-valid {
-            background: linear-gradient(135deg, #10b981, #059669);
-            box-shadow: 0 10px 25px rgba(16, 185, 129, 0.4);
+            background: linear-gradient(135deg, #0ea5e9, #0284c7);
+            box-shadow: 0 10px 25px rgba(14, 165, 233, 0.4);
         }
 
         .icon-invalid {
@@ -87,7 +87,7 @@
         }
 
         .subtitle-valid {
-            color: #047857;
+            color: #0369a1;
         }
 
         .subtitle-invalid {
@@ -176,7 +176,7 @@
             margin-top: 0.75rem;
             font-weight: 700;
             font-size: 1.1rem;
-            color: #10b981;
+            color: #0ea5e9;
         }
 
         .timestamp {
