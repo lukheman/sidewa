@@ -59,7 +59,8 @@
 
                             <td>
                                 <div style="color: var(--text-primary); font-weight: 500;">
-                                    {{ $item->masyarakat->nama ?? '-' }}</div>
+                                    {{ $item->masyarakat->nama ?? '-' }}
+                                </div>
                                 <small style="color: var(--text-muted);">{{ $item->masyarakat->nik ?? '' }}</small>
                             </td>
                             <td style="color: var(--text-secondary);">{{ $item->jenisSurat->nama_surat ?? '-' }}</td>

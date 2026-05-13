@@ -32,6 +32,7 @@
                         <th>No</th>
                         <th>Nama Surat</th>
                         <th>Keterangan</th>
+                        <th>Template</th>
                         <th style="width: 120px;">Aksi</th>
                     </tr>
                 </thead>
@@ -41,6 +42,13 @@
                             <td style="color: var(--text-muted);">{{ $jenisSurats->firstItem() + $index }}</td>
                             <td style="color: var(--text-primary); font-weight: 500;">{{ $item->nama_surat }}</td>
                             <td style="color: var(--text-secondary);">{{ $item->keterangan ?? '-' }}</td>
+                            <td>
+                                @if($item->file_template)
+                                    <x-admin.badge variant="success" icon="fas fa-file-word">Tersedia</x-admin.badge>
+                                @else
+                                    <x-admin.badge variant="danger" icon="fas fa-times">Belum Ada</x-admin.badge>
+                                @endif
+                            </td>
                             <td>
                                 <div class="d-flex gap-1">
                                     <button class="action-btn action-btn-edit" wire:click="openEditModal({{ $item->id }})"
@@ -56,7 +64,7 @@
                         </tr>
                     @empty
                         <tr>
-                            <td colspan="4" class="text-center py-4">
+                            <td colspan="5" class="text-center py-4">
                                 <div class="text-muted">
                                     <i class="fas fa-file-alt mb-2" style="font-size: 2rem;"></i>
                                     <p class="mb-0">Belum ada jenis surat</p>
@@ -105,6 +113,67 @@
                         @error('keterangan')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="file_template" class="form-label">Template Word (.docx)</label>
+                        <input type="file" class="form-control @error('file_template') is-invalid @enderror" id="file_template"
+                            wire:model="file_template" accept=".docx">
+                        <small class="text-muted d-block mt-1">Biarkan kosong jika tidak ingin mengubah template. Variabel yang didukung: ${nomor_surat}, ${nama_pemohon}, ${nik_pemohon}, ${alamat_pemohon}, dll.</small>
+                        @error('file_template')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                        
+                        <div wire:loading wire:target="file_template" class="text-primary mt-2">
+                            <i class="fas fa-spinner fa-spin me-1"></i> Mengunggah file...
+                        </div>
+                    </div>
+
+                    <div class="mb-4">
+                        <label class="form-label d-flex justify-content-between align-items-center">
+                            <span>Form Fields Dinamis <span class="text-muted" style="font-size: 0.8rem;">(Opsional)</span></span>
+                            <button type="button" wire:click="addField" class="btn btn-sm btn-outline-primary" style="padding: 4px 10px; font-size: 0.8rem;">
+                                <i class="fas fa-plus"></i> Tambah Field
+                            </button>
+                        </label>
+                        <div class="p-3 custom-scrollbar" style="background: var(--bg-tertiary); border-radius: 8px; border: 1px solid var(--border-color); max-height: 350px; overflow-y: auto;">
+                            @foreach($form_fields as $index => $field)
+                                <div class="row g-2 mb-3 align-items-end" style="border-bottom: 1px dashed var(--border-color); padding-bottom: 10px;">
+                                    <div class="col-md-4">
+                                        <label class="form-label" style="font-size: 0.8rem;">Label (Yang tampil ke warga)</label>
+                                        <input type="text" class="form-control form-control-sm" wire:model="form_fields.{{ $index }}.label" placeholder="Contoh: Nama Usaha">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="form-label" style="font-size: 0.8rem;">Variabel di Word (Tanpa $)</label>
+                                        <input type="text" class="form-control form-control-sm" wire:model="form_fields.{{ $index }}.name" placeholder="Contoh: nama_usaha">
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label class="form-label" style="font-size: 0.8rem;">Tipe Input</label>
+                                        <select class="form-select form-select-sm" wire:model="form_fields.{{ $index }}.type">
+                                            <option value="text">Teks Singkat</option>
+                                            <option value="textarea">Teks Panjang</option>
+                                            <option value="number">Angka</option>
+                                            <option value="date">Tanggal</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-1">
+                                        <button type="button" wire:click="removeField({{ $index }})" class="btn btn-sm btn-outline-danger w-100" title="Hapus">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </div>
+                                    @error('form_fields.'.$index.'.name') <div class="col-12 mt-1 text-danger" style="font-size: 0.75rem;">Nama Variabel: {{ $message }}</div> @enderror
+                                    @error('form_fields.'.$index.'.label') <div class="col-12 mt-1 text-danger" style="font-size: 0.75rem;">Label: {{ $message }}</div> @enderror
+                                </div>
+                            @endforeach
+                            
+                            @if(count($form_fields) === 0)
+                                <div class="text-center text-muted" style="font-size: 0.85rem;">
+                                    <i class="fas fa-info-circle mb-1"></i>
+                                    <p class="mb-0">Belum ada field tambahan.</p>
+                                    <small>Gunakan fitur ini jika jenis surat membutuhkan input spesifik selain data diri pemohon.</small>
+                                </div>
+                            @endif
+                        </div>
                     </div>
 
                     <div class="d-flex justify-content-end gap-2">

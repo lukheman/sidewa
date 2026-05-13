@@ -22,7 +22,7 @@
                             <label for="jenis_surat_id" class="form-label">Jenis Surat <span
                                     style="color: var(--danger-color);">*</span></label>
                             <select class="form-select @error('jenis_surat_id') is-invalid @enderror"
-                                id="jenis_surat_id" wire:model="jenis_surat_id">
+                                id="jenis_surat_id" wire:model.live="jenis_surat_id">
                                 <option value="">Pilih Jenis Surat</option>
                                 @foreach($jenisSurats as $jenis)
                                     <option value="{{ $jenis->id }}">{{ $jenis->nama_surat }}</option>
@@ -31,7 +31,46 @@
                             @error('jenis_surat_id')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
+                            <div wire:loading wire:target="jenis_surat_id" class="text-primary mt-2" style="font-size: 0.85rem;">
+                                <i class="fas fa-spinner fa-spin me-1"></i> Memuat form khusus...
+                            </div>
                         </div>
+
+                        {{-- Dynamic Fields --}}
+                        @if(count($dynamicFields) > 0)
+                            <div class="col-12 mt-2">
+                                <div class="p-4" style="background: var(--bg-secondary); border-radius: 8px; border: 1px solid var(--border-color);">
+                                    <h6 class="mb-3" style="color: var(--primary-color); font-weight: 600;">
+                                        <i class="fas fa-clipboard-list me-2"></i>Data Spesifik Surat
+                                    </h6>
+                                    <div class="row g-3">
+                                        @foreach($dynamicFields as $field)
+                                            <div class="col-12 col-md-6">
+                                                <label for="field_{{ $field['name'] }}" class="form-label">{{ $field['label'] }} <span style="color: var(--danger-color);">*</span></label>
+                                                
+                                                @if(isset($field['type']) && $field['type'] === 'textarea')
+                                                    <textarea class="form-control @error('data_tambahan.' . $field['name']) is-invalid @enderror" 
+                                                        id="field_{{ $field['name'] }}" wire:model="data_tambahan.{{ $field['name'] }}" rows="3"></textarea>
+                                                @elseif(isset($field['type']) && $field['type'] === 'date')
+                                                    <input type="date" class="form-control @error('data_tambahan.' . $field['name']) is-invalid @enderror" 
+                                                        id="field_{{ $field['name'] }}" wire:model="data_tambahan.{{ $field['name'] }}">
+                                                @elseif(isset($field['type']) && $field['type'] === 'number')
+                                                    <input type="number" class="form-control @error('data_tambahan.' . $field['name']) is-invalid @enderror" 
+                                                        id="field_{{ $field['name'] }}" wire:model="data_tambahan.{{ $field['name'] }}">
+                                                @else
+                                                    <input type="text" class="form-control @error('data_tambahan.' . $field['name']) is-invalid @enderror" 
+                                                        id="field_{{ $field['name'] }}" wire:model="data_tambahan.{{ $field['name'] }}">
+                                                @endif
+                                                
+                                                @error('data_tambahan.' . $field['name'])
+                                                    <div class="invalid-feedback">{{ $message }}</div>
+                                                @enderror
+                                            </div>
+                                        @endforeach
+                                    </div>
+                                </div>
+                            </div>
+                        @endif
 
                         <div class="col-12">
                             <label for="keterangan" class="form-label">Keterangan / Keperluan</label>

@@ -20,6 +20,17 @@ class JenisSurat extends Model
     protected $fillable = [
         'nama_surat',
         'keterangan',
+        'file_template',
+        'form_fields',
+    ];
+
+    /**
+     * The attributes that should be cast.
+     *
+     * @var array<string, string>
+     */
+    protected $casts = [
+        'form_fields' => 'array',
     ];
 
     /**

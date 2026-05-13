@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Enum\StatusPengajuanSurat;
 use App\Models\PengajuanSurat;
 use Barryvdh\DomPDF\Facade\Pdf;
+use PhpOffice\PhpWord\TemplateProcessor;
+use Illuminate\Support\Facades\Storage;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 class SuratPdfController extends Controller
@@ -20,6 +22,43 @@ class SuratPdfController extends Controller
 
         $namaSurat = $pengajuan->jenisSurat->nama_surat;
         $nomorSurat = $this->generateNomorSurat($pengajuan);
+
+        // Jika ada template Word yang diunggah
+        if ($pengajuan->jenisSurat->file_template && Storage::disk('local')->exists($pengajuan->jenisSurat->file_template)) {
+            $templatePath = storage_path('app/private/' . $pengajuan->jenisSurat->file_template);
+            
+            // Note: In newer Laravel versions, local disk is in storage/app/private. 
+            // If it's in storage/app/, adjust accordingly.
+            if(!file_exists($templatePath)) {
+                $templatePath = storage_path('app/' . $pengajuan->jenisSurat->file_template);
+            }
+
+            $templateProcessor = new TemplateProcessor($templatePath);
+
+            // Replace variables
+            $templateProcessor->setValue('nomor_surat', $nomorSurat);
+            $templateProcessor->setValue('nama_pemohon', $pengajuan->masyarakat->nama ?? '-');
+            $templateProcessor->setValue('nik_pemohon', $pengajuan->masyarakat->nik ?? '-');
+            $templateProcessor->setValue('alamat_pemohon', $pengajuan->masyarakat->alamat ?? '-');
+            $templateProcessor->setValue('telepon_pemohon', $pengajuan->masyarakat->phone ?? '-');
+            $templateProcessor->setValue('tanggal', $pengajuan->tanggal_pengajuan->translatedFormat('d F Y'));
+            $templateProcessor->setValue('keterangan', $pengajuan->keterangan ?? '-');
+            
+            // Set Nilai Dinamis (Looping dari kolom JSON data_tambahan)
+            if (!empty($pengajuan->data_tambahan) && is_array($pengajuan->data_tambahan)) {
+                foreach ($pengajuan->data_tambahan as $key => $value) {
+                    $templateProcessor->setValue($key, $value);
+                }
+            }
+            
+            $filename = 'surat-' . str_replace(' ', '-', strtolower($namaSurat)) . '-' . $pengajuan->masyarakat->nik . '.docx';
+            $tempFile = tempnam(sys_get_temp_dir(), 'surat');
+            $templateProcessor->saveAs($tempFile);
+
+            return response()->download($tempFile, $filename)->deleteFileAfterSend(true);
+        }
+
+        // Fallback jika tidak ada template Word, gunakan PDF lama
         $isiSurat = $this->generateIsiSurat($pengajuan);
 
         // Generate QR Code berisi URL verifikasi

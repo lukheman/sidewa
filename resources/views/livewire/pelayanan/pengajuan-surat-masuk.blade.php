@@ -186,6 +186,19 @@
                             </div>
                         </div>
                     @endif
+                    @if(!empty($selectedPengajuan->data_tambahan) && is_array($selectedPengajuan->data_tambahan))
+                        <div class="col-12 mt-2">
+                            <label class="form-label text-muted" style="border-bottom: 1px solid var(--border-color); padding-bottom: 5px; width: 100%;">Data Spesifik Form</label>
+                            <div class="row g-3 mt-1 p-3" style="background: var(--bg-tertiary); border-radius: 10px;">
+                                @foreach($selectedPengajuan->data_tambahan as $key => $value)
+                                    <div class="col-md-6 mb-2">
+                                        <small class="text-muted d-block text-capitalize">{{ str_replace('_', ' ', $key) }}</small>
+                                        <p class="mb-0" style="color: var(--text-primary); font-weight: 500; word-break: break-word;">{{ $value ?: '-' }}</p>
+                                    </div>
+                                @endforeach
+                            </div>
+                        </div>
+                    @endif
                     @if($selectedPengajuan->user)
                         <div class="col-12">
                             <label class="form-label text-muted">Diproses oleh</label>

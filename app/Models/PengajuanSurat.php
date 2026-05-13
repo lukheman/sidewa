@@ -27,6 +27,7 @@ class PengajuanSurat extends Model
         'jenis_surat_id',
         'user_id',
         'verification_token',
+        'data_tambahan',
     ];
 
     protected static function booted(): void
@@ -48,6 +49,7 @@ class PengajuanSurat extends Model
         return [
             'tanggal_pengajuan' => 'date',
             'status' => StatusPengajuanSurat::class,
+            'data_tambahan' => 'array',
         ];
     }
 
