@@ -37,11 +37,14 @@ class DatabaseSeeder extends Seeder
         ]);
 
         // Create more pelayanan users
-        $pelayananUsers = User::factory(3)->pelayanan()->create();
-        $pelayananUsers->push($pelayanan);
+        // $pelayananUsers = User::factory(3)->pelayanan()->create();
+        // $pelayananUsers->push($pelayanan);
 
         // Create jenis surat
-        $jenisSurats = JenisSurat::factory(3)->create();
+        // $jenisSurats = JenisSurat::all();
+        // if ($jenisSurats->isEmpty()) {
+        //     $jenisSurats = JenisSurat::factory(3)->create();
+        // }
 
         // Create masyarakat demo (for testing login)
         Masyarakat::factory()->create([
@@ -54,31 +57,30 @@ class DatabaseSeeder extends Seeder
         ]);
 
         // Create more masyarakat
-        $masyarakats = Masyarakat::factory(4)->create();
+        $masyarakats = Masyarakat::factory(2)->create();
 
         // Create pengumumans
-        Pengumuman::factory(5)->create(['user_id' => $admin->id]);
+        Pengumuman::factory(5)->create(['user_id' => $pelayanan->id]);
         Pengumuman::factory(3)->create(['user_id' => $kepalaDesa->id]);
 
         // Create kegiatans
-        Kegiatan::factory(3)->completed()->create(['user_id' => $admin->id]);
-        Kegiatan::factory(5)->create(['user_id' => $pelayananUsers->random()->id]);
+        Kegiatan::factory(3)->completed()->create(['user_id' => $pelayanan->id]);
 
         // Create pengaduans
         foreach ($masyarakats->take(10) as $masyarakat) {
             Pengaduan::factory()->create([
                 'masyarakat_id' => $masyarakat->id,
-                'user_id' => $pelayananUsers->random()->id,
+                'user_id' => $pelayanan->id,
             ]);
         }
 
         // Create pengajuan surats
-        foreach ($masyarakats->take(15) as $masyarakat) {
-            PengajuanSurat::factory()->create([
-                'masyarakat_id' => $masyarakat->id,
-                'jenis_surat_id' => $jenisSurats->random()->id,
-                'user_id' => fake()->boolean(70) ? $pelayananUsers->random()->id : null,
-            ]);
-        }
+        // foreach ($masyarakats->take(15) as $masyarakat) {
+        //     PengajuanSurat::factory()->create([
+        //         'masyarakat_id' => $masyarakat->id,
+        //         'jenis_surat_id' => $jenisSurats->random()->id,
+        //         'user_id' => fake()->boolean(70) ? $pelayanan->id : null,
+        //     ]);
+        // }
     }
 }
