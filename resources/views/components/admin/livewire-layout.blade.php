@@ -42,16 +42,16 @@
         }
 
         [data-theme="dark"] {
-            --bg-primary: #082f49;
-            --bg-secondary: #0c4a6e;
-            --bg-tertiary: #075985;
-            --text-primary: #f0f9ff;
-            --text-secondary: #7dd3fc;
-            --text-muted: #38bdf8;
-            --border-color: #075985;
-            --border-light: #0369a1;
-            --input-bg: #0c4a6e;
-            --hover-bg: #075985;
+            --bg-primary: #09090b;
+            --bg-secondary: #18181b;
+            --bg-tertiary: #27272a;
+            --text-primary: #fafafa;
+            --text-secondary: #e4e4e7;
+            --text-muted: #a1a1aa;
+            --border-color: #27272a;
+            --border-light: #3f3f46;
+            --input-bg: #09090b;
+            --hover-bg: #27272a;
             --card-shadow: none;
         }
 

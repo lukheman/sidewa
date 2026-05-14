@@ -16,8 +16,9 @@
 
     <!-- Login Section -->
     <section
-        style="min-height: 100vh; background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%); display: flex; align-items: center; justify-content: center; padding: 6rem 1rem 2rem;">
-        <div style="width: 100%; max-width: 450px;">
+        style="min-height: 100vh; position: relative; display: flex; align-items: center; justify-content: center; padding: 6rem 1rem 2rem; background: url('{{ asset('images/desa_bg.png') }}') center/cover no-repeat fixed;">
+        <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.4); z-index: 0;"></div>
+        <div style="width: 100%; max-width: 450px; position: relative; z-index: 10;">
             <div
                 style="background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(20px); border-radius: 24px; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15); padding: 3rem; border: 1px solid rgba(255, 255, 255, 0.3);">
                 <!-- Brand Logo -->

@@ -13,8 +13,9 @@
 
     <!-- Register Section -->
     <section
-        style="min-height: 100vh; background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%); display: flex; align-items: center; justify-content: center; padding: 6rem 1rem 2rem;">
-        <div style="width: 100%; max-width: 500px;">
+        style="min-height: 100vh; position: relative; display: flex; align-items: center; justify-content: center; padding: 6rem 1rem 2rem; background: url('{{ asset('images/desa_bg.png') }}') center/cover no-repeat fixed;">
+        <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.4); z-index: 0;"></div>
+        <div style="width: 100%; max-width: 500px; position: relative; z-index: 10;">
             <div
                 style="background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(20px); border-radius: 24px; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15); padding: 2.5rem; border: 1px solid rgba(255, 255, 255, 0.3);">
                 <!-- Brand Logo -->
@@ -144,19 +145,6 @@
                             </div>
                         </div>
                     </div>
-
-                    <!-- Terms -->
-                    <div style="display: flex; align-items: start; gap: 0.5rem; margin-bottom: 1.5rem;">
-                        <input type="checkbox" wire:model="agree_terms" id="agree_terms"
-                            style="width: 1.25rem; height: 1.25rem; margin-top: 0.1rem;">
-                        <label for="agree_terms" style="color: #0369a1; font-size: 0.9rem; cursor: pointer;">
-                            Saya menyetujui <a href="#" style="color: #0ea5e9; font-weight: 500;">Syarat & Ketentuan</a>
-                        </label>
-                    </div>
-                    @error('agree_terms')
-                        <small
-                            style="color: #ef4444; display: block; margin-top: -1rem; margin-bottom: 1rem;">{{ $message }}</small>
-                    @enderror
 
                     <!-- Register Button -->
                     <button type="submit" wire:loading.attr="disabled"
