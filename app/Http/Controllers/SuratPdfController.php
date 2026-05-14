@@ -92,7 +92,7 @@ class SuratPdfController extends Controller
         $bulan = $this->toRomanNumeral($pengajuan->tanggal_pengajuan->month);
         $tahun = $pengajuan->tanggal_pengajuan->year;
 
-        return "{$nomor}/SKD/{$bulan}/{$tahun}";
+        return "470 / {$nomor} / {$bulan} / {$tahun}";
     }
 
     /**
