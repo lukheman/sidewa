@@ -21,9 +21,12 @@ class Masyarakat extends Authenticatable
      */
     protected $fillable = [
         'nik',
+        'tempat_lahir',
         'nama',
         'jenis_kelamin',
         'tanggal_lahir',
+        'agama',
+        'pekerjaan',
         'email',
         'alamat',
         'phone',

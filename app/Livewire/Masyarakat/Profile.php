@@ -15,6 +15,11 @@ class Profile extends Component
 {
     public string $nama = '';
     public string $email = '';
+    public string $tempat_lahir = '';
+    public string $tanggal_lahir = '';
+    public string $jenis_kelamin = '';
+    public string $agama = '';
+    public string $pekerjaan = '';
     public string $alamat = '';
     public string $phone = '';
     public string $current_password = '';
@@ -28,6 +33,11 @@ class Profile extends Component
         $masyarakat = Auth::guard('masyarakat')->user();
         $this->nama = $masyarakat->nama;
         $this->email = $masyarakat->email ?? '';
+        $this->tempat_lahir = $masyarakat->tempat_lahir ?? '';
+        $this->tanggal_lahir = $masyarakat->tanggal_lahir ? $masyarakat->tanggal_lahir->format('Y-m-d') : '';
+        $this->jenis_kelamin = $masyarakat->jenis_kelamin ?? '';
+        $this->agama = $masyarakat->agama ?? '';
+        $this->pekerjaan = $masyarakat->pekerjaan ?? '';
         $this->alamat = $masyarakat->alamat;
         $this->phone = $masyarakat->phone ?? '';
     }
@@ -39,6 +49,11 @@ class Profile extends Component
         return [
             'nama' => ['required', 'string', 'max:255'],
             'email' => ['required', 'email', 'max:255', 'unique:masyarakat,email,' . $masyarakatId],
+            'tempat_lahir' => ['required', 'string', 'max:255'],
+            'tanggal_lahir' => ['required', 'date'],
+            'jenis_kelamin' => ['required', 'in:L,P'],
+            'agama' => ['required', 'string', 'max:50'],
+            'pekerjaan' => ['nullable', 'string', 'max:255'],
             'alamat' => ['required', 'string'],
             'phone' => ['nullable', 'string', 'max:15'],
         ];
@@ -49,6 +64,10 @@ class Profile extends Component
         'nama.required' => 'Nama wajib diisi.',
         'email.required' => 'Email wajib diisi.',
         'email.unique' => 'Email sudah digunakan.',
+        'tempat_lahir.required' => 'Tempat lahir wajib diisi.',
+        'tanggal_lahir.required' => 'Tanggal lahir wajib diisi.',
+        'jenis_kelamin.required' => 'Jenis kelamin wajib dipilih.',
+        'agama.required' => 'Agama wajib diisi.',
         'alamat.required' => 'Alamat wajib diisi.',
     ];
 
@@ -68,6 +87,11 @@ class Profile extends Component
         $masyarakat = Auth::guard('masyarakat')->user();
         $masyarakat->nama = $validated['nama'];
         $masyarakat->email = $validated['email'];
+        $masyarakat->tempat_lahir = $validated['tempat_lahir'];
+        $masyarakat->tanggal_lahir = $validated['tanggal_lahir'];
+        $masyarakat->jenis_kelamin = $validated['jenis_kelamin'];
+        $masyarakat->agama = $validated['agama'];
+        $masyarakat->pekerjaan = $validated['pekerjaan'] ?? null;
         $masyarakat->alamat = $validated['alamat'];
         $masyarakat->phone = $validated['phone'];
         $masyarakat->save();

@@ -41,6 +41,12 @@ class SuratPdfController extends Controller
             $templateProcessor->setValue('nik_pemohon', $pengajuan->masyarakat->nik ?? '-');
             $templateProcessor->setValue('alamat_pemohon', $pengajuan->masyarakat->alamat ?? '-');
             $templateProcessor->setValue('telepon_pemohon', $pengajuan->masyarakat->phone ?? '-');
+            $templateProcessor->setValue('tempat_lahir_pemohon', $pengajuan->masyarakat->tempat_lahir ?? '-');
+            $templateProcessor->setValue('tanggal_lahir_pemohon', $pengajuan->masyarakat->tanggal_lahir ? $pengajuan->masyarakat->tanggal_lahir->translatedFormat('d F Y') : '-');
+            $templateProcessor->setValue('jenis_kelamin_pemohon', $pengajuan->masyarakat->jenis_kelamin === 'L' ? 'Laki-laki' : ($pengajuan->masyarakat->jenis_kelamin === 'P' ? 'Perempuan' : '-'));
+            $templateProcessor->setValue('agama_pemohon', $pengajuan->masyarakat->agama ?? '-');
+            $templateProcessor->setValue('pekerjaan_pemohon', $pengajuan->masyarakat->pekerjaan ?? '-');
+            $templateProcessor->setValue('desa_pemohon', 'Watalara');
             $templateProcessor->setValue('tanggal', $pengajuan->tanggal_pengajuan->translatedFormat('d F Y'));
             $templateProcessor->setValue('keterangan', $pengajuan->keterangan ?? '-');
             

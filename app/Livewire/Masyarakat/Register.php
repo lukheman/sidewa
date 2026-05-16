@@ -17,6 +17,11 @@ class Register extends Component
     public string $nik = '';
     public string $nama = '';
     public string $email = '';
+    public string $tempat_lahir = '';
+    public string $tanggal_lahir = '';
+    public string $jenis_kelamin = '';
+    public string $agama = '';
+    public string $pekerjaan = '';
     public string $alamat = '';
     public string $phone = '';
     public string $password = '';
@@ -29,6 +34,11 @@ class Register extends Component
             'nik' => ['required', 'string', 'size:16', 'unique:masyarakat,nik'],
             'nama' => ['required', 'string', 'max:255'],
             'email' => ['required', 'email', 'max:255', 'unique:masyarakat,email'],
+            'tempat_lahir' => ['required', 'string', 'max:255'],
+            'tanggal_lahir' => ['required', 'date'],
+            'jenis_kelamin' => ['required', 'in:L,P'],
+            'agama' => ['required', 'string', 'max:50'],
+            'pekerjaan' => ['nullable', 'string', 'max:255'],
             'alamat' => ['required', 'string'],
             'phone' => ['nullable', 'string', 'max:20'],
             'password' => ['required', 'confirmed', Password::defaults()],
@@ -44,6 +54,10 @@ class Register extends Component
         'email.required' => 'Email harus diisi.',
         'email.email' => 'Format email tidak valid.',
         'email.unique' => 'Email sudah terdaftar.',
+        'tempat_lahir.required' => 'Tempat lahir harus diisi.',
+        'tanggal_lahir.required' => 'Tanggal lahir harus diisi.',
+        'jenis_kelamin.required' => 'Jenis kelamin harus dipilih.',
+        'agama.required' => 'Agama harus diisi.',
         'alamat.required' => 'Alamat harus diisi.',
         'password.required' => 'Password harus diisi.',
         'password.confirmed' => 'Konfirmasi password tidak cocok.',
@@ -58,6 +72,11 @@ class Register extends Component
             'nik' => $validated['nik'],
             'nama' => $validated['nama'],
             'email' => $validated['email'],
+            'tempat_lahir' => $validated['tempat_lahir'],
+            'tanggal_lahir' => $validated['tanggal_lahir'],
+            'jenis_kelamin' => $validated['jenis_kelamin'],
+            'agama' => $validated['agama'],
+            'pekerjaan' => $validated['pekerjaan'] ?? null,
             'alamat' => $validated['alamat'],
             'phone' => $validated['phone'] ?? null,
             'password' => Hash::make($validated['password']),

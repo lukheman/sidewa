@@ -87,6 +87,65 @@
                         </div>
 
                         <div class="col-md-6">
+                            <label for="tempat_lahir" class="form-label">Tempat Lahir <span
+                                    style="color: var(--danger-color);">*</span></label>
+                            <input type="text" class="form-control @error('tempat_lahir') is-invalid @enderror" id="tempat_lahir"
+                                wire:model="tempat_lahir" placeholder="Masukkan tempat lahir">
+                            @error('tempat_lahir')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+
+                        <div class="col-md-6">
+                            <label for="tanggal_lahir" class="form-label">Tanggal Lahir <span
+                                    style="color: var(--danger-color);">*</span></label>
+                            <input type="date" class="form-control @error('tanggal_lahir') is-invalid @enderror" id="tanggal_lahir"
+                                wire:model="tanggal_lahir">
+                            @error('tanggal_lahir')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+
+                        <div class="col-md-6">
+                            <label for="jenis_kelamin" class="form-label">Jenis Kelamin <span
+                                    style="color: var(--danger-color);">*</span></label>
+                            <select class="form-select @error('jenis_kelamin') is-invalid @enderror" id="jenis_kelamin" wire:model="jenis_kelamin">
+                                <option value="">-- Pilih Jenis Kelamin --</option>
+                                <option value="L">Laki-laki</option>
+                                <option value="P">Perempuan</option>
+                            </select>
+                            @error('jenis_kelamin')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+
+                        <div class="col-md-6">
+                            <label for="agama" class="form-label">Agama <span
+                                    style="color: var(--danger-color);">*</span></label>
+                            <select class="form-select @error('agama') is-invalid @enderror" id="agama" wire:model="agama">
+                                <option value="">-- Pilih Agama --</option>
+                                <option value="Islam">Islam</option>
+                                <option value="Kristen">Kristen</option>
+                                <option value="Katolik">Katolik</option>
+                                <option value="Hindu">Hindu</option>
+                                <option value="Buddha">Buddha</option>
+                                <option value="Konghucu">Konghucu</option>
+                            </select>
+                            @error('agama')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+
+                        <div class="col-md-6">
+                            <label for="pekerjaan" class="form-label">Pekerjaan <span class="text-muted fw-normal" style="font-size: 0.8rem;">(Opsional)</span></label>
+                            <input type="text" class="form-control @error('pekerjaan') is-invalid @enderror" id="pekerjaan"
+                                wire:model="pekerjaan" placeholder="Contoh: Wiraswasta">
+                            @error('pekerjaan')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+
+                        <div class="col-md-6">
                             <label for="phone" class="form-label">No. Telepon</label>
                             <input type="text" class="form-control @error('phone') is-invalid @enderror" id="phone"
                                 wire:model="phone" placeholder="08xxxxxxxxxx">

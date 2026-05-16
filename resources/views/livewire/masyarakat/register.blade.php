@@ -83,6 +83,94 @@
                             @enderror
                         </div>
 
+                        <!-- Tempat Lahir -->
+                        <div class="col-md-6 mb-3">
+                            <label for="tempat_lahir"
+                                style="display: block; margin-bottom: 0.5rem; color: #0c4a6e; font-weight: 500;">Tempat Lahir
+                                <span style="color: #ef4444;">*</span></label>
+                            <div style="position: relative;">
+                                <i class="fas fa-city"
+                                    style="position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); color: #6b7280;"></i>
+                                <input type="text" wire:model="tempat_lahir" id="tempat_lahir"
+                                    style="width: 100%; height: 48px; border: 2px solid {{ $errors->has('tempat_lahir') ? '#ef4444' : '#d1fae5' }}; border-radius: 10px; padding: 0 1rem 0 3rem; font-size: 1rem; background: #f8fafc;"
+                                    placeholder="Kota/Kab. Kelahiran">
+                            </div>
+                            @error('tempat_lahir')
+                                <small style="color: #ef4444;">{{ $message }}</small>
+                            @enderror
+                        </div>
+
+                        <!-- Tanggal Lahir -->
+                        <div class="col-md-6 mb-3">
+                            <label for="tanggal_lahir"
+                                style="display: block; margin-bottom: 0.5rem; color: #0c4a6e; font-weight: 500;">Tanggal Lahir
+                                <span style="color: #ef4444;">*</span></label>
+                            <div style="position: relative;">
+                                <input type="date" wire:model="tanggal_lahir" id="tanggal_lahir"
+                                    style="width: 100%; height: 48px; border: 2px solid {{ $errors->has('tanggal_lahir') ? '#ef4444' : '#d1fae5' }}; border-radius: 10px; padding: 0 1rem; font-size: 1rem; background: #f8fafc;">
+                            </div>
+                            @error('tanggal_lahir')
+                                <small style="color: #ef4444;">{{ $message }}</small>
+                            @enderror
+                        </div>
+
+                        <!-- Jenis Kelamin -->
+                        <div class="col-md-6 mb-3">
+                            <label for="jenis_kelamin"
+                                style="display: block; margin-bottom: 0.5rem; color: #0c4a6e; font-weight: 500;">Jenis Kelamin
+                                <span style="color: #ef4444;">*</span></label>
+                            <div style="position: relative;">
+                                <select wire:model="jenis_kelamin" id="jenis_kelamin"
+                                    style="width: 100%; height: 48px; border: 2px solid {{ $errors->has('jenis_kelamin') ? '#ef4444' : '#d1fae5' }}; border-radius: 10px; padding: 0 1rem; font-size: 1rem; background: #f8fafc;">
+                                    <option value="">-- Pilih --</option>
+                                    <option value="L">Laki-laki</option>
+                                    <option value="P">Perempuan</option>
+                                </select>
+                            </div>
+                            @error('jenis_kelamin')
+                                <small style="color: #ef4444;">{{ $message }}</small>
+                            @enderror
+                        </div>
+
+                        <!-- Agama -->
+                        <div class="col-md-6 mb-3">
+                            <label for="agama"
+                                style="display: block; margin-bottom: 0.5rem; color: #0c4a6e; font-weight: 500;">Agama
+                                <span style="color: #ef4444;">*</span></label>
+                            <div style="position: relative;">
+                                <select wire:model="agama" id="agama"
+                                    style="width: 100%; height: 48px; border: 2px solid {{ $errors->has('agama') ? '#ef4444' : '#d1fae5' }}; border-radius: 10px; padding: 0 1rem; font-size: 1rem; background: #f8fafc;">
+                                    <option value="">-- Pilih Agama --</option>
+                                    <option value="Islam">Islam</option>
+                                    <option value="Kristen">Kristen</option>
+                                    <option value="Katolik">Katolik</option>
+                                    <option value="Hindu">Hindu</option>
+                                    <option value="Buddha">Buddha</option>
+                                    <option value="Konghucu">Konghucu</option>
+                                </select>
+                            </div>
+                            @error('agama')
+                                <small style="color: #ef4444;">{{ $message }}</small>
+                            @enderror
+                        </div>
+
+                        <!-- Pekerjaan -->
+                        <div class="col-md-6 mb-3">
+                            <label for="pekerjaan"
+                                style="display: block; margin-bottom: 0.5rem; color: #0c4a6e; font-weight: 500;">Pekerjaan
+                                <span style="color: #6b7280; font-size: 0.8rem; font-weight: 400;">(Opsional)</span></label>
+                            <div style="position: relative;">
+                                <i class="fas fa-briefcase"
+                                    style="position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); color: #6b7280;"></i>
+                                <input type="text" wire:model="pekerjaan" id="pekerjaan"
+                                    style="width: 100%; height: 48px; border: 2px solid {{ $errors->has('pekerjaan') ? '#ef4444' : '#d1fae5' }}; border-radius: 10px; padding: 0 1rem 0 3rem; font-size: 1rem; background: #f8fafc;"
+                                    placeholder="Contoh: Wiraswasta">
+                            </div>
+                            @error('pekerjaan')
+                                <small style="color: #ef4444;">{{ $message }}</small>
+                            @enderror
+                        </div>
+
                         <!-- Phone -->
                         <div class="col-md-6 mb-3">
                             <label for="phone"

@@ -22,6 +22,11 @@ class MasyarakatManagement extends Component
     // Form fields
     public string $nik = '';
     public string $nama = '';
+    public string $tempat_lahir = '';
+    public string $tanggal_lahir = '';
+    public string $jenis_kelamin = '';
+    public string $agama = '';
+    public string $pekerjaan = '';
     public string $alamat = '';
     public string $phone = '';
     public string $password = '';
@@ -38,6 +43,11 @@ class MasyarakatManagement extends Component
         $rules = [
             'nik' => ['required', 'string', 'size:16'],
             'nama' => ['required', 'string', 'max:255'],
+            'tempat_lahir' => ['required', 'string', 'max:255'],
+            'tanggal_lahir' => ['required', 'date'],
+            'jenis_kelamin' => ['required', 'in:L,P'],
+            'agama' => ['required', 'string', 'max:50'],
+            'pekerjaan' => ['nullable', 'string', 'max:255'],
             'alamat' => ['required', 'string'],
             'phone' => ['nullable', 'string', 'max:20'],
         ];
@@ -73,6 +83,11 @@ class MasyarakatManagement extends Component
         $this->editingId = $id;
         $this->nik = $masyarakat->nik;
         $this->nama = $masyarakat->nama;
+        $this->tempat_lahir = $masyarakat->tempat_lahir ?? '';
+        $this->tanggal_lahir = $masyarakat->tanggal_lahir ? $masyarakat->tanggal_lahir->format('Y-m-d') : '';
+        $this->jenis_kelamin = $masyarakat->jenis_kelamin ?? '';
+        $this->agama = $masyarakat->agama ?? '';
+        $this->pekerjaan = $masyarakat->pekerjaan ?? '';
         $this->alamat = $masyarakat->alamat;
         $this->phone = $masyarakat->phone ?? '';
         $this->password = '';
@@ -88,6 +103,11 @@ class MasyarakatManagement extends Component
             $masyarakat = Masyarakat::findOrFail($this->editingId);
             $masyarakat->nik = $validated['nik'];
             $masyarakat->nama = $validated['nama'];
+            $masyarakat->tempat_lahir = $validated['tempat_lahir'];
+            $masyarakat->tanggal_lahir = $validated['tanggal_lahir'];
+            $masyarakat->jenis_kelamin = $validated['jenis_kelamin'];
+            $masyarakat->agama = $validated['agama'];
+            $masyarakat->pekerjaan = $validated['pekerjaan'] ?? null;
             $masyarakat->alamat = $validated['alamat'];
             $masyarakat->phone = $validated['phone'];
 
@@ -101,6 +121,11 @@ class MasyarakatManagement extends Component
             Masyarakat::create([
                 'nik' => $validated['nik'],
                 'nama' => $validated['nama'],
+                'tempat_lahir' => $validated['tempat_lahir'],
+                'tanggal_lahir' => $validated['tanggal_lahir'],
+                'jenis_kelamin' => $validated['jenis_kelamin'],
+                'agama' => $validated['agama'],
+                'pekerjaan' => $validated['pekerjaan'] ?? null,
                 'alamat' => $validated['alamat'],
                 'phone' => $validated['phone'],
                 'password' => Hash::make($validated['password']),
@@ -145,6 +170,11 @@ class MasyarakatManagement extends Component
     {
         $this->nik = '';
         $this->nama = '';
+        $this->tempat_lahir = '';
+        $this->tanggal_lahir = '';
+        $this->jenis_kelamin = '';
+        $this->agama = '';
+        $this->pekerjaan = '';
         $this->alamat = '';
         $this->phone = '';
         $this->password = '';

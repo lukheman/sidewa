@@ -55,7 +55,7 @@
                         <th>Pemohon</th>
                         <th>Jenis Surat</th>
                         <th>Status</th>
-                        <th style="width: 200px;">Aksi</th>
+                        <th style="width: 300px;">Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -95,7 +95,7 @@
                                         <button class="btn btn-sm"
                                             style="background: var(--danger-color); color: white; border: none; border-radius: 6px; padding: 4px 10px;"
                                             wire:click="confirmReject({{ $item->id }})" title="Tolak">
-                                            <i class="fas fa-times"></i>
+                                            <i class="fas fa-times"></i> Tolak
                                         </button>
                                     @endif
                                     @if($item->status->value === 'disetujui')

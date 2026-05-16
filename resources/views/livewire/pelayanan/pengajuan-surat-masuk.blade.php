@@ -97,7 +97,7 @@
                                         <button class="btn btn-sm"
                                             style="background: var(--danger-color); color: white; border: none; border-radius: 6px; padding: 4px 10px;"
                                             wire:click="updateStatus({{ $item->id }}, 'ditolak')" title="Tolak">
-                                            <i class="fas fa-times"></i>
+                                            <i class="fas fa-times"></i> Tolak
                                         </button>
                                     @endif
                                     @if($item->status->value === 'disetujui')
