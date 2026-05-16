@@ -101,8 +101,8 @@ LOCK TABLES `cache` WRITE;
 /*!40000 ALTER TABLE `cache` DISABLE KEYS */;
 set autocommit=0;
 INSERT INTO `cache` VALUES
-('laravel-cache-da4b9237bacccdf19c0760cab7aec4a8359010b0','i:1;',1778727528),
-('laravel-cache-da4b9237bacccdf19c0760cab7aec4a8359010b0:timer','i:1778727528;',1778727528);
+('laravel-cache-da4b9237bacccdf19c0760cab7aec4a8359010b0','i:1;',1778910995),
+('laravel-cache-da4b9237bacccdf19c0760cab7aec4a8359010b0:timer','i:1778910995;',1778910995);
 /*!40000 ALTER TABLE `cache` ENABLE KEYS */;
 UNLOCK TABLES;
 commit;
@@ -191,7 +191,7 @@ LOCK TABLES `jenis_surat` WRITE;
 /*!40000 ALTER TABLE `jenis_surat` DISABLE KEYS */;
 set autocommit=0;
 INSERT INTO `jenis_surat` VALUES
-(1,'Surat Keterangan Usaha','','templates/ZlfAJqhH3vJLOJ2TbRB2xfHqJRZyoAYONRmpilgw.docx','[]','2026-05-13 18:57:50','2026-05-13 18:57:50');
+(1,'fda','fda','templates/YxdJLIIx3hL5u2ntnYcOWLRJEg4ctHmqbtRMWtYP.docx','[]','2026-05-15 21:55:37','2026-05-15 21:55:37');
 /*!40000 ALTER TABLE `jenis_surat` ENABLE KEYS */;
 UNLOCK TABLES;
 commit;
@@ -292,9 +292,9 @@ LOCK TABLES `kegiatan` WRITE;
 /*!40000 ALTER TABLE `kegiatan` DISABLE KEYS */;
 set autocommit=0;
 INSERT INTO `kegiatan` VALUES
-(1,'Renovasi Balai Desa','Mollitia assumenda minima suscipit enim. Possimus sint sed exercitationem et fugit nobis fugiat aliquid. Doloremque ut inventore qui. Facilis voluptas eos molestiae laudantium sit.','2026-05-24','2026-07-10',100,2,NULL,'2026-05-13 18:57:29','2026-05-13 18:57:29'),
-(2,'Renovasi Balai Desa','Nesciunt est hic vitae molestias doloribus itaque. Quis soluta expedita consequatur corporis quia rem reiciendis. Veritatis est eos eligendi saepe laboriosam. Dolores minus ipsam dignissimos culpa suscipit.','2026-05-23','2026-07-02',100,2,NULL,'2026-05-13 18:57:29','2026-05-13 18:57:29'),
-(3,'Vaksinasi Massal','Provident et aut ab eligendi occaecati. Ullam labore et non atque quis praesentium aut.','2026-06-07','2026-07-13',100,2,NULL,'2026-05-13 18:57:29','2026-05-13 18:57:29');
+(1,'Renovasi Balai Desa','Autem fuga iure quod et recusandae dicta. Sapiente impedit non quis provident voluptatem vitae beatae. Earum fugiat exercitationem est. Ea voluptatibus doloremque sit omnis. Quam dolor nobis quo minus voluptatem fugiat velit.','2026-05-12','2026-06-14',100,2,NULL,'2026-05-15 21:55:17','2026-05-15 21:55:17'),
+(2,'Renovasi Balai Desa','Sunt repellendus officiis eligendi quia in odio ea maxime. Et est est autem. Ratione commodi numquam distinctio hic corporis eius minus facilis. Quas et qui ut velit excepturi.','2026-05-06','2026-06-11',100,2,NULL,'2026-05-15 21:55:17','2026-05-15 21:55:17'),
+(3,'Pelatihan UMKM','Et iusto labore deserunt fuga corporis. Rem et harum officia cum ab. Beatae corporis laborum exercitationem ratione consequatur qui quis. Autem accusantium quia commodi delectus consequatur autem. Ipsa nihil eos aut iure repellendus aspernatur quidem.','2026-06-04','2026-07-01',100,2,NULL,'2026-05-15 21:55:17','2026-05-15 21:55:17');
 /*!40000 ALTER TABLE `kegiatan` ENABLE KEYS */;
 UNLOCK TABLES;
 commit;
@@ -309,9 +309,12 @@ DROP TABLE IF EXISTS `masyarakat`;
 CREATE TABLE `masyarakat` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `nik` varchar(16) NOT NULL,
+  `tempat_lahir` varchar(255) DEFAULT NULL,
   `nama` varchar(255) NOT NULL,
   `jenis_kelamin` enum('L','P') DEFAULT NULL,
   `tanggal_lahir` date DEFAULT NULL,
+  `agama` varchar(50) DEFAULT NULL,
+  `pekerjaan` varchar(255) DEFAULT NULL,
   `email` varchar(255) DEFAULT NULL,
   `alamat` text NOT NULL,
   `phone` varchar(20) DEFAULT NULL,
@@ -333,9 +336,9 @@ LOCK TABLES `masyarakat` WRITE;
 /*!40000 ALTER TABLE `masyarakat` DISABLE KEYS */;
 set autocommit=0;
 INSERT INTO `masyarakat` VALUES
-(1,'1234567890123456','Budi Santoso','L','2005-03-10','budi@gmail.com','Jl. Merdeka No. 10, Desa Sidoasih','081234567890','$2y$12$6VhYYMV7d1xSVjMyQXIsNOXpLgAGU4v7eeT.UNsRU0SeMPTlu3e/i',NULL,'2026-05-13 18:57:29','2026-05-13 18:57:29'),
-(2,'7385685300573285','Intan Zizi Haryanti S.Pd','P','1998-03-27','judah28@example.org','Psr. Cikutra Timur No. 591, Bogor 12348, Papua','089457081390','$2y$12$/1h7DOZYmcZyxcMIRgPE3OyvsNW1E7yi4L2T48u01JbrggG7vD/Gq',NULL,'2026-05-13 18:57:29','2026-05-13 18:57:29'),
-(3,'4993357678389253','Paiman Manullang','P','1966-07-19','sporer.annabell@example.com','Ds. Lembong No. 206, Bengkulu 77956, Bali','087008404180','$2y$12$/1h7DOZYmcZyxcMIRgPE3OyvsNW1E7yi4L2T48u01JbrggG7vD/Gq',NULL,'2026-05-13 18:57:29','2026-05-13 18:57:29');
+(1,'1234567890123456',NULL,'Budi Santoso','P','1983-11-13',NULL,NULL,'budi@gmail.com','Jl. Merdeka No. 10, Desa Sidoasih','081234567890','$2y$12$93KnT1rd0OgxWvpwMrcv0usmnEYXqU1CmwQMLa8yWYAu.qFZvPJSS',NULL,'2026-05-15 21:55:17','2026-05-15 21:55:17'),
+(2,'9571921516794278',NULL,'Jindra Jarwi Winarno S.Gz','L','1971-02-14',NULL,NULL,'zbraun@example.org','Kpg. Cihampelas No. 890, Padang 30387, Gorontalo','086246175735','$2y$12$E4vzI7N0.aZ1QFZ0bkblWewq5mWqle6DQ0z8tmJq4C4dDmacZF35W',NULL,'2026-05-15 21:55:17','2026-05-15 21:55:17'),
+(3,'9925108293970548',NULL,'Garda Jayadi Tamba M.Kom.','P','1976-11-16',NULL,NULL,'bstreich@example.com','Gg. Suryo No. 438, Tidore Kepulauan 48046, Sulut','082126685253','$2y$12$E4vzI7N0.aZ1QFZ0bkblWewq5mWqle6DQ0z8tmJq4C4dDmacZF35W',NULL,'2026-05-15 21:55:17','2026-05-15 21:55:17');
 /*!40000 ALTER TABLE `masyarakat` ENABLE KEYS */;
 UNLOCK TABLES;
 commit;
@@ -352,7 +355,7 @@ CREATE TABLE `migrations` (
   `migration` varchar(255) NOT NULL,
   `batch` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -379,7 +382,8 @@ INSERT INTO `migrations` VALUES
 (14,'2026_04_27_054012_update_admin_users_to_pelayanan',1),
 (15,'2026_05_13_123331_add_file_template_to_jenis_surats_table',1),
 (16,'2026_05_13_124129_add_form_fields_to_jenis_surats_table',1),
-(17,'2026_05_13_124130_add_data_tambahan_to_pengajuan_surats_table',1);
+(17,'2026_05_13_124130_add_data_tambahan_to_pengajuan_surats_table',1),
+(18,'2026_05_15_144025_add_additional_demografi_to_masyarakat_table',1);
 /*!40000 ALTER TABLE `migrations` ENABLE KEYS */;
 UNLOCK TABLES;
 commit;
@@ -442,8 +446,8 @@ LOCK TABLES `pengaduan` WRITE;
 /*!40000 ALTER TABLE `pengaduan` DISABLE KEYS */;
 set autocommit=0;
 INSERT INTO `pengaduan` VALUES
-(1,'Jembatan penyeberangan rusak berbahaya. Rerum magni modi debitis quaerat quia qui modi. Pariatur eum eos sint blanditiis harum nostrum minima. Ducimus nemo deserunt omnis quod error aspernatur. Sit deleniti qui rerum inventore.','2026-04-28','selesai',2,2,'2026-05-13 18:57:29','2026-05-13 18:57:29'),
-(2,'Sampah menumpuk di TPS tidak diangkut. Fugit quam qui omnis velit et et. Placeat debitis ad deserunt repellat iusto aut. Perspiciatis reiciendis sit sed vel aut animi ea.','2026-04-25','selesai',3,2,'2026-05-13 18:57:29','2026-05-13 18:57:29');
+(1,'Jembatan penyeberangan rusak berbahaya. Doloribus similique ut qui voluptas. Placeat eius occaecati omnis beatae. Quo nesciunt fugiat tempora quis. Adipisci aliquam quod et ut earum vel dolorem.','2026-05-11','proses',2,2,'2026-05-15 21:55:17','2026-05-15 21:55:17'),
+(2,'Jalan rusak di depan rumah sudah lama tidak diperbaiki. Amet animi perferendis quaerat magni qui architecto. Voluptatum consequatur aliquam et ut id placeat.','2026-04-28','pending',3,2,'2026-05-15 21:55:17','2026-05-15 21:55:17');
 /*!40000 ALTER TABLE `pengaduan` ENABLE KEYS */;
 UNLOCK TABLES;
 commit;
@@ -486,7 +490,7 @@ LOCK TABLES `pengajuan_surat` WRITE;
 /*!40000 ALTER TABLE `pengajuan_surat` DISABLE KEYS */;
 set autocommit=0;
 INSERT INTO `pengajuan_surat` VALUES
-(1,'2026-05-14','disetujui','','[]',1,1,1,'h53W4o8SNiXiTxh6FUlhwGdR44Au88it','2026-05-13 18:58:02','2026-05-13 18:58:31');
+(1,'2026-05-16','disetujui','fda','[]',1,1,1,'2eJe2AL4X2krSSrikqihYPZ6y64D0LaC','2026-05-15 21:55:57','2026-05-15 22:00:04');
 /*!40000 ALTER TABLE `pengajuan_surat` ENABLE KEYS */;
 UNLOCK TABLES;
 commit;
@@ -520,14 +524,14 @@ LOCK TABLES `pengumuman` WRITE;
 /*!40000 ALTER TABLE `pengumuman` DISABLE KEYS */;
 set autocommit=0;
 INSERT INTO `pengumuman` VALUES
-(1,'Doloremque enim vero nobis voluptas.','Consectetur asperiores iure voluptates minus qui dolores vero. Veritatis quo reiciendis laborum dignissimos.\n\nCupiditate ut vero et voluptate. Nihil dolor possimus necessitatibus ducimus. Dolor reiciendis reprehenderit quia ducimus officia eum saepe deserunt.\n\nIllo et dolor est autem totam et. Aut non ex quam et itaque dolor aliquid. Harum praesentium dolore nemo delectus. Fuga amet laudantium quo sint.','2026-05-08',2,'2026-05-13 18:57:29','2026-05-13 18:57:29'),
-(2,'Vitae laborum eveniet vitae.','Et quia necessitatibus et occaecati labore culpa. Voluptatem aut nemo eum quaerat. Sed sapiente quas autem deserunt harum aperiam mollitia. Quasi voluptatem sit cupiditate magnam sed tempora. Pariatur animi eaque expedita consequatur quaerat dicta.\n\nQuia ut tempora quisquam ipsa voluptate. Non quod neque et rerum magni nostrum in. Alias cupiditate exercitationem nesciunt molestiae rerum explicabo reiciendis.\n\nRepudiandae numquam corporis similique sit aut qui. Voluptas quo accusamus architecto nihil. Et odio tenetur expedita eligendi quibusdam recusandae dolore. Quo hic iste molestiae.','2026-05-01',2,'2026-05-13 18:57:29','2026-05-13 18:57:29'),
-(3,'Nam odit consequatur vitae commodi.','Magni libero illo assumenda quidem. Aliquam aliquam vel quaerat minima enim. Illo rerum doloremque consectetur atque amet pariatur facere. Maxime dolore ut sapiente adipisci sequi. Reprehenderit ex tempora dolore quos dolor quas.\n\nConsequuntur tenetur veniam perspiciatis magni autem et. Architecto voluptatum omnis veritatis quia laboriosam perspiciatis itaque. Architecto culpa et qui rem qui aliquid.\n\nIllum veniam non autem ut maiores inventore omnis. Ullam facilis rerum incidunt maxime dicta qui. Sed odio dolorem officiis.','2026-05-08',2,'2026-05-13 18:57:29','2026-05-13 18:57:29'),
-(4,'Et consectetur laudantium et id qui rerum.','Expedita voluptas aut ut consectetur harum officiis odit. Quis animi placeat ducimus quis aut voluptatibus. Magni voluptatibus aspernatur voluptatem et expedita eos. Eveniet sunt ut ex consequatur accusantium et impedit.\n\nAutem dolorem et ipsam recusandae dignissimos cumque. Quo labore reprehenderit totam tenetur molestiae harum. Voluptatum molestiae sequi et.\n\nDoloribus et libero debitis ut et qui optio. Doloribus iste dolores maxime aut minus inventore harum. Unde enim nam error ipsa eligendi.','2026-05-13',2,'2026-05-13 18:57:29','2026-05-13 18:57:29'),
-(5,'Voluptatem eaque similique eum voluptatum.','Nulla iste quis ratione sit ullam doloribus. Eos est aspernatur accusantium enim sed. Eius nobis ea porro dolor necessitatibus explicabo. Iste adipisci animi temporibus.\n\nQui aliquam aut sed earum ex quidem ut. Est tempore quae aut mollitia assumenda expedita cupiditate. Ut voluptatem laudantium dignissimos est id odit. Enim vero consequatur minima. Accusantium vel aliquam sed ut officia.\n\nEa iure consequuntur soluta sed ut. Voluptate porro quia sed distinctio. Vitae beatae eum nulla beatae porro rerum. Totam tempora eos expedita. Eos laboriosam consequuntur eum totam exercitationem.','2026-04-23',2,'2026-05-13 18:57:29','2026-05-13 18:57:29'),
-(6,'Qui nihil at qui.','Saepe repellat nobis quia hic rem. Possimus qui cupiditate omnis est molestias. Eveniet autem atque nobis.\n\nPerferendis aut dolorem placeat blanditiis nemo voluptatem. Tenetur perspiciatis id aperiam qui qui qui et. Aut illum ut et dolorem.\n\nDeleniti quia quisquam et non explicabo et. Est consequatur sit dolor vel possimus ut. Quo at saepe temporibus officiis.','2026-04-24',1,'2026-05-13 18:57:29','2026-05-13 18:57:29'),
-(7,'Aut corrupti error beatae et.','Cupiditate ea eius dolor esse voluptatum corporis tenetur. Qui impedit similique enim et quasi. Sit error est officiis quam neque culpa omnis. Cumque reprehenderit omnis ratione error. Et incidunt dignissimos dolorem est.\n\nVoluptatibus omnis enim eligendi ex quia et omnis. Quam quo cum dignissimos voluptate ut ullam. Possimus eveniet saepe est voluptatum aut velit.\n\nVoluptas dolorem et ipsa praesentium. Tempora autem rem eveniet doloribus.','2026-04-25',1,'2026-05-13 18:57:29','2026-05-13 18:57:29'),
-(8,'Labore suscipit molestiae eum.','Et excepturi qui libero autem. Labore fugiat natus rerum eum error aut.\n\nAutem est asperiores qui et qui. Blanditiis omnis rerum aut aut nam iste accusantium. Rem ut non maiores natus sit et. Ratione qui vel magnam provident quae.\n\nPerspiciatis molestiae iusto nam aut laboriosam ipsa. Provident aut tempora earum esse aliquam deserunt. Sint repellendus et ad porro praesentium dicta tempore. Doloremque quis autem voluptatem vitae.','2026-05-05',1,'2026-05-13 18:57:29','2026-05-13 18:57:29');
+(1,'Minima id optio est quos.','Aut dolor ad dolorem impedit quos. Et fugiat sunt voluptas cumque architecto harum. Ab eligendi asperiores debitis enim aut aut.\n\nEligendi excepturi ut quis repudiandae et blanditiis corporis quaerat. Hic explicabo perferendis sunt nulla et et omnis.\n\nDoloribus ratione ipsam fugit veniam aut. Accusantium error laudantium quaerat tenetur quibusdam. Corporis ut aut possimus dolore veniam mollitia. Et cupiditate nihil et dolore dolore atque.','2026-04-19',2,'2026-05-15 21:55:17','2026-05-15 21:55:17'),
+(2,'Quod sed odio ea deleniti omnis quis.','Aut quas ipsum facilis illum dolorum. Delectus praesentium consequatur magnam aspernatur. Consequatur temporibus nobis debitis magni necessitatibus quia debitis.\n\nMollitia autem fugiat assumenda ut autem et. Porro id ut dolores cum id. Et architecto aliquam consequatur est consequatur.\n\nUnde mollitia laboriosam perferendis voluptate. Maiores dolores cupiditate accusamus eaque similique.','2026-04-22',2,'2026-05-15 21:55:17','2026-05-15 21:55:17'),
+(3,'Provident at sint aut quia odio.','Velit ut asperiores rem dolor eos qui molestias laborum. Ipsa autem ea voluptates ex labore voluptate aliquam. Incidunt velit ab omnis enim voluptatem in.\n\nOfficia vel ut rerum et ut ut aspernatur. Perferendis maxime nam assumenda architecto provident tempore. Molestiae occaecati sint necessitatibus corporis alias et velit.\n\nEnim quo reprehenderit odit quisquam omnis. Officiis debitis eos est. Sunt exercitationem consectetur asperiores consequatur vel.','2026-04-23',2,'2026-05-15 21:55:17','2026-05-15 21:55:17'),
+(4,'Et esse et qui.','Commodi sit incidunt eum nemo ea aliquam qui. Eligendi aut consectetur vero voluptas id earum cum. Numquam vero autem iste.\n\nEst quis ea veritatis deserunt autem voluptatem. Beatae quaerat a quia. Ipsa laudantium eum est.\n\nQui rerum consectetur sed magni ut. Voluptas fuga et ipsa. Vero cum aut alias vel ea commodi.','2026-05-02',2,'2026-05-15 21:55:17','2026-05-15 21:55:17'),
+(5,'Quia et quia ea cupiditate ipsa non.','Est expedita deserunt soluta cupiditate sed libero. Quia quae est molestiae fugiat quasi. Quia et rem libero autem.\n\nIure rerum id labore voluptatem velit consequuntur voluptas eos. Non iure quod ut voluptas sunt. Ipsa iure consectetur sint. Temporibus necessitatibus itaque voluptatem quas.\n\nNon aut autem quis et. Dolorum aut quis nostrum magnam nihil ut officia natus. Dolorem numquam doloribus quas voluptatem qui.','2026-05-01',2,'2026-05-15 21:55:17','2026-05-15 21:55:17'),
+(6,'Maiores recusandae deleniti accusamus.','Laudantium voluptas amet et nemo ipsam et. Ducimus inventore saepe unde repellendus qui nulla. Autem rerum assumenda nobis nesciunt porro voluptatem sequi. Quia dolores autem eligendi aut.\n\nEt enim aut iusto molestias quaerat asperiores molestias. Quasi unde ducimus voluptates reiciendis aspernatur unde omnis. Ut voluptatibus vitae in.\n\nIncidunt optio dignissimos saepe qui quia fuga. Ad accusamus adipisci molestias ex non ipsam cupiditate. Excepturi suscipit iure accusamus rerum.','2026-04-20',1,'2026-05-15 21:55:17','2026-05-15 21:55:17'),
+(7,'Atque vero sunt error.','Occaecati est et officiis libero distinctio voluptates. Dignissimos saepe eum sunt inventore id sequi. Animi iure accusantium explicabo quae sint. Dolor laboriosam officiis excepturi consequatur aliquam aut.\n\nVero eos rem ullam dolorem voluptates. Vero qui odio consequatur rem quo enim. Ut quia similique sunt ut pariatur animi impedit. Aut non minus odit vel aperiam magnam.\n\nAnimi assumenda similique ad. Incidunt dolorum esse similique. Voluptatum laborum reiciendis similique ducimus aspernatur et.','2026-05-07',1,'2026-05-15 21:55:17','2026-05-15 21:55:17'),
+(8,'Consequatur ut dolore illo sed sint.','Velit doloremque ea dignissimos. Maxime labore cupiditate et culpa.\n\nAut dolor dolores ut blanditiis repudiandae. Earum sequi sit earum eum aliquam. Consequuntur quasi sunt ullam blanditiis porro nulla. Omnis quia nesciunt quo labore enim maxime.\n\nVoluptatem tempore voluptatum animi. Quasi sed consequatur vitae voluptatum asperiores. Sit neque eos pariatur maiores sint fugit ratione. Cumque sed sit ut sit tempore voluptatem omnis dignissimos. Sit ad officiis animi.','2026-04-21',1,'2026-05-15 21:55:17','2026-05-15 21:55:17');
 /*!40000 ALTER TABLE `pengumuman` ENABLE KEYS */;
 UNLOCK TABLES;
 commit;
@@ -560,10 +564,9 @@ LOCK TABLES `sessions` WRITE;
 /*!40000 ALTER TABLE `sessions` DISABLE KEYS */;
 set autocommit=0;
 INSERT INTO `sessions` VALUES
-('G6zfO2VETmuQZS67kuhDLUHtYkCUifdzqiqDFnaJ',1,'127.0.0.1','Mozilla/5.0 (X11; Linux x86_64; rv:146.0) Gecko/20100101 Firefox/146.0','YTo1OntzOjY6Il90b2tlbiI7czo0MDoiSHhPNjhrbUV5d1liZjA0bGhuWVBtOHdSejF1T3Y5VHB5WDY5Q1p4ZSI7czozOiJ1cmwiO2E6MDp7fXM6OToiX3ByZXZpb3VzIjthOjI6e3M6MzoidXJsIjtzOjQ4OiJodHRwOi8vbG9jYWxob3N0OjgwMDAvbWFzeWFyYWthdC9wZW5nYWp1YW4tc3VyYXQiO3M6NToicm91dGUiO3M6MjY6Im1hc3lhcmFrYXQucGVuZ2FqdWFuLXN1cmF0Ijt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo1NzoibG9naW5fbWFzeWFyYWthdF81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjE7fQ==',1778727482),
-('rvOclq2AuYrixhvmpHrQdsPKFKrQJo6UlDfB06jS',2,'127.0.0.1','Mozilla/5.0 (X11; Linux x86_64; rv:146.0) Gecko/20100101 Firefox/146.0','YTo0OntzOjY6Il90b2tlbiI7czo0MDoid3UycU5RdzBmSWt1dVVoN25zbjNTMGR1WWpnOFRlcERtbmtiZVd6dyI7czo5OiJfcHJldmlvdXMiO2E6Mjp7czozOiJ1cmwiO3M6NDc6Imh0dHA6Ly9sb2NhbGhvc3Q6ODAwMC9wZWxheWFuYW4vcGVuZ2FqdWFuLXN1cmF0IjtzOjU6InJvdXRlIjtzOjI1OiJwZWxheWFuYW4ucGVuZ2FqdWFuLXN1cmF0Ijt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6Mjt9',1778727491),
-('sCyg64kLx630NHzTapVD4AQ3mxS5gRMi0tl81izW',1,'127.0.0.1','Mozilla/5.0 (X11; Linux x86_64; rv:146.0) Gecko/20100101 Firefox/146.0','YTo1OntzOjY6Il90b2tlbiI7czo0MDoiM0tZRHRCNWhOemk0eVg1a05QcWoyWkVrZkZrY0dzWGhaTkJkeGJFbSI7czozOiJ1cmwiO2E6MDp7fXM6OToiX3ByZXZpb3VzIjthOjI6e3M6MzoidXJsIjtzOjM1OiJodHRwOi8vbG9jYWxob3N0OjgwMDAvc3VyYXQvMS9jZXRhayI7czo1OiJyb3V0ZSI7czoxMToic3VyYXQuY2V0YWsiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX1zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxO30=',1778727512),
-('x6Ifl2P2Ex5atJ0utHUsXLnJkUjbbHgpISKwGjec',NULL,'127.0.0.1','Mozilla/5.0 (X11; Linux x86_64; rv:146.0) Gecko/20100101 Firefox/146.0','YTozOntzOjY6Il90b2tlbiI7czo0MDoiN1V4N1pWRU0wS3dnYTZmdlF6emNEZFQ3Uk5ROUJtYnVDMHFWdXNWUyI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6Mjp7czozOiJ1cmwiO3M6MjE6Imh0dHA6Ly9sb2NhbGhvc3Q6ODAwMCI7czo1OiJyb3V0ZSI7czo0OiJob21lIjt9fQ==',1778841043);
+('6aEUwGeLNwJ176vrfUCo84mVlIeaZ8gv61rdNknr',1,'127.0.0.1','Mozilla/5.0 (X11; Linux x86_64; rv:146.0) Gecko/20100101 Firefox/146.0','YTo1OntzOjY6Il90b2tlbiI7czo0MDoiQmJLanN0MUJ4eDhtTndCaFVkdzc2cXc1M3hJQjBuZlBFdjZJaDJpNyI7czozOiJ1cmwiO2E6MDp7fXM6OToiX3ByZXZpb3VzIjthOjI6e3M6MzoidXJsIjtzOjM1OiJodHRwOi8vbG9jYWxob3N0OjgwMDAvc3VyYXQvMS9jZXRhayI7czo1OiJyb3V0ZSI7czoxMToic3VyYXQuY2V0YWsiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX1zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxO30=',1778911240),
+('COuyzNOGXt8pJLqrfGi5t4Te0oh5HIVfuNaOAy67',2,'127.0.0.1','Mozilla/5.0 (X11; Linux x86_64; rv:146.0) Gecko/20100101 Firefox/146.0','YTo0OntzOjY6Il90b2tlbiI7czo0MDoiZlpwWkFQWGRNY0NQd1Q2SzEzYlpuUUo4UmVCeGRMcmdoR2NNVGVGbCI7czo5OiJfcHJldmlvdXMiO2E6Mjp7czozOiJ1cmwiO3M6NDc6Imh0dHA6Ly9sb2NhbGhvc3Q6ODAwMC9wZWxheWFuYW4vcGVuZ2FqdWFuLXN1cmF0IjtzOjU6InJvdXRlIjtzOjI1OiJwZWxheWFuYW4ucGVuZ2FqdWFuLXN1cmF0Ijt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6Mjt9',1778911113),
+('Ua0CwxsBiO2aKR0jqYOM0E0VMMMGtt7jOmrCWJmU',1,'127.0.0.1','Mozilla/5.0 (X11; Linux x86_64; rv:146.0) Gecko/20100101 Firefox/146.0','YTo1OntzOjY6Il90b2tlbiI7czo0MDoibk1XRFZpNHdSRG1VOFI0WHc1YzhJUUI4dnJ3Tno4WkJ6emtodUZITCI7czozOiJ1cmwiO2E6MDp7fXM6OToiX3ByZXZpb3VzIjthOjI6e3M6MzoidXJsIjtzOjQ4OiJodHRwOi8vbG9jYWxob3N0OjgwMDAvbWFzeWFyYWthdC9wZW5nYWp1YW4tc3VyYXQiO3M6NToicm91dGUiO3M6MjY6Im1hc3lhcmFrYXQucGVuZ2FqdWFuLXN1cmF0Ijt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo1NzoibG9naW5fbWFzeWFyYWthdF81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjE7fQ==',1778910957);
 /*!40000 ALTER TABLE `sessions` ENABLE KEYS */;
 UNLOCK TABLES;
 commit;
@@ -598,8 +601,8 @@ LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 set autocommit=0;
 INSERT INTO `users` VALUES
-(1,'Kepala Desa','kepaladesa@gmail.com','2026-05-13 18:57:28','$2y$12$p3xIo.xaz5auc4juPA6fZOCECbbJzhCJuRqBkNRnyYEkLqIgX6AHW','kepala_desa','UZiw3ocRUa','2026-05-13 18:57:28','2026-05-13 18:57:28'),
-(2,'Pelayanan','pelayanan@gmail.com','2026-05-13 18:57:28','$2y$12$k.sYgWiG7K0kI5y6rz562uAozNJ7IfZwvgj687rYHyZ3kT/5bi4UG','pelayanan','KiaaaUua9K','2026-05-13 18:57:28','2026-05-13 18:57:28');
+(1,'Kepala Desa','kepaladesa@gmail.com','2026-05-15 21:55:17','$2y$12$T.OcakYhDjwzTpvSXfVoieRjC4WmYLAEGJ1Sg5pCdsFzubVuUE5Vm','kepala_desa','7FYMaHlqJp','2026-05-15 21:55:17','2026-05-15 21:55:17'),
+(2,'Pelayanan','pelayanan@gmail.com','2026-05-15 21:55:17','$2y$12$5./6BiYsCsXFZo65FxCLAeH.c19ABB5uaifMUs7bOCQtZrgcswUDu','pelayanan','HaSrfmNJcd','2026-05-15 21:55:17','2026-05-15 21:55:17');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 commit;
@@ -613,4 +616,4 @@ commit;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*M!100616 SET NOTE_VERBOSITY=@OLD_NOTE_VERBOSITY */;
 
--- Dump completed on 2026-05-15 18:38:07
+-- Dump completed on 2026-05-16 14:07:33
